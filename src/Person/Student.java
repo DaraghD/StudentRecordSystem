@@ -1,10 +1,12 @@
-public class Student extends Person{
+package Person;
 
-    private int StudentID;
+public class Student extends Person {
+
 
     public Student(String name, int id, String password) {
         super(name, id, password);
     }
+
 
 
     public void ViewTranscript() {
@@ -13,8 +15,7 @@ public class Student extends Person{
 
 
 
-    @Override
-    void Register() {
+    public void registerInfo() {
 
     }
 }

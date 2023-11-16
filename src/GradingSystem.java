@@ -1,3 +1,4 @@
+import Person.Student;
 public class GradingSystem {
     // Currently QCA -> UL method , should be able to adapt easily
 

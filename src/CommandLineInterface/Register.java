@@ -1,5 +1,6 @@
 package CommandLineInterface;
-import Teacher.Teacher;
+import Person.Teacher;
+import Person.Person;
 
 
 import java.util.Scanner;
@@ -12,9 +13,10 @@ public class Register {
         System.out.println("Type S for Student or T for Teacher");
         switch(in.nextLine().toUpperCase()){
             case "S":
+                Person.registerInfo(false);
                 break;
             case "T":
-                Teacher.registerInfo();
+                Person.registerInfo(true);
                 break;
             default:
                 System.out.println("Invalid choice");

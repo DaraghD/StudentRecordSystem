@@ -5,24 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76912adc-b857-45ee-93de-c21e93b8e410" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CommandLineInterface/CommandLineInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CommandLineInterface/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CommandLineInterface/Register.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Department.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GradingSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Teacher/Teacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/University/University.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/teachers.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Person/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CommandLineInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentRecordSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentRecordSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CommandLineInterface/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommandLineInterface/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GradingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GradingSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Person/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Teacher/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Person/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/University/University.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/University/University.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +28,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -100,7 +93,7 @@
       <updated>1700025654000</updated>
       <workItem from="1700025655004" duration="197000" />
       <workItem from="1700025867818" duration="3333000" />
-      <workItem from="1700090564371" duration="3508000" />
+      <workItem from="1700090564371" duration="6742000" />
     </task>
     <servers />
   </component>
