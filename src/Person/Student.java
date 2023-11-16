@@ -2,6 +2,7 @@ package Person;
 import University.University;
 
 public class Student extends Person {
+    //need grades arraylist or something here
 
 
     public Student(String name, int id, String password) {
@@ -33,7 +34,11 @@ public class Student extends Person {
 
 
 
-    public void registerInfo() {
+    public static void register(String name, int id, String password) {
+        Student newStudent = new Student(name, id, password);
+        //check if teacher already exists -> maybe do this for ID earlier in the above method
+        University.addStudent(newStudent);
+        System.out.println("You have successfully registered as a student");
 
     }
 }

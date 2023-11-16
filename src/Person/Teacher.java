@@ -39,6 +39,14 @@ public class Teacher extends Person {
 
     }
 
+    public static void register(String name, int id, String department, String password) {
+        Teacher newTeacher = new Teacher(name, id, department, password);
+        //check if teacher already exists -> maybe do this for ID earlier in the above method
+        University.addTeacher(newTeacher);
+        System.out.println("You have successfully registered as a teacher");
+
+    }
+
 
 
 

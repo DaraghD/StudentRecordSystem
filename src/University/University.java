@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class University {
 
-    static ArrayList<Teacher> teachers = new ArrayList<Teacher>();
-    static ArrayList<Student> students = new ArrayList<Student>();
+    private static ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+    private static ArrayList<Student> students = new ArrayList<Student>();
 
     //static ArrayList<Department> departments = new ArrayList<Department>();
 

@@ -1,5 +1,4 @@
 package CommandLineInterface;
-import Person.Teacher;
 import Person.Person;
 
 

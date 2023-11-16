@@ -1,6 +1,9 @@
 package CommandLineInterface;
 import Person.Person;
+
+import java.io.FileNotFoundException;
 import java.util.Scanner;
+import data.csvWriter;
 
 public class CommandLineInterface {
 
@@ -9,7 +12,7 @@ public class CommandLineInterface {
 
 
     public void init() {
-        // set data up here , csv to variables etc
+        // set data up here , csv to variables etc --->> CSV PARSER
         // Student arraylist : csv convert to hashmap, student id -> transcript
         // department ?
 
@@ -17,9 +20,10 @@ public class CommandLineInterface {
 
     public void run() {
         boolean LoggedIn = false;
+        boolean exit = false;
         System.out.println("Welcome to the Student Record System!" + "\n");
 
-        while (!LoggedIn) {
+        while ((!LoggedIn) || exit) {
             System.out.println(
                     """
                             Please choose an option:
@@ -40,7 +44,7 @@ public class CommandLineInterface {
                     break;
                 case "Q":
                     System.out.println("Closing program...");
-                    System.exit(0);
+                    exit = true;
                     break;
                 default:
                     System.out.println("Invalid choice");
@@ -50,13 +54,23 @@ public class CommandLineInterface {
 
         //here LoggedIn is over, implement main menu
         boolean mainMenu = true;
+        if(exit){
+            mainMenu = false;
+        }
 
-        while (mainMenu) {
+        while (mainMenu) { //different one for teacher and student?
 
         }
 
 
     }
 
+
+    public void shutdown() throws FileNotFoundException {
+        data.csvWriter.writeTeachers();
+        data.csvWriter.writeStudents();
+
+        // save data here CSVWRITER
+    }
 
 }
