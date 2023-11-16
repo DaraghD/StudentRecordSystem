@@ -26,4 +26,12 @@ public class University {
         //departments.add(department);
     //}
 
+    public static ArrayList<Teacher> getTeachers(){
+        return teachers;
+    }
+
+    public static ArrayList<Student> getStudents(){
+        return students;
+    }
+
 }

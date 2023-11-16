@@ -1,8 +1,6 @@
 package Person;
 import University.University;
 
-import java.util.Scanner;
-
 public class Teacher extends Person {
     private String Department;
 
@@ -12,6 +10,23 @@ public class Teacher extends Person {
 
     }
 
+    public static String getPassword(int id){
+        for(Teacher teacher : University.getTeachers()){
+            if(teacher.getId() == id){
+                return teacher.getPassword();
+            }
+        }
+        return null; //exception here , invalid id login -> maybe no exception use this as null to checkk if can register?
+    }
+
+    public static Teacher getTeacher(int id){
+        for(Teacher teacher : University.getTeachers()){
+            if(teacher.getId() == id){
+                return teacher;
+            }
+        }
+        return null; //exception here , invalid id login
+    }
 
     public void addStudentGrade() {
 
@@ -23,6 +38,8 @@ public class Teacher extends Person {
     public void addDepartment() {
 
     }
+
+
 
 
 

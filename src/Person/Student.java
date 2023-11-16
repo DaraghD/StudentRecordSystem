@@ -1,4 +1,5 @@
 package Person;
+import University.University;
 
 public class Student extends Person {
 
@@ -11,6 +12,23 @@ public class Student extends Person {
 
     public void ViewTranscript() {
 
+    }
+
+    public static String getPassword(int id){
+        for(Student student : University.getStudents()){
+            if(student.getId() == id){
+                return student.getPassword();
+            }
+        }
+        return null;
+    }
+    public static Student getStudent(int id){
+        for(Student student : University.getStudents()){
+            if(student.getId() == id){
+                return student;
+            }
+        }
+        return null;
     }
 
 

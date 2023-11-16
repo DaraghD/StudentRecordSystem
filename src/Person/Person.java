@@ -31,7 +31,12 @@ public class Person {
     public static void registerInfo(boolean isTeacher) {
         String department = null;
         Scanner in = new Scanner(System.in);
-        System.out.println("You are now registering as a teacher");
+        System.out.print("You are now registering as a ");
+        if(isTeacher) {
+            System.out.println("teacher\n");
+        } else {
+            System.out.println("student\n");
+        }
 
         System.out.println("Please enter your name");
         String name = in.nextLine();
@@ -79,5 +84,7 @@ public class Person {
         University.addTeacher(newTeacher);
         System.out.println("You have successfully registered as a teacher");
     }
+
+
 
 }
