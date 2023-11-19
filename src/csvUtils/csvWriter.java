@@ -13,7 +13,7 @@ public class csvWriter {
 
     private static final File students = new File(University.studentsPath);
     private static final File teachers = new File(University.teachersPath);
-    private static final File departments = new File(University.departmentsPath);
+    //private static final File departments = new File(University.departmentsPath);
 
     static PrintWriter writeStudents;
     static PrintWriter writeTeachers;
@@ -22,7 +22,7 @@ public class csvWriter {
     static {
         try {
             writeStudents = new PrintWriter(students);
-            writeDepartments = new PrintWriter(departments);
+            //writeDepartments = new PrintWriter(departments);
             writeTeachers = new PrintWriter(teachers);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

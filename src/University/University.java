@@ -9,7 +9,7 @@ public class University {
 
     public static final String studentsPath = "src/data/students.csv";
     public static final String teachersPath = "src/data/teachers.csv";
-    public static final String departmentsPath = "src/data/departments.csv";
+    //public static final String departmentsPath = "src/data/departments.csv";
 
 
     private static ArrayList<Teacher> teachers = new ArrayList<Teacher>();

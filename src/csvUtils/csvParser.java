@@ -16,22 +16,23 @@ public class csvParser {
     private static BufferedReader studentReader;
     private static BufferedReader teacherReader;
     private static BufferedReader departmentReader;
+
     static {
         try {
             studentReader = new BufferedReader(new FileReader(University.studentsPath));
             teacherReader = new BufferedReader(new FileReader(University.teachersPath));
-            departmentReader = new BufferedReader(new FileReader(University.departmentsPath));
+            //departmentReader = new BufferedReader(new FileReader(University.departmentsPath));
         } catch (FileNotFoundException e) {
             System.out.print(e);
         }
     }
 
 
-
-
     public static void parseStudents() throws IOException {
-        while(studentReader.readLine() != null){ // every line is a new student
-            StringTokenizer st = new StringTokenizer(studentReader.readLine(), ",");
+        String studentLine;
+
+        while ((studentLine = studentReader.readLine()) != null) {
+            StringTokenizer st = new StringTokenizer(studentLine,",");
             String name = st.nextToken();
             int id = Integer.parseInt(st.nextToken());
             String password = st.nextToken();
@@ -41,8 +42,9 @@ public class csvParser {
     }
 
     public static void parseTeachers() throws IOException {
-        while(teacherReader.readLine() != null){
-            StringTokenizer st = new StringTokenizer(teacherReader.readLine(), ",");
+        String teacherLine;
+        while ((teacherLine = teacherReader.readLine()) != null) {
+            StringTokenizer st = new StringTokenizer(teacherLine, ",");
             String name = st.nextToken();
             int id = Integer.parseInt(st.nextToken());
             String password = st.nextToken();
@@ -51,8 +53,6 @@ public class csvParser {
         }
         teacherReader.close();
     }
-
-
 
 
 }
