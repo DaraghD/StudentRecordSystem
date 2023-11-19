@@ -3,7 +3,7 @@ import Person.Person;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import data.csvWriter;
+import csvUtils.csvWriter;
 
 public class CommandLineInterface {
 
@@ -67,8 +67,8 @@ public class CommandLineInterface {
 
 
     public void shutdown() throws FileNotFoundException {
-        data.csvWriter.writeTeachers();
-        data.csvWriter.writeStudents();
+        csvWriter.writeTeachers();
+        csvWriter.writeStudents();
 
         // save data here CSVWRITER
     }
