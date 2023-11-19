@@ -7,7 +7,6 @@ import University.University;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import University.University;
 
 public class csvWriter {
 

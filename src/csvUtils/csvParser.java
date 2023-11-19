@@ -1,6 +1,5 @@
 package csvUtils;
 
-
 import University.University;
 import Person.Student;
 import Person.Teacher;
@@ -30,7 +29,6 @@ public class csvParser {
 
     public static void parseStudents() throws IOException {
         String studentLine;
-
         while ((studentLine = studentReader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(studentLine,",");
             String name = st.nextToken();

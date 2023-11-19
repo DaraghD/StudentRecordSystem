@@ -12,7 +12,7 @@ public class Register {
         System.out.println("Type S for Student or T for Teacher");
         switch(in.nextLine().toUpperCase()){
             case "S":
-                Person.registerInfo(false);
+                Person.registerInfo(false); // move this to a different class ? maybe this one
                 break;
             case "T":
                 Person.registerInfo(true);
@@ -21,6 +21,10 @@ public class Register {
                 System.out.println("Invalid choice");
                 break;
         }
+
+    }
+
+    private void register1(){
 
     }
 
