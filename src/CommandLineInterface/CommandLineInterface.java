@@ -1,9 +1,13 @@
 package CommandLineInterface;
+
 import Person.Person;
+import csvUtils.csvWriter;
+import csvUtils.csvParser;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
-import csvUtils.csvWriter;
+
 
 public class CommandLineInterface {
 
@@ -11,14 +15,18 @@ public class CommandLineInterface {
     static Person currentUser; // when login set this to the reference of the logged in object
 
 
-    public void init() {
+    public static void init() throws IOException {
+        csvParser.parseTeachers();
+        csvParser.parseStudents();
+
         // set data up here , csv to variables etc --->> CSV PARSER
         // Student arraylist : csv convert to hashmap, student id -> transcript
         // department ?
 
+
     }
 
-    public void run() {
+    public static void run() {
         boolean LoggedIn = false;
         boolean exit = false;
         System.out.println("Welcome to the Student Record System!" + "\n");
@@ -54,7 +62,7 @@ public class CommandLineInterface {
 
         //here LoggedIn is over, implement main menu
         boolean mainMenu = true;
-        if(exit){
+        if (exit) {
             mainMenu = false;
         }
 
@@ -66,7 +74,7 @@ public class CommandLineInterface {
     }
 
 
-    public void shutdown() throws FileNotFoundException {
+    public static void shutdown() throws FileNotFoundException {
         csvWriter.writeTeachers();
         csvWriter.writeStudents();
 

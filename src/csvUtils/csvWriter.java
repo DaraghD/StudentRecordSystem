@@ -7,20 +7,29 @@ import University.University;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import University.University;
 
 public class csvWriter {
 
-    static File students = new File("src/data/students.csv");
-    static File teachers = new File("src/data/teachers.csv");
-    static File departments = new File("src/data/departments.csv");
+    private static final File students = new File(University.studentsPath);
+    private static final File teachers = new File(University.teachersPath);
+    private static final File departments = new File(University.departmentsPath);
 
     static PrintWriter writeStudents;
     static PrintWriter writeTeachers;
     static PrintWriter writeDepartments;
 
+    static {
+        try {
+            writeStudents = new PrintWriter(students);
+            writeDepartments = new PrintWriter(departments);
+            writeTeachers = new PrintWriter(teachers);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     static public void writeStudents() throws FileNotFoundException{
-        writeStudents = new PrintWriter(students);
         for(Student student : University.getStudents()){
             writeStudents.println(student.getName() + "," + student.getId() + "," + student.getPassword());
         }
@@ -28,9 +37,8 @@ public class csvWriter {
     }
 
     static public void writeTeachers() throws FileNotFoundException{
-        writeTeachers = new PrintWriter(teachers);
         for(Teacher teacher : University.getTeachers()){
-            writeTeachers.println(teacher.getName() + "," + teacher.getId() + "," + teacher.getPassword());
+            writeTeachers.println(teacher.getName() + "," + teacher.getId() + "," + teacher.getPassword() + "," + teacher.getDepartment());
         }
         writeTeachers.close();
     }
