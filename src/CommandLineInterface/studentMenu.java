@@ -1,4 +1,4 @@
 package CommandLineInterface;
 
-public class Menu {
+public class studentMenu {
 }
