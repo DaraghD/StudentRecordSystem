@@ -5,6 +5,7 @@ target/
 
 
 /src/data/*
+/out/*
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
