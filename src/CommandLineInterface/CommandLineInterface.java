@@ -19,7 +19,7 @@ public class CommandLineInterface {
         csvParser.parseTeachers();
         csvParser.parseStudents();
 
-        // set data up here , csv to variables etc --->> CSV PARSER
+        // set data up here , csv to variables etc --->> CSV PARSER.
         // Student arraylist : csv convert to hashmap, student id -> transcript
         // department
 
