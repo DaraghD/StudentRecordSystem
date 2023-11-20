@@ -73,7 +73,6 @@ public class CommandLineInterface {
 
     }
 
-
     public static void shutdown() throws FileNotFoundException {
         csvWriter.writeTeachers();
         csvWriter.writeStudents();
