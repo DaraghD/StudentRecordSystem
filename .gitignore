@@ -17,6 +17,7 @@ target/
 *.ipr
 .idea/workspace.xml
 .idea/tasks.xml
+.idea/*
 
 
 ### Eclipse ###
@@ -43,3 +44,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/pom.xml
