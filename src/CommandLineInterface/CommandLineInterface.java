@@ -21,7 +21,7 @@ public class CommandLineInterface {
 
         // set data up here , csv to variables etc --->> CSV PARSER
         // Student arraylist : csv convert to hashmap, student id -> transcript
-        // department ?
+        // department
 
 
     }
