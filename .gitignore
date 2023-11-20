@@ -4,8 +4,7 @@ target/
 !**/src/test/**/target/
 
 
-### database(CSV) ###
-/src/data/*
+
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
