@@ -1,9 +1,8 @@
 package CommandLineInterface;
 import java.util.Scanner;
-import java.util.Scanner.*;
 
 public class teacherMenu {
-    private Scanner scannerTeacherMenu;
+    private final Scanner scannerTeacherMenu;
     static Scanner input = new Scanner(System.in);
 
     public teacherMenu() {
@@ -13,7 +12,7 @@ public class teacherMenu {
     public void display() {
         System.out.println("Teacher Menu" + "\n");
 
-        System.out.println("(G)Add Student Grades, (V)View Department Board, (D)Add Department, (L)ogout");
+        System.out.println("(G)Add Student Grades, (V)View Department Board, (D)Add Department, (L)Logout");
     }
 
     public void run() {
@@ -40,10 +39,10 @@ public class teacherMenu {
                 default:
                     System.out.println("Invalid Choice");
             }
-        } while (choice != L);
+        } while (!choice.equals("L"));
     }
     public static void main (String[] args) {
-        teacherMenu teacherMenu = new teacherMenu;
+        teacherMenu teacherMenu = new teacherMenu();
         teacherMenu.run();
     }
 }

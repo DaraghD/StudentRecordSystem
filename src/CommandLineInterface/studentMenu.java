@@ -15,6 +15,7 @@ public class studentMenu {
             System.out.print("Invalid Input");
         }
 
+
     }
 }
     //Display QCA, Display QCA,
