@@ -5,11 +5,11 @@ public class studentMenu {
 
     public void run() {
         System.out.print("(Q)CA, (G)rades");
-        String choice = input.nextLine().toUpperCase;
+        String choice = input.nextLine().toUpperCase();
 
-        if (choice = "Q") {
+        if (choice.equals("Q")) {
 
-        } else if (choice = "G") {
+        } else if (choice.equals("G")) {
 
         } else {
             System.out.print("Invalid Input");
