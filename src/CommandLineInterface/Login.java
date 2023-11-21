@@ -28,32 +28,29 @@ public class Login {
         int id = Integer.parseInt(CommandLineInterface.input.nextLine());
         String actualPassword = Teacher.getPassword(id);
 
-        System.out.println("Please enter your password");
-        String password = CommandLineInterface.input.nextLine();
-        if (password.equals(actualPassword)) {
-            System.out.println("Logged in ID : " + id);
-            System.out.println("Welcome " + Teacher.getTeacher(id).getName());
-
-            CommandLineInterface.currentUser = Teacher.getTeacher(id);
-        } else {
-            System.out.println("Incorrect password");
-        }
+        checkPassword(id, actualPassword);
+        System.out.println("Welcome " + Teacher.getTeacher(id).getName());
+        CommandLineInterface.currentUser = Teacher.getTeacher(id);
     }
 
     private static void studentLogin() {
         System.out.println("Please enter your id");
         int id = Integer.parseInt(CommandLineInterface.input.nextLine());
         String actualPassword = Student.getPassword(id);
+        checkPassword(id, actualPassword);
+        System.out.println("Welcome " + Student.getStudent(id).getName());
+        CommandLineInterface.currentUser = Student.getStudent(id);
+    }
 
+    private static void checkPassword(int id, String actualPassword) {
         System.out.println("Please enter your password");
         String password = CommandLineInterface.input.nextLine();
-        if (password.equals(actualPassword)) {
-            System.out.println("Logged in ID : " + id);
-            System.out.println("Welcome " + Student.getStudent(id).getName());
-            CommandLineInterface.currentUser = Student.getStudent(id);
-        } else {
+        while(!(password.equals(actualPassword))){
             System.out.println("Incorrect password");
+            System.out.println("Please enter your password");
+            password = CommandLineInterface.input.nextLine();
         }
+        System.out.println("Logged in ID : " + id);
     }
 
 
