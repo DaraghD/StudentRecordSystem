@@ -1,8 +1,12 @@
 package Person;
 import University.University;
 
+import java.util.ArrayList;
+
 public class Teacher extends Person {
     private String Department;
+    private String studentName;
+    private ArrayList<String> studentGrades;
 
     public Teacher(String name, int id, String department, String password) {
         super(name, id, password);
@@ -28,8 +32,8 @@ public class Teacher extends Person {
         return null; //exception here , invalid id login
     }
 
-    public void addStudentGrade() {
-
+    public void addStudentGrade(String grade) {
+        this.studentGrades.add(grade);
     }
 
     public void viewDepartmentBoard() {
