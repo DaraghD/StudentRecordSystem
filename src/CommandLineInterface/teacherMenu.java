@@ -1,13 +1,14 @@
 package CommandLineInterface;
+import Person.Teacher;
+
 import java.util.Scanner;
 
 public class teacherMenu {
-    private final Scanner scannerTeacherMenu;
-    static Scanner input = new Scanner(System.in);
-
     public teacherMenu() {
         this.scannerTeacherMenu = new Scanner(System.in);
     }
+    private Scanner scannerTeacherMenu;
+    static Scanner input = new Scanner(System.in);
 
     public void display() {
         System.out.println("Teacher Menu" + "\n");

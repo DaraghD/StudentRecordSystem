@@ -4,8 +4,8 @@ import University.University;
 import java.util.ArrayList;
 
 public class Student extends Person {
-    //need grades arraylist or something here
 
+    //need grades arraylist or something here
 
     public Student(String name, int id, String password) {
         super(name, id, password);
