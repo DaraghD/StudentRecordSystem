@@ -5,7 +5,7 @@ public class studentMenu {
 
     public void run() {
         System.out.print("(Q)CA, (G)rades");
-        String choice = Scanner.nextLine().toUpperCase;
+        String choice = input.nextLine().toUpperCase;
 
         if (choice = "Q") {
 
@@ -14,7 +14,6 @@ public class studentMenu {
         } else {
             System.out.print("Invalid Input");
         }
-
 
     }
 }
