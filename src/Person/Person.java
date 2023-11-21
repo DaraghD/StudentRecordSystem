@@ -26,8 +26,8 @@ public class Person {
 
     public static boolean uniqueID(int id) { // id is unique between teacher and students
         if (Teacher.getTeacher(id) != null || Student.getStudent(id) != null) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }
