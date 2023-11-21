@@ -1,6 +1,8 @@
 package Person;
 import University.University;
 
+import java.util.ArrayList;
+
 public class Student extends Person {
     //need grades arraylist or something here
 
@@ -40,5 +42,9 @@ public class Student extends Person {
         University.addStudent(newStudent);
         System.out.println("You have successfully registered as a student");
 
+    }
+
+    public static ArrayList studentGrades(String name){
+        ArrayList<Grades> studentGrades = new ArrayList<Grades>();
     }
 }
