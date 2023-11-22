@@ -5,12 +5,10 @@ import Grading.Grade;
 import java.util.Scanner;
 
 public class teacherMenu extends Teacher {
-
+    private final Scanner scannerTeacherMenu = new Scanner(System.in);
     public teacherMenu() {
-        super(name, id, password);
-        this.scannerTeacherMenu = new Scanner(System.in);
+        super(String name, int id, String department, String password);
     }
-    private Scanner scannerTeacherMenu;
     static Scanner input = new Scanner(System.in);
 
     public void display() {
