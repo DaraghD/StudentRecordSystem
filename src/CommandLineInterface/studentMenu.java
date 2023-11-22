@@ -14,7 +14,7 @@ public class studentMenu {
         } else if (choice.equals("M")){
 
         } else if (choice.equals("L")){
-
+break;
         } else {
             System.out.print("Invalid Input");
         }

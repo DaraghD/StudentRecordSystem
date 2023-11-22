@@ -4,6 +4,7 @@ import Grading.Grade;
 import University.University;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Student extends Person {
     //need grades arraylist or something here
@@ -49,5 +50,20 @@ public class Student extends Person {
 
     }
 
+    public void addGrade() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter student id of student to add grade to:");
+        String id = input.nextLine();
+        System.out.println("Enter the course");
+        String course = input.nextLine();
+        System.out.println("Enter the grade e.g A1,A2 etc:");
+        String grade = input.nextLine();
+        System.out.println("Enter the semester, 1 or 2:");
+        int semester = Integer.parseInt(input.nextLine());
+        System.out.println("Enter the programme:");
+        String programme = input.nextLine();
 
+        Grade newGrade =  new Grade(course, grade, semester, programme);
+        grades.add(newGrade);
+    }
 }
