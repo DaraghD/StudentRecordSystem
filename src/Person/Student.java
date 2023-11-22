@@ -60,15 +60,17 @@ public class Student extends Person {
         String grade = input.nextLine();
         System.out.println("Enter the semester, 1 or 2:");
         int semester = Integer.parseInt(input.nextLine());
-        System.out.println("Enter the programme:");
-        String programme = input.nextLine();
+        System.out.println("Enter the module:");
+        String module = input.nextLine();
 
-        Grade newGrade =  new Grade(course, grade, semester, programme);
+        Grade newGrade =  new Grade(course, grade, semester, module);
         grades.add(newGrade);
-        course, grade, semester, programme, year
+        course, grade, semester, module, year
     }
 
     public ArrayList<Grade> getGrades() {
         return grades;
     }
+
+    
 }
