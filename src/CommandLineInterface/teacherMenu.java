@@ -1,5 +1,6 @@
 package CommandLineInterface;
 import Person.Teacher;
+import Grading.Grade;
 
 import java.util.Scanner;
 
@@ -34,10 +35,10 @@ public class teacherMenu extends Teacher {
                     viewDepartmentBoard();
                     break;
                 case "C":
-                    calculateQCA();
+                    Grade.QCA(int id, int semester, String module, int year);
                     break;
                 case "D":
-                    addDepartment;
+                    addDepartment();
                     break;
                 case"L":
                     System.out.println("Logging Out...");
