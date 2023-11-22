@@ -67,4 +67,8 @@ public class Student extends Person {
         grades.add(newGrade);
         course, grade, semester, programme, year
     }
+
+    public ArrayList<Grade> getGrades() {
+        return grades;
+    }
 }

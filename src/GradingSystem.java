@@ -1,4 +1,5 @@
 import Grading.Grade;
+import person.student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class GradingSystem {
                     gradebook.printGrades();
                     break;
                 case "A":
-                    addGrade(scanner, gradebook);
+                    addGrade(gradebook);
                     break;
                 case "D":
                     deleteGrades(scanner, gradebook);
@@ -55,6 +56,28 @@ public class GradingSystem {
             }
         }
     }
+    public void showQCA(int studentId) {
+
+    }
+    public double calculateQCA(int studentId, String option){
+        Student student = Student.getStudent(studentId);
+        ArrayList<Grade> grades = student.getGrades();
+        double total = 0.0;
+        for(Grade grade : grades){
+            total += grade.convertGradeToNumber();
+        }
+        return total/grades.size();
+    }
+
+
+
+
+
+
+
+
+
+
 
     private static void addGrade(Gradebook gradebook) {
         Scanner input = new Scanner(System.in);
