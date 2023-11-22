@@ -58,19 +58,19 @@ public class Grade {
             return 2.8;
         }
         else if(this.grade.equals("C1")){
-
+            return 2.6
         }
         else if(this.grade.equals("C2")){
-
+            return 2.4;
         }
         else if(this.grade.equals("C3")){
-
+            return 2.0;
         }
         else if(this.grade.equals("D1")){
-
+            return 1.6;
         }
         else if(this.grade.equals("D2")){
-
+            return 1.2;
         }
         else if(this.grade.equals("F")){
             return 0;
