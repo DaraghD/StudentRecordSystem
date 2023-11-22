@@ -26,6 +26,22 @@ public class CommandLineInterface {
 
     }
 
+    public static void Login() {
+        System.out.println("Type T for teacher or S for student");
+        Scanner in = new Scanner(System.in);
+        switch (in.nextLine().toUpperCase()) {
+            case "T":
+                teacherLogin();
+                break;
+            case "S":
+                studentLogin();
+                break;
+            default:
+                System.out.println("Invalid choice");
+                break;
+        }
+    }
+
     public static void run() {
         boolean LoggedIn = false;
         boolean exit = false;
