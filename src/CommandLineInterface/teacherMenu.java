@@ -3,8 +3,10 @@ import Person.Teacher;
 
 import java.util.Scanner;
 
-public class teacherMenu {
+public class teacherMenu extends Teacher {
+
     public teacherMenu() {
+        super(name, id, password);
         this.scannerTeacherMenu = new Scanner(System.in);
     }
     private Scanner scannerTeacherMenu;
