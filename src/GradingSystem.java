@@ -1,5 +1,5 @@
 import Grading.Grade;
-import person.student;
+import Person.Student;
 
 import java.util.ArrayList;
 import java.util.List;
