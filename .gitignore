@@ -6,6 +6,7 @@ target/
 
 /src/data/*
 /out/*
+qodana.yaml
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

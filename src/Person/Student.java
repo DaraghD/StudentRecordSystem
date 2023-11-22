@@ -1,17 +1,22 @@
 package Person;
+
+import Grading.Grade;
 import University.University;
 
 import java.util.ArrayList;
 
 public class Student extends Person {
     //need grades arraylist or something here
-
+    private ArrayList<Grade> grades = new ArrayList<>();
 
     public Student(String name, int id, String password) {
         super(name, id, password);
     }
 
 
+    public void addGrade(Grade grade) {
+        grades.add(grade);
+    }
 
     public void ViewTranscript() {
 
@@ -44,7 +49,5 @@ public class Student extends Person {
 
     }
 
-    public static ArrayList studentGrades(String name){
-        ArrayList<Grades> studentGrades = new ArrayList<Grades>();
-    }
+
 }

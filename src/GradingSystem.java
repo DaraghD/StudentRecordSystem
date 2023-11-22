@@ -1,15 +1,17 @@
+import Grading.Grade;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 class Gradebook {
-    private List<String> grades;
+    private List<Grade> grades;
 
     public Gradebook() {
         this.grades = new ArrayList<>();
     }
 
-    public void addGrade(String grade) {
+    public void addGrade(Grade grade) {
         grades.add(grade);
     }
 
@@ -54,11 +56,20 @@ public class GradingSystem {
         }
     }
 
-    private static void addGrade(Scanner scanner, Gradebook gradebook) {
-        System.out.println("Enter the grade:");
-        String grade = scanner.nextLine();
-        gradebook.addGrade(grade);
-        System.out.println("Grade added successfully.");
+    private static void addGrade(Gradebook gradebook) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter student id of student to add grade to:");
+        String id = input.nextLine();
+        System.out.println("Enter the course");
+        String course = input.nextLine();
+        System.out.println("Enter the grade e.g A1,A2 etc:");
+        String grade = input.nextLine();
+        System.out.println("Enter the semester, 1 or 2:");
+        int semester = Integer.parseInt(input.nextLine());
+        System.out.println("Enter the programme:");
+        String programme = input.nextLine();
+
+        Grade newGrade =  new Grade(course, grade, semester, programme);
     }
 
     private static void deleteGrades(Scanner scanner, Gradebook gradebook) {
