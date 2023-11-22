@@ -89,12 +89,12 @@ public class GradingSystem {
         String grade = input.nextLine();
         System.out.println("Enter the semester, 1 or 2:");
         int semester = Integer.parseInt(input.nextLine());
-        System.out.println("Enter the programme:");
-        String programme = input.nextLine();
+        System.out.println("Enter the :");
+        String module = input.nextLine();
         System.out.println("Enter the year:");
         int year = Integer.parseInt(input.nextLine());
 
-        Grade newGrade =  new Grade(course, grade, semester, programme, year);
+        Grade newGrade =  new Grade(course, grade, semester, module, year);
     }
 
     private static void deleteGrades(Scanner scanner, Gradebook gradebook) {

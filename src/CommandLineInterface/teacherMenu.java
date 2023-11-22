@@ -15,7 +15,7 @@ public class teacherMenu extends Teacher {
     public void display() {
         System.out.println("Teacher Menu" + "\n");
 
-        System.out.println("(G)Add Student Grades, (V)View Department Board, (D)Add Department, (L)Logout");
+        System.out.println("(G)Add Student Grades, (C)Calculate Student QCA, (V)View Department Board, (D)Add Department, (L)Logout");
     }
 
     public void run() {
@@ -28,10 +28,13 @@ public class teacherMenu extends Teacher {
 
             switch (input.nextLine().toUpperCase()) {
                 case "G":
-                    addStudentGrade();
+                    addStudentGrade(studentGrade);
                     break;
                 case "V":
                     viewDepartmentBoard();
+                    break;
+                case "C":
+                    calculateQCA();
                     break;
                 case "D":
                     addDepartment;

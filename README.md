@@ -14,18 +14,18 @@ design and development of a small software application.
 ## System Requirements:
 You are required to build a student records system for UL (in so far as you can).   
 
-UL offers many different types of programmes, which are of varying duration, at varying
-levels such as undergraduate, postgraduate and also include both taught programmes and
-research programmes. 
+UL offers many different types of modules, which are of varying duration, at varying
+levels such as undergraduate, postgraduate and also include both taught modules and
+research modules. 
 
-Programmes are run by Departments/Schools and these departments hold examination boards at the end of each review period to review student progression. 
+modules are run by Departments/Schools and these departments hold examination boards at the end of each review period to review student progression. 
 
 Students may be requested to repeat a module, link-in to modules, repeat
 semester, year etc…
 
 Your system should store student results (grades in modules each semester) and should
-perform QCA calculations per semester/year/programme (and others as deemed
-necessary) for the different types of programmes available in UL. 
+perform QCA calculations per semester/year/module (and others as deemed
+necessary) for the different types of modules available in UL. 
 
 The system should be
 able to identify students that do not meet the minimum academic standards for
