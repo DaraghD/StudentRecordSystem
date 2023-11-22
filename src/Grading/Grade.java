@@ -69,7 +69,7 @@ public class Grade {
         return 0;
     }
 
-    public double QCA(int id, int semester, String module, int year) {
+    public static double QCA(int id, int semester, String module, int year) {
         Student student = Student.getStudent(id);
         ArrayList<Grade> grades = student.getGrades();
         double total = 0;
