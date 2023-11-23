@@ -90,7 +90,7 @@ public class CommandLineInterface {
                             String name = input.nextLine();
                             System.out.println("Please enter your id");
                             int id = Integer.parseInt(input.nextLine());
-                            while (Person.uniqueID(id) != true) {
+                            while (UL.uniqueID(id) != true) {
                                 System.out.println("This id is already taken");
                                 System.out.println("Please enter a new id");
                                 id = Integer.parseInt(input.nextLine());
@@ -115,7 +115,7 @@ public class CommandLineInterface {
                             String nameT = input.nextLine();
                             System.out.println("Please enter your id");
                             int idT = Integer.parseInt(input.nextLine());
-                            while (Person.uniqueID(idT) != true) {
+                            while (UL.uniqueID(idT) != true) {
                                 System.out.println("This id is already taken");
                                 System.out.println("Please enter a new id");
                                 idT = Integer.parseInt(input.nextLine());
