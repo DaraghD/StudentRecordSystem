@@ -52,7 +52,7 @@ public class CommandLineInterface {
         boolean exit = false;
         System.out.println("Welcome to the Student Record System!" + "\n");
         outer:
-        while ((!LoggedIn)) {
+        while (true) {
             System.out.println(
                     """
                             Please choose an option:
@@ -64,7 +64,6 @@ public class CommandLineInterface {
             switch (input.nextLine().toUpperCase()) {
                 case "L":
                     Login();
-                    LoggedIn = true;
                     break;
                 case "R":
                     Register();
@@ -76,17 +75,16 @@ public class CommandLineInterface {
                     System.out.println("Invalid choice");
                     break;
             }
-        }
 
-        if(currentUser instanceof Student){
-            studentMenu studentMenu = new studentMenu((Student) currentUser, UL);
-            studentMenu.run();
-        }
-        else if(currentUser instanceof Teacher){
-            teacherMenu teacherMenu = new teacherMenu((Teacher) currentUser, UL);
-            teacherMenu.run();
-        }
 
+            if (currentUser instanceof Student) {
+                studentMenu studentMenu = new studentMenu((Student) currentUser, UL);
+                studentMenu.run();
+            } else if (currentUser instanceof Teacher) {
+                teacherMenu teacherMenu = new teacherMenu((Teacher) currentUser, UL);
+                teacherMenu.run();
+            }
+        }
 
     }
 

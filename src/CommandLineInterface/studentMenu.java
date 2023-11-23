@@ -37,6 +37,8 @@ public class studentMenu {
                     qca = Grade.QCA(uni.getStudent(id), semester, module, year);
                     // above doesnt work need to make Grade non static and use grade object form student grades
                     System.out.println(qca);
+
+
                 case "G":
                     ArrayList<Grade> studentGrades = currentUser.getGrades();
                     for (Grade grade : studentGrades) {
