@@ -26,8 +26,8 @@ public class teacherMenu {
     }
 
     public void run() {
-
-        while (true) {
+        boolean logout = false;
+        while (!logout) {
             String choice;
 
             display();
@@ -55,7 +55,7 @@ public class teacherMenu {
                     break;
                 case "L":
                     System.out.println("Logging Out...");
-                    exit(0);
+                    logout = true;
                     break;
                 default:
                     System.out.println("Invalid Choice");
@@ -66,22 +66,27 @@ public class teacherMenu {
     private void addStudentGrade() {
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the student's ID");
-        int studentId = input.nextInt();
+        int studentId = Integer.parseInt(input.nextLine());
+
         System.out.println("Please enter the student's grade");
         String studentGrade = input.nextLine();
+
         System.out.println("Please enter the student's course");
         String studentCourse = input.nextLine();
+
         System.out.println("Please enter the student's module");
         String studentModule = input.nextLine();
+
         System.out.println("Please enter the student's year");
         int studentYear = input.nextInt();
+
         System.out.println("Please enter the student's semester- 1 or 2");
         int studentSemester = input.nextInt();
 
         Grade grade = new Grade(studentCourse, studentGrade, studentSemester, studentModule, studentYear);
         Student student = uni.getStudent(studentId);
         student.addGrade(grade);
-        System.out.println("Grade added to " + student.getName());
+        System.out.println("Grade: +" +grade.toString()+ ", added to " + student.getName());
 
     }
 }
