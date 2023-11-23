@@ -40,11 +40,10 @@ public class CommandLineInterface {
     public void run() throws FileNotFoundException {
         //testing
         System.out.println("TESTING");
-        for(Student s : UL.getStudents()){
+        for (Student s : UL.getStudents()) {
             System.out.println("Student: " + s.getName() + " " + s.getId() + " " + s.getPassword() + " " + s.getGrades());
             System.out.println();
         }
-
 
 
         //testing
@@ -64,6 +63,7 @@ public class CommandLineInterface {
             switch (input.nextLine().toUpperCase()) {
                 case "L":
                     Login();
+                    LoggedIn = true;
                     break;
                 case "R":
                     Register();
@@ -77,12 +77,14 @@ public class CommandLineInterface {
             }
 
 
-            if (currentUser instanceof Student) {
-                studentMenu studentMenu = new studentMenu((Student) currentUser, UL);
-                studentMenu.run();
-            } else if (currentUser instanceof Teacher) {
-                teacherMenu teacherMenu = new teacherMenu((Teacher) currentUser, UL);
-                teacherMenu.run();
+            if (LoggedIn) {
+                if (currentUser instanceof Student) {
+                    studentMenu studentMenu = new studentMenu((Student) currentUser, UL);
+                    studentMenu.run();
+                } else if (currentUser instanceof Teacher) {
+                    teacherMenu teacherMenu = new teacherMenu((Teacher) currentUser, UL);
+                    teacherMenu.run();
+                }
             }
         }
 
