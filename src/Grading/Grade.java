@@ -31,16 +31,6 @@ public class Grade {
         return "Course: " + courseName + " Grade: " + grade + " Semester: " + semester + " module: " + module + " Year: " + year;
     }
 
-    public void addGrade(int StudentID, String courseName, String grade, int semester, String module, int year) {
-        Grade newGrade = new Grade(courseName, grade, semester, module, year);
-        try {
-            Student.getStudent(StudentID).addGrade(newGrade);
-        } catch (NullPointerException e) {
-            System.out.println("Student does not exist");
-            return;
-        }
-        System.out.println("Grade added successfully");
-    }
 
     public double convertGradeToNumber() {
         if (this.grade.equals("A1")) {

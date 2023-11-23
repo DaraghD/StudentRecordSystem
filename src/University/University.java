@@ -1,14 +1,14 @@
 package University;
 
+import Grading.Grade;
 import Person.Teacher;
 import Person.Student;
 
 import java.util.ArrayList;
 
 public class University {
-
-    public String studentsPath;
-    public final String teachersPath = "src/data/teachers.csv";
+    private String studentsPath;
+    private String teachersPath;
     //public static final String departmentsPath = "src/data/departments.csv";
 
 
@@ -22,6 +22,10 @@ public class University {
     //private Departments departments;
     public void setStudentsPath(String studentsPath) {
         this.studentsPath = studentsPath;
+    }
+
+    public void setTeachersPath(String teachersPath) {
+        this.teachersPath = teachersPath;
     }
 
     public void addTeacher(Teacher teacher) {
@@ -39,9 +43,6 @@ public class University {
 
     public ArrayList<Student> getStudents() {
         return students;
-    }
-
-    public void setTeachersPath(String s) {
     }
 
     public String getStudentsPath() {
@@ -90,5 +91,16 @@ public class University {
             return false;
         }
         return true;
+    }
+
+        public void addGrade(int StudentID, String courseName, String grade, int semester, String module, int year) {
+        Grade newGrade = new Grade(courseName, grade, semester, module, year);
+        try {
+            this.getStudent(StudentID).addGrade(newGrade);
+        } catch (NullPointerException e) {
+            System.out.println("Student does not exist");
+            return;
+        }
+        System.out.println("Grade added successfully");
     }
 }

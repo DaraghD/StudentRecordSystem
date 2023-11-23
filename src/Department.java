@@ -1,19 +1,26 @@
 import java.util.ArrayList;
 
+import Grading.Grade;
+import Person.*;
+import University.University;
+
 public class Department {
 
-    public void calculateAndDisplayAverageQCA(ArrayList<Student> students) {
+    private University university;
+
+    public void calculateAndDisplayAverageQCA() {
         System.out.println("Class average QCA:");
 
         double totalSum = 0.0;
         int totalGradesCount = 0;
 
-        for (Student student : students) {
-            System.out.println("Student " + student.getStudentId() + " QCA:");
+        for (Student student : this.university.getStudents()) {
 
-            for (Double grade : student.getGrades()) {
-                System.out.println("  QCA: " + grade);
-                totalSum += grade;
+           // System.out.println("Student " + student.getStudentId() + " QCA:");
+
+            for (Grade grade : student.getGrades()) {
+                System.out.println("  QCA: " + grade.getGrade() + "|" + grade.convertGradeToNumber());
+                totalSum += grade.convertGradeToNumber();
                 totalGradesCount++;
             }
         }

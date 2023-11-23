@@ -28,7 +28,6 @@ public class CommandLineInterface {
         UL.setStudentsPath("src/data/students.csv");
         UL.setTeachersPath("src/data/teachers.csv");
 
-
         csvParser data = new csvParser(UL);
         data.parseTeachers();
         data.parseStudents();
