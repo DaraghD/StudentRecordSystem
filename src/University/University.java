@@ -87,7 +87,7 @@ public class University {
     }
 
     public boolean uniqueID(int id) { // id is unique between teacher and students
-        if(this.getTeacher(id) != null || Student.getStudent(id) != null) {
+        if(this.getTeacher(id) != null || this.getStudent(id) != null) {
             return false;
         }
         return true;
@@ -96,7 +96,7 @@ public class University {
         public void addGrade(int StudentID, String courseName, String grade, int semester, String module, int year) {
         Grade newGrade = new Grade(courseName, grade, semester, module, year);
         try {
-            this.getStudent(StudentID).addGrade(newGrade);
+            getStudent(StudentID).addGrade(newGrade);
         } catch (NullPointerException e) {
             System.out.println("Student does not exist");
             return;

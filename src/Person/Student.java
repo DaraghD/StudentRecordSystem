@@ -38,14 +38,26 @@ public class Student extends Person {
         int semester = Integer.parseInt(input.nextLine());
         System.out.println("Enter the module:");
         String module = input.nextLine();
+        System.out.println("Enter the year:");
+        int year = Integer.parseInt(input.nextLine());
 
-        Grade newGrade =  new Grade(course, grade, semester, module);
+        Grade newGrade =  new Grade(course, grade, semester, module,year);
         grades.add(newGrade);
 
     }
 
     public ArrayList<Grade> getGrades() {
         return grades;
+    }
+
+
+    public static Student getStudent(int id) {
+        for (Student student : university.getStudents()) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
     }
 
     

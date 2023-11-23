@@ -11,7 +11,7 @@ public class Person {
     private String module;
     private int year;
 
-    private University university;
+    University university;
 
     public Person(String name, int id, String password, University uni) {
         this.name = name;

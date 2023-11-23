@@ -103,4 +103,9 @@ public class GradingSystem {
         gradebook.deleteGrades();
         System.out.println("Grades deleted successfully.");
     }
+
+    private void addGradeEpic(int id, Grade grade){
+        Student student = Student.getStudent(id);
+        student.addGrade(grade);
+    }
 }

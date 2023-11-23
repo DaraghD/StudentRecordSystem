@@ -1,4 +1,5 @@
 package CommandLineInterface;
+
 import Person.Teacher;
 import Grading.Grade;
 import University.University;
@@ -20,35 +21,34 @@ public class teacherMenu extends Teacher {
 
     public void run() {
         String choice;
-        do {
 
-            display();
-            System.out.println("Please enter an option" + "\n");
-            choice = scannerTeacherMenu.nextLine().toUpperCase();
+        display();
+        System.out.println("Please enter an option" + "\n");
+        choice = scannerTeacherMenu.nextLine().toUpperCase();
 
-            switch (choice) {
-                case "G":
-                    addStudentGrade(studentGrade);
-                    break;
-                case "V":
-                    viewDepartmentBoard();
-                    break;
-                case "C":
-                    Grade.QCA(getId(), getSemester(), getModule(), getYear());
-                    break;
-                case "D":
-                    addDepartment();
-                    break;
-                case"L":
-                    System.out.println("Logging Out...");
-                    break;
-                default:
-                    System.out.println("Invalid Choice");
-            }
-        } while (!choice.equals("L"));
+        switch (choice) {
+            case "G":
+                addStudentGrade(studentGrade);
+                break;
+            case "V":
+                viewDepartmentBoard();
+                break;
+            case "C":
+                Grade.QCA(getId(), getSemester(), getModule(), getYear());
+                break;
+            case "D":
+                addDepartment();
+                break;
+            case "L":
+                System.out.println("Logging Out...");
+                break;
+            default:
+                System.out.println("Invalid Choice");
+        }
     }
-    public static void main (String[] args) {
-        teacherMenu teacherMenu = new teacherMenu("Joe Considine", 23, "Computer Science", "TestPassword", "U");
+
+    public static void main(String[] args) {
+        teacherMenu teacherMenu = new teacherMenu("Joe Considine", 23, "Computer Science", "TestPassword", null);
         teacherMenu.run();
     }
 }
