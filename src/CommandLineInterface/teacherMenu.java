@@ -1,16 +1,22 @@
 package CommandLineInterface;
 
-import Person.Teacher;
+import Person.*;
 import Grading.Grade;
 import University.University;
 
 import java.util.Scanner;
 
-public class teacherMenu extends Teacher {
-    private final Scanner scannerTeacherMenu = new Scanner(System.in);
+import static java.lang.System.exit;
 
-    public teacherMenu(String name, int id, String department, String password, University uni) {
-        super(name, id, department, password, uni);
+public class teacherMenu {
+    private final Scanner scannerTeacherMenu = new Scanner(System.in);
+    private Teacher currentUser;
+    private University uni;
+
+
+    public teacherMenu(Teacher currentUser, University uni) {
+        this.currentUser = currentUser;
+        this.uni = uni;
     }
 
     public void display() {
@@ -20,35 +26,62 @@ public class teacherMenu extends Teacher {
     }
 
     public void run() {
-        String choice;
 
-        display();
-        System.out.println("Please enter an option" + "\n");
-        choice = scannerTeacherMenu.nextLine().toUpperCase();
+        while (true) {
+            String choice;
 
-        switch (choice) {
-            case "G":
-                addStudentGrade(studentGrade);
-                break;
-            case "V":
-                viewDepartmentBoard();
-                break;
-            case "C":
-                Grade.QCA(getId(), getSemester(), getModule(), getYear());
-                break;
-            case "D":
-                addDepartment();
-                break;
-            case "L":
-                System.out.println("Logging Out...");
-                break;
-            default:
-                System.out.println("Invalid Choice");
+            display();
+            System.out.println("""
+                    Please enter an option
+                    G - Add Student Grade
+                    V - View Department Board
+                    D - Add Department
+                    L - Logout
+                    """);
+            choice = scannerTeacherMenu.nextLine().toUpperCase();
+
+            switch (choice) {
+                case "G":
+                    addStudentGrade();
+                    break;
+                case "V":
+                    //viewDepartmentBoard();
+                    break;
+                case "C":
+                    //Grade.QCA(getId(), getSemester(), getModule(), getYear());
+                    break;
+                case "D":
+                    //addDepartment();
+                    break;
+                case "L":
+                    System.out.println("Logging Out...");
+                    exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid Choice");
+            }
         }
     }
 
-    public static void main(String[] args) {
-        teacherMenu teacherMenu = new teacherMenu("Joe Considine", 23, "Computer Science", "TestPassword", null);
-        teacherMenu.run();
+    private void addStudentGrade() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please enter the student's ID");
+        int studentId = input.nextInt();
+        System.out.println("Please enter the student's grade");
+        String studentGrade = input.nextLine();
+        System.out.println("Please enter the student's course");
+        String studentCourse = input.nextLine();
+        System.out.println("Please enter the student's module");
+        String studentModule = input.nextLine();
+        System.out.println("Please enter the student's year");
+        int studentYear = input.nextInt();
+        System.out.println("Please enter the student's semester- 1 or 2");
+        int studentSemester = input.nextInt();
+
+        Grade grade = new Grade(studentCourse, studentGrade, studentSemester, studentModule, studentYear);
+        Student student = uni.getStudent(studentId);
+        student.addGrade(grade);
+        System.out.println("Grade added to " + student.getName());
+
     }
 }

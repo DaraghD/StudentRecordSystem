@@ -33,7 +33,7 @@ public class studentMenu {
             int id = 22356363; //Test; To be removed
 
             double qca;
-            qca = Grade.QCA(id, semester, module, year);
+            qca = Grade.QCA(uni.getStudent(id), semester, module, year);
             System.out.println(qca);
 
         } else if (choice.equals("G")) {

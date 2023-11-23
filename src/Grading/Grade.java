@@ -12,10 +12,10 @@ public class Grade {
     private int year;
 
     public Grade(String coursename, String grade, int semester, String module, int year) {
+        this.courseName = coursename;
         this.grade = grade;
         this.semester = semester;
         this.module = module;
-        this.courseName = coursename;
         this.year = year;
     }
 
@@ -25,6 +25,10 @@ public class Grade {
 
     public String getGrade() {
         return grade;
+    }
+
+    public String csvFormat(){
+        return courseName + "," + grade + "," + semester + "," + module + "," + year;
     }
 
     public String toString() {
@@ -59,8 +63,7 @@ public class Grade {
         return 0;
     }
 
-    public static double QCA(int id, int semester, String module, int year) {
-        Student student = Student.getStudent(id);
+    public static double QCA(Student student, int semester, String module, int year) {
         ArrayList<Grade> grades = student.getGrades();
         double total = 0;
         int counter = 0;

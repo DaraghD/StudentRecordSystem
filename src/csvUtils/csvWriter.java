@@ -1,5 +1,6 @@
 package csvUtils;
 
+import Grading.Grade;
 import Person.Student;
 import Person.Teacher;
 import University.University;
@@ -26,7 +27,15 @@ public class csvWriter {
 
     public void writeStudents() throws FileNotFoundException {
         for (Student student : university.getStudents()) {
-            writeStudents.println(student.getName() + "," + student.getId() + "," + student.getPassword());
+            String gradeString = null;
+            for(Grade grade : student.getGrades()){
+                gradeString += grade.toString();
+            }
+            String studentString = student.getName() + "," + student.getId() + "," + student.getPassword();
+            if(gradeString != null){
+                studentString += "," + gradeString;
+            }
+            writeStudents.println(studentString);
         }
         writeStudents.close();
     }

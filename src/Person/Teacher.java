@@ -9,10 +9,9 @@ public class Teacher extends Person {
     protected String studentGrade;
     private ArrayList<String> studentGrades;
 
-    public Teacher(String name, int id, String department, String password, University uni) {
-        super(name, id, password, uni);
+    public Teacher(String name, int id, String department, String password) {
+        super(name, id, password);
         this.Department = department;
-
     }
 
     public void addStudentGrade(String studentGrade) {

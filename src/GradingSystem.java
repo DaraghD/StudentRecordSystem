@@ -44,7 +44,7 @@ public class GradingSystem {
                     gradebook.printGrades();
                     break;
                 case "A":
-                    addGrade(gradebook);
+                    //addGrade(gradebook);
                     break;
                 case "D":
                     deleteGrades(scanner, gradebook);
@@ -62,8 +62,7 @@ public class GradingSystem {
     public void showQCA(int studentId) {
 
     }
-    public double calculateQCA(int studentId, String option){
-        Student student = Student.getStudent(studentId);
+    public double calculateQCA(Student student, String option){
         ArrayList<Grade> grades = student.getGrades();
         double total = 0.0;
         for(Grade grade : grades){
@@ -108,8 +107,4 @@ public class GradingSystem {
         System.out.println("Grades deleted successfully.");
     }
 
-    private void addGradeEpic(int id, Grade grade){
-        Student student = Student.getStudent(id);
-        student.addGrade(grade);
-    }
 }

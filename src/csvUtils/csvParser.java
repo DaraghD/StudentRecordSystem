@@ -3,6 +3,7 @@ package csvUtils;
 import University.University;
 import Person.Student;
 import Person.Teacher;
+import Grading.Grade;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -33,11 +34,24 @@ public class csvParser {
     public void parseStudents() throws IOException {
         String studentLine;
         while ((studentLine = studentReader.readLine()) != null) {
-            StringTokenizer st = new StringTokenizer(studentLine,",");
+
+            StringTokenizer st = new StringTokenizer(studentLine, ",");
+            // parsing student info
             String name = st.nextToken();
             int id = Integer.parseInt(st.nextToken());
             String password = st.nextToken();
-            uni.addStudent(new Student(name, id, password, uni));
+
+            Student student = new Student(name, id, password);
+            uni.addStudent(student);
+
+            while (st.hasMoreTokens()) { // parsing grades
+                String course = st.nextToken();
+                String grade = st.nextToken();
+                int semester = Integer.parseInt(st.nextToken());
+                String module = st.nextToken();
+                int year = Integer.parseInt(st.nextToken());
+                student.addGrade(new Grade(course, grade, semester, module, year));
+            }
         }
         studentReader.close();
     }
@@ -46,11 +60,13 @@ public class csvParser {
         String teacherLine;
         while ((teacherLine = teacherReader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(teacherLine, ",");
-            String name = st.nextToken();
-            int id = Integer.parseInt(st.nextToken());
-            String password = st.nextToken();
-            String department = st.nextToken();
-            uni.addTeacher(new Teacher(name, id, department, password, uni));
+            while (st.hasMoreTokens()){
+                String name = st.nextToken();
+                int id = Integer.parseInt(st.nextToken());
+                String password = st.nextToken();
+                String department = st.nextToken();
+                uni.addTeacher(new Teacher(name, id, department, password));
+            }
         }
         teacherReader.close();
     }

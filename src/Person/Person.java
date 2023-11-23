@@ -11,13 +11,13 @@ public class Person {
     private String module;
     private int year;
 
-    University university;
+    private University university;
 
-    public Person(String name, int id, String password, University uni) {
+
+    public Person(String name, int id, String password) {
         this.name = name;
         this.id = id;
         this.password = password;
-        this.university = uni;
     }
 
     public String getName() {

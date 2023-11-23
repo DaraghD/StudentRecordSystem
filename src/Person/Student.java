@@ -10,10 +10,9 @@ public class Student extends Person {
     //need grades arraylist or something here
     private ArrayList<Grade> grades = new ArrayList<>();
 
-    public Student(String name, int id, String password, University uni) {
-        super(name, id, password, uni);
+    public Student(String name, int id, String password) {
+        super(name, id, password);
     }
-
 
     public void addGrade(Grade grade) {
         grades.add(grade);
@@ -22,9 +21,6 @@ public class Student extends Person {
     public void ViewTranscript() {
 
     }
-
-
-
 
     public void addGrade() {
         Scanner input = new Scanner(System.in);
@@ -51,14 +47,7 @@ public class Student extends Person {
     }
 
 
-    public static Student getStudent(int id) {
-        for (Student student : university.getStudents()) {
-            if (student.getId() == id) {
-                return student;
-            }
-        }
-        return null;
-    }
+
 
     
 }
