@@ -38,6 +38,7 @@ public class csvParser {
             StringTokenizer st = new StringTokenizer(studentLine, ",");
             // parsing student info
             String name = st.nextToken();
+            System.out.println("Parsing students, adding : " + name);
             int id = Integer.parseInt(st.nextToken());
             String password = st.nextToken();
 

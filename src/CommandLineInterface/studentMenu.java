@@ -18,49 +18,56 @@ public class studentMenu {
     }
 
     public void run() {
-        System.out.println("(Q)CA, (G)rades, (M)odules, (L)ogout");
-        String choice = input.nextLine().toUpperCase();
+        boolean exit = false;
+        loop:
+        while (!exit) {
+            System.out.println("(Q)CA, (G)rades, (M)odules, (L)ogout");
+            String choice = input.nextLine().toUpperCase();
+            switch (choice) {
+                case "Q":
+                    System.out.println("INPUT YEAR:");
+                    int year = Integer.parseInt(input.nextLine());
+                    System.out.println("INPUT SEMESTER:");
+                    int semester = Integer.parseInt(input.nextLine());
+                    System.out.println("INPUT MODULE:");
+                    String module = input.nextLine();
+                    int id = 22356363; //Test; To be removed
 
-        if (choice.equals("Q")) {
+                    double qca;
+                    qca = Grade.QCA(uni.getStudent(id), semester, module, year);
+                    // above doesnt work need to make Grade non static and use grade object form student grades
+                    System.out.println(qca);
+                case "G":
+                    ArrayList<Grade> studentGrades = currentUser.getGrades();
+                    for (Grade grade : studentGrades) {
+                        System.out.print(grade + "\n");
+                    }
+                    System.out.println("--------------------");
+                    break;
 
-            System.out.println("INPUT YEAR:");
-            int year = Integer.parseInt(input.nextLine());
-            System.out.println("INPUT SEMESTER:");
-            int semester = Integer.parseInt(input.nextLine());
-            System.out.println("INPUT MODULE:");
-            String module = input.nextLine();
+                case "M":
+                    ArrayList<String> temp = new ArrayList<String>();
+                    for (Grade grade : currentUser.getGrades()) {
+                        if (!temp.contains(grade.getModule())) {
+                            temp.add(grade.getModule());
+                        }
+                        for (String m : temp) {
+                            System.out.println(m);
+                        }
+                    }
+                    break loop;
+                case "L":
+                    exit = true;
+                    break loop;
 
-            int id = 22356363; //Test; To be removed
-
-            double qca;
-            qca = Grade.QCA(uni.getStudent(id), semester, module, year);
-            System.out.println(qca);
-
-        } else if (choice.equals("G")) {
-            ArrayList<Grade> studentGrades = currentUser.getGrades();
-            for (Grade grade : studentGrades) {
-                System.out.print(grade + "\n");
+                default:
+                    System.out.print("Invalid Input");
+                    break;
             }
 
-        } else if (choice.equals("M")) {
-            ArrayList<String> temp = new ArrayList<String>();
-            for (Grade grade : currentUser.getGrades()) {
-                String module = grade.getModule();
-                if (!temp.contains(module)) {
-                    temp.add(module);
-                }
-                for (String m : temp) {
-                    System.out.println(m);
-                }
-            }
-        } else if (choice.equals("L")) {
-
-        } else {
-            System.out.print("Invalid Input");
         }
-
-
-    }}
+    }
+}
 
 //Display QCA, Display QCA,
 

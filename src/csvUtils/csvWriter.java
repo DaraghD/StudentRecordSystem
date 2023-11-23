@@ -27,14 +27,17 @@ public class csvWriter {
 
     public void writeStudents() throws FileNotFoundException {
         for (Student student : university.getStudents()) {
-            String gradeString = null;
-            for(Grade grade : student.getGrades()){
-                gradeString += grade.toString();
-            }
+            //basic info
+            System.out.println("Saving data : Student " + student.getName());
             String studentString = student.getName() + "," + student.getId() + "," + student.getPassword();
-            if(gradeString != null){
-                studentString += "," + gradeString;
+            //appending grades
+            if (!student.getGrades().isEmpty()) {
+                for (Grade grade : student.getGrades()) {
+                    studentString += ","; //separating grades with commas
+                    studentString += grade.csvFormat();
+                }
             }
+
             writeStudents.println(studentString);
         }
         writeStudents.close();
@@ -42,6 +45,8 @@ public class csvWriter {
 
     public void writeTeachers() throws FileNotFoundException {
         for (Teacher teacher : university.getTeachers()) {
+            System.out.println("Saving data : Student " + teacher.getName());
+
             writeTeachers.println(teacher.getName() + "," + teacher.getId() + "," + teacher.getPassword() + "," + teacher.getDepartment());
         }
         writeTeachers.close();

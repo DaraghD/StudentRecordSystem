@@ -38,6 +38,16 @@ public class CommandLineInterface {
 
 
     public void run() throws FileNotFoundException {
+        //testing
+        System.out.println("TESTING");
+        for(Student s : UL.getStudents()){
+            System.out.println("Student: " + s.getName() + " " + s.getId() + " " + s.getPassword() + " " + s.getGrades());
+            System.out.println();
+        }
+
+
+
+        //testing
         boolean LoggedIn = false;
         boolean exit = false;
         System.out.println("Welcome to the Student Record System!" + "\n");
