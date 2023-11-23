@@ -9,7 +9,7 @@ public class studentMenu {
         String choice = input.nextLine().toUpperCase();
 
         if (choice.equals("Q")) {
-            choice = input.nextLine().toUpperCase();
+
             System.out.println("INPUT YEAR:");
             int year = Integer.parseInt(input.nextLine());
             System.out.println("INPUT SEMESTER:");
@@ -17,7 +17,7 @@ public class studentMenu {
             System.out.println("INPUT MODULE:");
             String module = input.nextLine();
 
-            int id = 22356363;
+            int id = 22356363; //Test; To be removed
 
             double qca;
             qca = Grade.QCA( id, semester, module, year);
