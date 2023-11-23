@@ -72,6 +72,8 @@ public class Grade {
         }
         return total / counter;
     }
-
+public String getModule(){
+        return this.module;
+}
 
 }
