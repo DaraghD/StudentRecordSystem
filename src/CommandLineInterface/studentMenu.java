@@ -19,7 +19,7 @@ public class studentMenu {
 
     public void run() {
         boolean exit = false;
-        loop:
+
         while (!exit) {
             System.out.println("(Q)CA, (G)rades, (M)odules, (L)ogout");
             String choice = input.nextLine().toUpperCase();
@@ -57,10 +57,10 @@ public class studentMenu {
                             System.out.println(m);
                         }
                     }
-                    break loop;
+                    break;
                 case "L":
                     exit = true;
-                    break loop;
+                    break;
 
                 default:
                     System.out.print("Invalid Input");
