@@ -12,34 +12,37 @@ import java.util.StringTokenizer;
 
 public class csvParser {
 
-    private static BufferedReader studentReader;
-    private static BufferedReader teacherReader;
-    private static BufferedReader departmentReader;
+    private BufferedReader studentReader;
+    private BufferedReader teacherReader;
+    private BufferedReader departmentReader;
 
-    static {
-        try {
-            studentReader = new BufferedReader(new FileReader(University.studentsPath));
-            teacherReader = new BufferedReader(new FileReader(University.teachersPath));
-            //departmentReader = new BufferedReader(new FileReader(University.departmentsPath));
-        } catch (FileNotFoundException e) {
-            System.out.print(e);
-        }
+    private String studentsPath;
+    private String teachersPath;
+    private University uni;
+
+    public csvParser(University university) throws FileNotFoundException {
+        this.uni = university;
+        this.studentsPath = university.getStudentsPath();
+        this.teachersPath = university.getTeacherPath();
+
+        this.studentReader = new BufferedReader(new FileReader(studentsPath));
+        this.teacherReader = new BufferedReader(new FileReader(teachersPath));
+        //this.departmentReader = university.getDepartmentReader();
     }
 
-
-    public static void parseStudents() throws IOException {
+    public void parseStudents() throws IOException {
         String studentLine;
         while ((studentLine = studentReader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(studentLine,",");
             String name = st.nextToken();
             int id = Integer.parseInt(st.nextToken());
             String password = st.nextToken();
-            Student.register(name, id, password);
+            uni.addStudent(new Student(name, id, password, uni));
         }
         studentReader.close();
     }
 
-    public static void parseTeachers() throws IOException {
+    public void parseTeachers() throws IOException {
         String teacherLine;
         while ((teacherLine = teacherReader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(teacherLine, ",");
@@ -47,7 +50,7 @@ public class csvParser {
             int id = Integer.parseInt(st.nextToken());
             String password = st.nextToken();
             String department = st.nextToken();
-            Teacher.register(name, id, department, password);
+            uni.addTeacher(new Teacher(name, id, department, password, uni));
         }
         teacherReader.close();
     }

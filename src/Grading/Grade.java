@@ -54,7 +54,7 @@ public class Grade {
         } else if (this.grade.equals("B3")) {
             return 2.8;
         } else if (this.grade.equals("C1")) {
-            return 2.6
+            return 2.6;
         } else if (this.grade.equals("C2")) {
             return 2.4;
         } else if (this.grade.equals("C3")) {
