@@ -10,38 +10,33 @@ import java.io.PrintWriter;
 
 public class csvWriter {
 
-    private static final File students = new File(University.studentsPath);
-    private static final File teachers = new File(University.teachersPath);
-    //private static final File departments = new File(University.departmentsPath);
+    private PrintWriter writeStudents;
+    private PrintWriter writeTeachers;
+    private PrintWriter writeDepartments;
 
-    static PrintWriter writeStudents;
-    static PrintWriter writeTeachers;
-    static PrintWriter writeDepartments;
+    private University university;
 
-    static {
-        try {
-            writeStudents = new PrintWriter(students);
-            //writeDepartments = new PrintWriter(departments);
-            writeTeachers = new PrintWriter(teachers);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+
+    public csvWriter(University university) throws FileNotFoundException {
+        this.university = university;
+        this.writeStudents = new PrintWriter(university.getStudentsPath());
+        //writeDepartments = new PrintWriter(departments);
+        this.writeTeachers = new PrintWriter(university.getTeacherPath());
     }
 
-    static public void writeStudents() throws FileNotFoundException{
-        for(Student student : University.getStudents()){
+    public void writeStudents() throws FileNotFoundException {
+        for (Student student : university.getStudents()) {
             writeStudents.println(student.getName() + "," + student.getId() + "," + student.getPassword());
         }
         writeStudents.close();
     }
 
-    static public void writeTeachers() throws FileNotFoundException{
-        for(Teacher teacher : University.getTeachers()){
+    public void writeTeachers() throws FileNotFoundException {
+        for (Teacher teacher : university.getTeachers()) {
             writeTeachers.println(teacher.getName() + "," + teacher.getId() + "," + teacher.getPassword() + "," + teacher.getDepartment());
         }
         writeTeachers.close();
     }
-
 
 
     // idea is to write everything that is needed to construct an object into the csv file, so we can later
