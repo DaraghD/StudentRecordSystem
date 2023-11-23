@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 class Gradebook {
     private List<Grade> grades;
+    private int id;
 
     public Gradebook() {
         this.grades = new ArrayList<>();

@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class teacherMenu extends Teacher {
     private final Scanner scannerTeacherMenu = new Scanner(System.in);
-    public teacherMenu() {
-        super(String name, int id, String department, String password);
+
+    public teacherMenu(String name, int id, String department, String password) {
+        super(name, id, department, password);
     }
-    static Scanner input = new Scanner(System.in);
 
     public void display() {
         System.out.println("Teacher Menu" + "\n");
@@ -25,7 +25,7 @@ public class teacherMenu extends Teacher {
             System.out.println("Please enter an option" + "\n");
             choice = scannerTeacherMenu.nextLine().toUpperCase();
 
-            switch (input.nextLine().toUpperCase()) {
+            switch (choice) {
                 case "G":
                     addStudentGrade(studentGrade);
                     break;
@@ -33,7 +33,7 @@ public class teacherMenu extends Teacher {
                     viewDepartmentBoard();
                     break;
                 case "C":
-                    Grade.QCA(int id, int semester, String module, int year);
+                    Grade.QCA(getId(), getSemester(), getModule(), getYear());
                     break;
                 case "D":
                     addDepartment();
@@ -47,7 +47,7 @@ public class teacherMenu extends Teacher {
         } while (!choice.equals("L"));
     }
     public static void main (String[] args) {
-        teacherMenu teacherMenu = new teacherMenu();
+        teacherMenu teacherMenu = new teacherMenu("Joe Considine", 23, "Computer Science", "TestPassword");
         teacherMenu.run();
     }
 }
