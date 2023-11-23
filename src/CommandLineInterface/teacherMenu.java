@@ -1,15 +1,14 @@
 package CommandLineInterface;
 import Person.Teacher;
+import Grading.Grade;
 
 import java.util.Scanner;
 
 public class teacherMenu extends Teacher {
-
+    private final Scanner scannerTeacherMenu = new Scanner(System.in);
     public teacherMenu() {
-        super(name, id, password);
-        this.scannerTeacherMenu = new Scanner(System.in);
+        super(String name, int id, String department, String password);
     }
-    private Scanner scannerTeacherMenu;
     static Scanner input = new Scanner(System.in);
 
     public void display() {
@@ -34,10 +33,10 @@ public class teacherMenu extends Teacher {
                     viewDepartmentBoard();
                     break;
                 case "C":
-                    calculateQCA();
+                    Grade.QCA(int id, int semester, String module, int year);
                     break;
                 case "D":
-                    addDepartment;
+                    addDepartment();
                     break;
                 case"L":
                     System.out.println("Logging Out...");
