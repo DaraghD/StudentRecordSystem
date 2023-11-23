@@ -9,17 +9,10 @@ import java.util.ArrayList;
 public class University {
     private String studentsPath;
     private String teachersPath;
-    //public static final String departmentsPath = "src/data/departments.csv";
-
-
     private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
     private ArrayList<Student> students = new ArrayList<Student>();
 
-    //static ArrayList<Department> departments = new ArrayList<Department>();
 
-    //private ArrayList<Student> students;
-    //private Teacher teachers;
-    //private Departments departments;
     public void setStudentsPath(String studentsPath) {
         this.studentsPath = studentsPath;
     }

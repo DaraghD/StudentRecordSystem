@@ -27,10 +27,19 @@ public class CommandLineInterface {
     }
 
     public void init() throws IOException {
-        UL.setStudentsPath("src/data/students.csv");
-        UL.setTeachersPath("src/data/teachers.csv");
+        System.out.println("Enter path for data to be saved to");
+        System.out.println("D for default");
+        String optionPath = input.nextLine();
+        if (!(optionPath.equals("D"))) {
+            UL.setStudentsPath(optionPath + "students.csv");
+            UL.setTeachersPath(optionPath + "teachers.csv");
+        } else {
+            UL.setStudentsPath("src/data/students.csv");
+            UL.setTeachersPath("src/data/teachers.csv");
+        }
 
         csvParser data = new csvParser(UL);
+        //if there is already data , this will load it into University
         data.parseTeachers();
         data.parseStudents();
 
@@ -92,6 +101,7 @@ public class CommandLineInterface {
 
     public void shutdown() throws FileNotFoundException {
         csvWriter csvWriter = new csvWriter(UL);
+        //saves data to csv
         csvWriter.writeTeachers();
         csvWriter.writeStudents();
         exit(0);
