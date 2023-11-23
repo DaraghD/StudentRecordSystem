@@ -29,7 +29,7 @@ public class CommandLineInterface {
     public void init() throws IOException {
         System.out.println("Enter path for data to be saved to");
         System.out.println("D for default");
-        String optionPath = input.nextLine();
+        String optionPath = input.nextLine().toUpperCase();
         if (!(optionPath.equals("D"))) {
             UL.setStudentsPath(optionPath + "students.csv");
             UL.setTeachersPath(optionPath + "teachers.csv");
