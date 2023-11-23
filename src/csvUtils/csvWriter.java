@@ -33,6 +33,7 @@ public class csvWriter {
             //appending grades
             if (!student.getGrades().isEmpty()) {
                 for (Grade grade : student.getGrades()) {
+                    System.out.println("Saving grade :" + grade.toString());
                     studentString += ","; //separating grades with commas
                     studentString += grade.csvFormat();
                 }

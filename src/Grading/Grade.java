@@ -4,6 +4,7 @@ import Person.Student;
 
 import java.util.ArrayList;
 
+//TODO: add module class ? so modules can have individual cutoff points for departments? programme?
 public class Grade {
     private String grade;
     private String courseName;
@@ -37,33 +38,23 @@ public class Grade {
 
 
     public double convertGradeToNumber() {
-        if (this.grade.equals("A1")) {
-            return 4.0;
-        } else if (this.grade.equals("A2")) {
-            return 3.6;
-        } else if (this.grade.equals("B1")) {
-            return 3.2;
-        } else if (this.grade.equals("B2")) {
-            return 3.0;
-        } else if (this.grade.equals("B3")) {
-            return 2.8;
-        } else if (this.grade.equals("C1")) {
-            return 2.6;
-        } else if (this.grade.equals("C2")) {
-            return 2.4;
-        } else if (this.grade.equals("C3")) {
-            return 2.0;
-        } else if (this.grade.equals("D1")) {
-            return 1.6;
-        } else if (this.grade.equals("D2")) {
-            return 1.2;
-        } else if (this.grade.equals("F")) {
-            return 0;
-        }
-        return 0;
+        return switch (this.grade) {
+            case "A1" -> 4.0;
+            case "A2" -> 3.6;
+            case "B1" -> 3.2;
+            case "B2" -> 3.0;
+            case "B3" -> 2.8;
+            case "C1" -> 2.6;
+            case "C2" -> 2.4;
+            case "C3" -> 2.0;
+            case "D1" -> 1.6;
+            case "D2" -> 1.2;
+            default -> 0;
+        };
     }
 
     public static double QCA(Student student, int semester, String module, int year) {
+        //calculates QCA for given semester module and year 
         ArrayList<Grade> grades = student.getGrades();
         double total = 0;
         int counter = 0;
