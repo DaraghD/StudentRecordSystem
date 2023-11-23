@@ -7,36 +7,88 @@ import java.util.ArrayList;
 
 public class University {
 
-    public static final String studentsPath = "src/data/students.csv";
-    public static final String teachersPath = "src/data/teachers.csv";
+    public String studentsPath;
+    public final String teachersPath = "src/data/teachers.csv";
     //public static final String departmentsPath = "src/data/departments.csv";
 
 
-    private static ArrayList<Teacher> teachers = new ArrayList<Teacher>();
-    private static ArrayList<Student> students = new ArrayList<Student>();
+    private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+    private ArrayList<Student> students = new ArrayList<Student>();
 
     //static ArrayList<Department> departments = new ArrayList<Department>();
 
     //private ArrayList<Student> students;
     //private Teacher teachers;
     //private Departments departments;
+    public void setStudentsPath(String studentsPath) {
+        this.studentsPath = studentsPath;
+    }
 
-    public static void addTeacher(Teacher teacher){
+    public void addTeacher(Teacher teacher) {
         teachers.add(teacher);
     }
-    public static void addStudent(Student student){
+
+    public void addStudent(Student student) {
         students.add(student);
     }
-    //public static void addDepartment(Department department){
-        //departments.add(department);
-    //}
 
-    public static ArrayList<Teacher> getTeachers(){
+
+    public ArrayList<Teacher> getTeachers() {
         return teachers;
     }
 
-    public static ArrayList<Student> getStudents(){
+    public ArrayList<Student> getStudents() {
         return students;
     }
 
+    public void setTeachersPath(String s) {
+    }
+
+    public String getStudentsPath() {
+        return studentsPath;
+    }
+
+    public String getTeacherPath() {
+        return teachersPath;
+    }
+
+    public Student getStudent(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    public Teacher getTeacher(int id) {
+        for (Teacher teacher : teachers) {
+            if (teacher.getId() == id) {
+                return teacher;
+            }
+        }
+        return null;
+    }
+
+    public String getPassword(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student.getPassword();
+            }
+        }
+        for (Teacher teacher : teachers) {
+            if (teacher.getId() == id) {
+                return teacher.getPassword();
+            }
+        }
+        return null;
+
+    }
+
+    public boolean uniqueID(int id) { // id is unique between teacher and students
+        if(this.getTeacher(id) != null || Student.getStudent(id) != null) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -10,8 +10,8 @@ public class Student extends Person {
     //need grades arraylist or something here
     private ArrayList<Grade> grades = new ArrayList<>();
 
-    public Student(String name, int id, String password) {
-        super(name, id, password);
+    public Student(String name, int id, String password, University uni) {
+        super(name, id, password, uni);
     }
 
 
@@ -23,32 +23,8 @@ public class Student extends Person {
 
     }
 
-    public static String getPassword(int id){
-        for(Student student : University.getStudents()){
-            if(student.getId() == id){
-                return student.getPassword();
-            }
-        }
-        return null;
-    }
-    public static Student getStudent(int id){
-        for(Student student : University.getStudents()){
-            if(student.getId() == id){
-                return student;
-            }
-        }
-        return null;
-    }
 
 
-
-    public static void register(String name, int id, String password) {
-        Student newStudent = new Student(name, id, password);
-        //check if teacher already exists -> maybe do this for ID earlier in the above method
-        University.addStudent(newStudent);
-        System.out.println("You have successfully registered as a student");
-
-    }
 
     public void addGrade() {
         Scanner input = new Scanner(System.in);
@@ -65,7 +41,7 @@ public class Student extends Person {
 
         Grade newGrade =  new Grade(course, grade, semester, module);
         grades.add(newGrade);
-        course, grade, semester, module, year
+
     }
 
     public ArrayList<Grade> getGrades() {

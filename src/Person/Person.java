@@ -1,15 +1,20 @@
 package Person;
 
+import University.University;
+
 public class Person {
 
     private String name;
     private int id;
     private String password;
 
-    public Person(String name, int id, String password) {
+    private University university;
+
+    public Person(String name, int id, String password, University uni) {
         this.name = name;
         this.id = id;
         this.password = password;
+        this.university = uni;
     }
 
     public String getName() {
@@ -24,10 +29,4 @@ public class Person {
         return password;
     }
 
-    public static boolean uniqueID(int id) { // id is unique between teacher and students
-        if (Teacher.getTeacher(id) != null || Student.getStudent(id) != null) {
-            return false;
-        }
-        return true;
-    }
 }
