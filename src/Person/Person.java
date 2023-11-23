@@ -7,6 +7,9 @@ public class Person {
     private String name;
     private int id;
     private String password;
+    private int semester;
+    private String module;
+    private int year;
 
     private University university;
 
@@ -29,4 +32,15 @@ public class Person {
         return password;
     }
 
+    public int getSemester() {
+        return semester;
+    }
+
+    public String getModule() {
+        return module;
+    }
+
+    public int getYear() {
+        return year;
+    }
 }
