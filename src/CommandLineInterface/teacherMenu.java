@@ -1,14 +1,15 @@
 package CommandLineInterface;
 import Person.Teacher;
 import Grading.Grade;
+import University.University;
 
 import java.util.Scanner;
 
 public class teacherMenu extends Teacher {
     private final Scanner scannerTeacherMenu = new Scanner(System.in);
 
-    public teacherMenu(String name, int id, String department, String password) {
-        super(name, id, department, password);
+    public teacherMenu(String name, int id, String department, String password, University uni) {
+        super(name, id, department, password, uni);
     }
 
     public void display() {
@@ -47,7 +48,7 @@ public class teacherMenu extends Teacher {
         } while (!choice.equals("L"));
     }
     public static void main (String[] args) {
-        teacherMenu teacherMenu = new teacherMenu("Joe Considine", 23, "Computer Science", "TestPassword");
+        teacherMenu teacherMenu = new teacherMenu("Joe Considine", 23, "Computer Science", "TestPassword", "U");
         teacherMenu.run();
     }
 }
