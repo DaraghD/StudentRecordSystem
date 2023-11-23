@@ -1,9 +1,18 @@
 package CommandLineInterface;
+import java.util.ArrayList;
 import java.util.Scanner;
 import Grading.Grade;
+import Person.Student;
+import University.University;
+
 public class studentMenu {
     static Scanner input = new Scanner(System.in);
-
+private Student currentUser;
+private University uni;
+studentMenu(Student student, University uni){
+    this.currentUser = student;
+    this.uni = uni;
+}
     public void run() {
         System.out.println("(Q)CA, (G)rades, (M)odules, (L)ogout");
         String choice = input.nextLine().toUpperCase();
@@ -24,6 +33,12 @@ public class studentMenu {
             System.out.println(qca);
 
         } else if (choice.equals("G")) {
+            ArrayList<Grade> studentGrades= currentUser.getGrades();
+            for (Grade grade : studentGrades){
+                System.out.print(grade + "\n");
+                }
+
+            }
 
         } else if (choice.equals("M")){
 

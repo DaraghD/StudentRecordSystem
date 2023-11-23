@@ -4,6 +4,7 @@ import Person.Student;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import University.University;
 
 class Gradebook {
     private List<Grade> grades;
@@ -27,6 +28,7 @@ class Gradebook {
 }
 
 public class GradingSystem {
+    private University uni;
     public static void main(String[] args) {
         Gradebook gradebook = new Gradebook();
         Scanner scanner = new Scanner(System.in);
@@ -80,7 +82,7 @@ public class GradingSystem {
 
 
 
-    private static void addGrade(Gradebook gradebook) {
+    private void addGrade(Gradebook gradebook) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter student id of student to add grade to:");
         String id = input.nextLine();
@@ -94,8 +96,10 @@ public class GradingSystem {
         String module = input.nextLine();
         System.out.println("Enter the year:");
         int year = Integer.parseInt(input.nextLine());
-
         Grade newGrade =  new Grade(course, grade, semester, module, year);
+        Student student = uni.getStudent(Integer.parseInt(id));
+        student.addGrade(newGrade);
+
     }
 
     private static void deleteGrades(Scanner scanner, Gradebook gradebook) {
