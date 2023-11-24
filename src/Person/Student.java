@@ -37,7 +37,7 @@ public class Student extends Person {
         System.out.println("Enter the year:");
         int year = Integer.parseInt(input.nextLine());
 
-        Grade newGrade =  new Grade(course, grade, semester, module,year);
+        Grade newGrade = new Grade(course, grade, semester, module, year);
         grades.add(newGrade);
 
     }
@@ -60,5 +60,15 @@ public class Student extends Person {
         return total / counter;
     }
 
-    
+    public double totalQCA() {
+        double total = 0.0;
+        int counter = 0;
+        for (Grade grade : this.grades) {
+            total += grade.convertGradeToNumber();
+            counter++;
+        }
+        return total / counter;
+    }
+
+
 }
