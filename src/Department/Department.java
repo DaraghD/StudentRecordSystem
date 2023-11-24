@@ -14,7 +14,18 @@ public class Department {
 
     private ArrayList<Programme> programmes = new ArrayList<Programme>();
 
-    public Department(University uni) {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public Department(University uni) { //TODO: change all constructors to be use name arg
+        this.university = uni;
+    }
+
+    public Department(String name, University uni) {
+        this.name = name;
         this.university = uni;
     }
 

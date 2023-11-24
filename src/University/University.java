@@ -3,14 +3,17 @@ package University;
 import Grading.Grade;
 import Person.Teacher;
 import Person.Student;
+import Department.Department;
 
 import java.util.ArrayList;
 
 public class University {
     private String studentsPath;
     private String teachersPath;
+    private String departmentsPath;
     private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
     private ArrayList<Student> students = new ArrayList<Student>();
+    private ArrayList<Department> departments = new ArrayList<Department>();
 
 
     public void setStudentsPath(String studentsPath) {
@@ -19,6 +22,15 @@ public class University {
 
     public void setTeachersPath(String teachersPath) {
         this.teachersPath = teachersPath;
+    }
+    public void setDepartmentsPath(String departmentsPath) {
+        this.departmentsPath = departmentsPath;
+    }
+    public ArrayList<Department> getDepartments() {
+        return departments;
+    }
+    public void addDepartment(Department department) {
+        this.departments.add(department);
     }
 
     public void addTeacher(Teacher teacher) {
@@ -59,6 +71,15 @@ public class University {
         for (Teacher teacher : teachers) {
             if (teacher.getId() == id) {
                 return teacher;
+            }
+        }
+        return null;
+    }
+
+    public Department getDepartment(String name) {
+        for (Department department : departments) {
+            if (department.getName().equals(name)) {
+                return department;
             }
         }
         return null;

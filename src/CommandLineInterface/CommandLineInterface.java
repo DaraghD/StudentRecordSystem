@@ -4,6 +4,7 @@ import Person.Person;
 import csvUtils.csvWriter;
 import csvUtils.csvParser;
 import University.University;
+import Department.Department;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -247,8 +248,16 @@ public class CommandLineInterface {
             String password2 = input.nextLine();
         }
         System.out.println("Please enter your department");
+        for(Department dep : UL.getDepartments()){
+            System.out.println(dep.getName());
+        }
+
         String department = input.nextLine();
-        Teacher newTeacher = new Teacher(nameT, idT, department, passwordT);
+        if(UL.getDepartment(department) == null){
+            UL.addDepartment(new Department(department, UL));
+            System.out.println("Department doesnt exist adding it now");
+        }
+        Teacher newTeacher = new Teacher(nameT, idT, UL.getDepartment(department), passwordT);
         UL.addTeacher(newTeacher);
 
         System.out.println("You have successfully registered as a teacher");
