@@ -207,6 +207,12 @@ public class CommandLineInterface {
         }
         UL.addStudent(new Student(name, id, password));
         System.out.println("You have successfully registered as a student");
+
+        currentUser = UL.getStudent(id);
+
+
+        studentMenu studentMenu = new studentMenu((Student) currentUser, UL);
+        studentMenu.run();
     }
 
     private void teacherRegister() {
