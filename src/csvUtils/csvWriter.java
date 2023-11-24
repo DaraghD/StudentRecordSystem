@@ -1,11 +1,12 @@
 package csvUtils;
 
 import Grading.Grade;
+import Grading.Programme;
 import Person.Student;
 import Person.Teacher;
 import University.University;
+import Department.Department;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
@@ -14,6 +15,7 @@ public class csvWriter {
     private PrintWriter writeStudents;
     private PrintWriter writeTeachers;
     private PrintWriter writeDepartments;
+    private PrintWriter writeProgrammes;
 
     private University university;
 
@@ -21,8 +23,9 @@ public class csvWriter {
     public csvWriter(University university) throws FileNotFoundException {
         this.university = university;
         this.writeStudents = new PrintWriter(university.getStudentsPath());
-        //writeDepartments = new PrintWriter(departments);
+        this.writeDepartments = new PrintWriter(university.getDepartmentsPath());
         this.writeTeachers = new PrintWriter(university.getTeacherPath());
+        this.writeProgrammes = new PrintWriter(university.getProgrammesPath());
     }
 
     public void writeStudents() throws FileNotFoundException {
@@ -53,11 +56,21 @@ public class csvWriter {
         writeTeachers.close();
     }
 
+    public void writeDepartments() throws FileNotFoundException {
+        for (Department department : university.getDepartments()) {
+            System.out.println("Saving data : Department " + department);
+            writeDepartments.println(department.getName());
+        }
+        writeDepartments.close();
+    } //TODO: maybe split this up into more csv files for programme and module,
 
-    // idea is to write everything that is needed to construct an object into the csv file, so we can later
-    // reconstruct it upon loading the program to get back to the previous state
-
-    //go through each arraylist under University static variables and then write them to the csv file(s)
-
-
+    public void writeProgrammes() throws FileNotFoundException {
+        for (Department department : university.getDepartments()) {
+            for (Programme programme : department.getProgrammes()) {
+                System.out.println("Saving data : Programme " + programme);
+                writeDepartments.println(programme.csvFormat());
+            }
+        }
+        writeDepartments.close();
+    }
 }

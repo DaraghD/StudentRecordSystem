@@ -101,6 +101,7 @@ public class teacherMenu {
 
         System.out.println("Please enter the student's semester- 1 or 2");
         int studentSemester = input.nextInt();
+        Module mod = new Module()
 
         Grade grade = new Grade(studentCourse, studentGrade, studentSemester, studentModule, studentYear);
         Student student = uni.getStudent(studentId);

@@ -72,5 +72,8 @@ public class csvParser {
         teacherReader.close();
     }
 
+    public void parseDepartments() throws IOException { //TODO: split more csvs for module and programme
+        String departmentLine;
+
 
 }

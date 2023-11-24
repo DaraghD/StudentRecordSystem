@@ -11,6 +11,7 @@ public class University {
     private String studentsPath;
     private String teachersPath;
     private String departmentsPath;
+    private String programmesPath;
     private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
     private ArrayList<Student> students = new ArrayList<Student>();
     private ArrayList<Department> departments = new ArrayList<Department>();
@@ -18,6 +19,10 @@ public class University {
 
     public void setStudentsPath(String studentsPath) {
         this.studentsPath = studentsPath;
+    }
+
+    public void setProgrammesPath(String programmesPath) {
+        this.programmesPath = programmesPath;
     }
 
     public void setTeachersPath(String teachersPath) {
@@ -56,6 +61,14 @@ public class University {
 
     public String getTeacherPath() {
         return teachersPath;
+    }
+
+    public String getDepartmentsPath() {
+        return departmentsPath;
+    }
+
+    public String getProgrammesPath() {
+        return programmesPath;
     }
 
     public Student getStudent(int id) {
