@@ -53,19 +53,7 @@ public class Grade {
         };
     }
 
-    public static double QCA(Student student, int semester, String module, int year) {
-        //calculates QCA for given semester module and year 
-        ArrayList<Grade> grades = student.getGrades();
-        double total = 0;
-        int counter = 0;
-        for (Grade grade : grades) {
-            if (grade.year == year && grade.module.equals(module) && grade.semester == semester) {
-                total += grade.convertGradeToNumber();
-                counter++;
-            }
-        }
-        return total / counter;
-    }
+
 public String getModule(){
         return this.module;
 }

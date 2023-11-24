@@ -47,7 +47,18 @@ public class Student extends Person {
     }
 
 
-
+    public double QCA(String module) {
+        //calculates QCA for given semester module and year
+        double total = 0;
+        int counter = 0;
+        for (Grade grade : this.grades) {
+            if (grade.getModule().equals(module)) {
+                total += grade.convertGradeToNumber();
+                counter++;
+            }
+        }
+        return total / counter;
+    }
 
     
 }

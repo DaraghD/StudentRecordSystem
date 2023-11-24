@@ -25,19 +25,19 @@ public class studentMenu {
             String choice = input.nextLine().toUpperCase();
             switch (choice) {
                 case "Q":
-                    System.out.println("INPUT YEAR:");
-                    int year = Integer.parseInt(input.nextLine());
-                    System.out.println("INPUT SEMESTER:");
-                    int semester = Integer.parseInt(input.nextLine());
-                    System.out.println("INPUT MODULE:");
+                    ArrayList<String> temp = new ArrayList<String>();
+                    for (Grade grade : currentUser.getGrades()) {
+                        if (!temp.contains(grade.getModule())) {
+                            //TODO: FIX APPEARING TWICE
+                            temp.add(grade.getModule());
+                        }
+                        for (String m : temp) {
+                            System.out.println(m);
+                        }
+                    }
+                    System.out.println("Input module to check QCA:");
                     String module = input.nextLine();
-                    int id = 22356363; //Test; To be removed
-
-                    double qca;
-                    qca = Grade.QCA(uni.getStudent(id), semester, module, year);
-                    // above doesnt work need to make Grade non static and use grade object form student grades
-                    System.out.println(qca);
-
+                    System.out.println("QCA:" + currentUser.QCA(module));
 
                 case "G":
                     ArrayList<Grade> studentGrades = currentUser.getGrades();
@@ -48,7 +48,7 @@ public class studentMenu {
                     break;
 
                 case "M":
-                    ArrayList<String> temp = new ArrayList<String>();
+                    temp = new ArrayList<String>();
                     for (Grade grade : currentUser.getGrades()) {
                         if (!temp.contains(grade.getModule())) {
                             temp.add(grade.getModule());
