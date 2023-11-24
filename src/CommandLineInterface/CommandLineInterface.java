@@ -66,7 +66,7 @@ public class CommandLineInterface {
                             Please choose an option:
                             L)ogin
                             R)egister
-                            Q)Quit
+                            S)ave & Quit
                             """
             );
             switch (input.nextLine().toUpperCase()) {
