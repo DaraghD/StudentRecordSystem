@@ -233,7 +233,12 @@ public class CommandLineInterface {
         }
         System.out.println("Please enter your department");
         String department = input.nextLine();
-        UL.addTeacher(new Teacher(nameT, idT, department, passwordT));
+        Teacher newTeacher = new Teacher(nameT, idT, department, passwordT);
+        UL.addTeacher(newTeacher);
+
         System.out.println("You have successfully registered as a teacher");
+
+        //Set newly registered teacher as the current user
+        currentUser = newTeacher;
     }
 }
