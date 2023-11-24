@@ -65,10 +65,12 @@ public class teacherMenu {
                     System.out.println("Enter module code");
                     String m = scannerTeacherMenu.nextLine();
                     department.calculateAndDisplayAverageQCAForModule(m);
+                    break;
                 case "F":
                     System.out.println("Enter Module Code");
                     String moduleCode = scannerTeacherMenu.nextLine();
                     department.displayFailedStudentsForModule(moduleCode);
+                    break;
 
                 case "L":
                     System.out.println("Logging Out...");
