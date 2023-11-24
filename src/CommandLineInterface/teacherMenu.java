@@ -34,6 +34,7 @@ public class teacherMenu {
             System.out.println("""
                     Please enter an option
                     G - Add Student Grade
+                    C - Calculate Student QCA
                     V - View Department Board
                     D - Add Department
                     L - Logout
@@ -48,6 +49,10 @@ public class teacherMenu {
                     //viewDepartmentBoard();
                     break;
                 case "C":
+                    System.out.println("Enter Student ID:");
+                    int id = scannerTeacherMenu.nextInt();
+                    Student student = uni.getStudent(id);
+                    System.out.println("QCA: " + student.totalQCA());
                     //Grade.QCA(getId(), getSemester(), getModule(), getYear());
                     break;
                 case "D":
