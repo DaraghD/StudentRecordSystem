@@ -38,6 +38,7 @@ public class teacherMenu {
                     V - View Department.Department Board
                     D - Add Department.Department
                     M - Average QCA for a module
+                    F - Display Failed Students
                     L - Logout
                     """);
             choice = scannerTeacherMenu.nextLine().toUpperCase();
@@ -64,6 +65,11 @@ public class teacherMenu {
                     System.out.println("Enter module code");
                     String m = scannerTeacherMenu.nextLine();
                     department.calculateAndDisplayAverageQCAForModule(m);
+                case "F":
+                    System.out.println("Enter Module Code");
+                    String moduleCode = scannerTeacherMenu.nextLine();
+                    department.displayFailedStudentsForModule(moduleCode);
+
                 case "L":
                     System.out.println("Logging Out...");
                     logout = true;
@@ -97,7 +103,7 @@ public class teacherMenu {
         Grade grade = new Grade(studentCourse, studentGrade, studentSemester, studentModule, studentYear);
         Student student = uni.getStudent(studentId);
         student.addGrade(grade);
-        System.out.println("Grade: +" +grade.toString()+ ", added to " + student.getName());
+        System.out.println("Grade: +" + grade.toString() + ", added to " + student.getName());
 
     }
 }
