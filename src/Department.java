@@ -1,11 +1,20 @@
 import java.util.ArrayList;
 import Grading.Grade;
+import Grading.Module;
+import Grading.Programme;
 import Person.Student;
 import University.University;
 
 public class Department {
 
     private University university;
+
+    private ArrayList<Programme> programmes = new ArrayList<Programme>();
+
+
+    public void addProgramme(Programme programme){
+        this.programmes.add(programme);
+    }
 
     public void calculateAndDisplayAverageQCAForModule(String moduleCode) {
         System.out.println("Class average QCA for module " + moduleCode + ":");
