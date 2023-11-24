@@ -21,6 +21,7 @@ public class studentMenu {
         boolean exit = false;
 
         while (!exit) {
+            //TODO: need transcript option, maybe should replace qca or grades
             System.out.println("(Q)CA, (G)rades, (M)odules, (L)ogout");
             String choice = input.nextLine().toUpperCase();
             switch (choice) {

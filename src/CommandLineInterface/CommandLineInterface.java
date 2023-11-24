@@ -13,7 +13,7 @@ import Person.*;
 
 import static java.lang.System.exit;
 
-
+//TODO: SAVE AFTER REGISTERING
 public class CommandLineInterface {
 
     private static Scanner input = new Scanner(System.in);
@@ -76,6 +76,7 @@ public class CommandLineInterface {
                     break;
                 case "R":
                     Register();
+                    saveData();
                     break;
                 case "S":
                     shutdown();
@@ -107,8 +108,15 @@ public class CommandLineInterface {
         exit(0);
     }
 
+    private void saveData() throws FileNotFoundException {
+        csvWriter csvWriter = new csvWriter(UL);
+        //saves data to csv
+        csvWriter.writeTeachers();
+        csvWriter.writeStudents();
+    }
 
-    private void Register() {
+
+    private void Register() throws FileNotFoundException {
         System.out.println(
                 """
                         Please choose to register as student or teacher
@@ -183,7 +191,7 @@ public class CommandLineInterface {
         currentUser = UL.getStudent(id);
     }
 
-    private void studentRegister() {
+    private void studentRegister() throws FileNotFoundException {
         System.out.println("You are now registering as a student\n");
         System.out.println("Please enter your name");
         String name = input.nextLine();
@@ -207,6 +215,7 @@ public class CommandLineInterface {
         }
         UL.addStudent(new Student(name, id, password));
         System.out.println("You have successfully registered as a student");
+        saveData();
 
         currentUser = UL.getStudent(id);
 
@@ -215,7 +224,7 @@ public class CommandLineInterface {
         studentMenu.run();
     }
 
-    private void teacherRegister() {
+    private void teacherRegister() throws FileNotFoundException {
         System.out.println("You are now registering as a teacher\n");
         System.out.println("Please enter your name");
         String nameT = input.nextLine();
@@ -243,6 +252,7 @@ public class CommandLineInterface {
         UL.addTeacher(newTeacher);
 
         System.out.println("You have successfully registered as a teacher");
+        saveData();
 
         //Set newly registered teacher as the current user
         currentUser = newTeacher;

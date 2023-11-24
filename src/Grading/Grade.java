@@ -1,10 +1,7 @@
 package Grading;
 
-import Person.Student;
-
-import java.util.ArrayList;
-
 //TODO: add module class ? so modules can have individual cutoff points for departments? programme?
+//TODO: Implement a  general grading interface so if it changes its easier to adapat the c ode - project spec hinted at this
 public class Grade {
     private String grade;
     private String courseName;
@@ -28,7 +25,7 @@ public class Grade {
         return grade;
     }
 
-    public String csvFormat(){
+    public String csvFormat() {
         return courseName + "," + grade + "," + semester + "," + module + "," + year;
     }
 
@@ -54,8 +51,8 @@ public class Grade {
     }
 
 
-public String getModule(){
+    public String getModule() {
         return this.module;
-}
+    }
 
 }
