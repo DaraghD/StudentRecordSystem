@@ -240,5 +240,9 @@ public class CommandLineInterface {
 
         //Set newly registered teacher as the current user
         currentUser = newTeacher;
+
+        //Directly call the teacher menu
+        teacherMenu teacherMenu = new teacherMenu(newTeacher, UL);
+        teacherMenu.run();
     }
 }
