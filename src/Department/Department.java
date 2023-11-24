@@ -1,3 +1,5 @@
+package Department;
+
 import java.util.ArrayList;
 import Grading.Grade;
 import Grading.Module;
@@ -11,7 +13,9 @@ public class Department {
 
     private ArrayList<Programme> programmes = new ArrayList<Programme>();
 
-
+public Department(University uni) {
+    this.university = uni;
+}
     public void addProgramme(Programme programme){
         this.programmes.add(programme);
     }
