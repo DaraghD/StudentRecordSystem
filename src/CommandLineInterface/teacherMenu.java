@@ -1,14 +1,15 @@
 package CommandLineInterface;
 
+import Department.Department;
 import Person.*;
 import Grading.Grade;
 import University.University;
 
 import java.util.Scanner;
 
-import static java.lang.System.exit;
-
 public class teacherMenu {
+
+    private Department department;
     private final Scanner scannerTeacherMenu = new Scanner(System.in);
     private Teacher currentUser;
     private University uni;
@@ -17,12 +18,11 @@ public class teacherMenu {
     public teacherMenu(Teacher currentUser, University uni) {
         this.currentUser = currentUser;
         this.uni = uni;
+        this.department = new Department(uni);
     }
 
     public void display() {
         System.out.println("Teacher Menu" + "\n");
-
-        System.out.println("(G)Add Student Grades, (C)Calculate Student QCA, (V)View Department Board, (D)Add Department, (L)Logout");
     }
 
     public void run() {
@@ -35,8 +35,10 @@ public class teacherMenu {
                     Please enter an option
                     G - Add Student Grade
                     C - Calculate Student QCA
-                    V - View Department Board
-                    D - Add Department
+                    V - View Department.Department Board
+                    D - Add Department.Department
+                    M - Average QCA for a module
+                    F - Display Failed Students
                     L - Logout
                     """);
             choice = scannerTeacherMenu.nextLine().toUpperCase();
@@ -58,6 +60,16 @@ public class teacherMenu {
                 case "D":
                     //addDepartment();
                     break;
+                case "M":
+                    //Print out all modules here
+                    System.out.println("Enter module code");
+                    String m = scannerTeacherMenu.nextLine();
+                    department.calculateAndDisplayAverageQCAForModule(m);
+                case "F":
+                    System.out.println("Enter Module Code");
+                    String moduleCode = scannerTeacherMenu.nextLine();
+                    department.displayFailedStudentsForModule(moduleCode);
+
                 case "L":
                     System.out.println("Logging Out...");
                     logout = true;
@@ -91,7 +103,7 @@ public class teacherMenu {
         Grade grade = new Grade(studentCourse, studentGrade, studentSemester, studentModule, studentYear);
         Student student = uni.getStudent(studentId);
         student.addGrade(grade);
-        System.out.println("Grade: +" +grade.toString()+ ", added to " + student.getName());
+        System.out.println("Grade: +" + grade.toString() + ", added to " + student.getName());
 
     }
 }
