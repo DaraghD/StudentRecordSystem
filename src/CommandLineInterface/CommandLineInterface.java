@@ -77,7 +77,7 @@ public class CommandLineInterface {
                 case "R":
                     Register();
                     break;
-                case "Q":
+                case "S":
                     shutdown();
                     break;
                 default:
