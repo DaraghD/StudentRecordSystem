@@ -16,6 +16,10 @@ import Person.*;
 import static java.lang.System.exit;
 
 //TODO: SAVE AFTER REGISTERING
+
+/**
+ * This class represents a command-line interface for a Student Record System.
+ */
 public class CommandLineInterface {
 
     private static final Scanner input = new Scanner(System.in);

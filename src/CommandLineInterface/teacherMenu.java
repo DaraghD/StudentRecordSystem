@@ -10,6 +10,9 @@ import University.University;
 
 import java.util.Scanner;
 
+/**
+ * The teacherMenu class represents the menu and functionality for a teacher user in the command-line interface.
+ */
 public class teacherMenu {
 
     private Department department;
@@ -19,16 +22,27 @@ public class teacherMenu {
     private Teacher currentUser;
     private University uni;
 
-
+    /**
+     * Constructs a teacherMenu instance with the specified current user and university.
+     *
+     * @param currentUser The current teacher user.
+     * @param uni         The university instance.
+     */
     public teacherMenu(Teacher currentUser, University uni) {
         this.currentUser = currentUser;
         this.uni = uni;
     }
 
+    /**
+     * Displays the options for the teacher menu.
+     */
     public void display() {
         System.out.println("Teacher Menu" + "\n");
     }
 
+    /**
+     * Runs the teacher menu.
+     */
     public void run() {
         boolean logout = false;
         while (!logout) {
@@ -111,6 +125,9 @@ public class teacherMenu {
         }
     }
 
+    /**
+     * Adds a grade for a student.
+     */
     private void addStudentGrade() {
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the student's ID");
@@ -139,6 +156,9 @@ public class teacherMenu {
 
     }
 
+    /**
+     * Displays and handles the department menu options.
+     */
     public void DepartmentMenu() {
         boolean running = true;
         while (running) {
