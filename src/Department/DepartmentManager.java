@@ -1,12 +1,13 @@
 package Department;
-import CommandLineInterface.teacherMenu;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentManager {
+    private String departmentManager;
     private List<String> departmentList;
     public DepartmentManager() {
+        this.departmentManager = departmentManager;
         departmentList = new ArrayList<>();
     }
 

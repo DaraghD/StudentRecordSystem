@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class teacherMenu {
 
     private Department department;
+    private DepartmentManager departmentManager;
     private final Scanner scannerTeacherMenu = new Scanner(System.in);
     private Teacher currentUser;
     private University uni;
@@ -61,7 +62,9 @@ public class teacherMenu {
                     //Grade.QCA(getId(), getSemester(), getModule(), getYear());
                     break;
                 case "D":
-                    currentUser.addDepartment();
+                    System.out.println("Add Department:");
+                    String newDepartment = scannerTeacherMenu.nextLine();
+                    departmentManager.addDepartment(newDepartment);
                     break;
                 case "M":
                     //Print out all modules here
