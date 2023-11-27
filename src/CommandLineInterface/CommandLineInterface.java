@@ -18,9 +18,9 @@ import static java.lang.System.exit;
 //TODO: SAVE AFTER REGISTERING
 public class CommandLineInterface {
 
-    private static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
     private Person currentUser; // when login set this to the reference of the logged in object
-    private University UL;
+    private final University UL;
 
 
     public CommandLineInterface() {
@@ -71,9 +71,7 @@ public class CommandLineInterface {
 
         //testing
         boolean LoggedIn = false;
-        boolean exit = false;
         System.out.println("Welcome to the Student Record System!" + "\n");
-        outer:
         while (true) {
             System.out.println(
                     """

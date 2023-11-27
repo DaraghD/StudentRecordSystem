@@ -4,8 +4,8 @@ package Grading;
 //TODO: Implement a  general grading interface so if it changes its easier to adapat the c ode - project spec hinted at this
 //TODO: move datafields into module class ?
 public class Grade {
-    private String grade;
-    private Module module;
+    private final String grade;
+    private final Module module;
 
     public Grade(String grade,Module module) {
         this.grade = grade;
@@ -20,6 +20,10 @@ public class Grade {
 
     public String csvFormat() {
         return grade + this.module.csvFormat();
+    }
+
+    public String toString(){
+        return "Grade : " + this.grade + " Module : " + this.module.getName() + " Year : " + this.module.getYear() + " Semester : " + this.module.getSemester() + "\n";
     }
 
 

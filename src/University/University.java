@@ -1,6 +1,5 @@
 package University;
 
-import Grading.Grade;
 import Grading.Programme;
 import Person.Teacher;
 import Person.Student;
@@ -126,10 +125,7 @@ public class University {
     }
 
     public boolean uniqueID(int id) { // id is unique between teacher and students
-        if(this.getTeacher(id) != null || this.getStudent(id) != null) {
-            return false;
-        }
-        return true;
+        return this.getTeacher(id) == null && this.getStudent(id) == null;
     }
 
 }

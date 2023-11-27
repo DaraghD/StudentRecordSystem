@@ -1,16 +1,14 @@
 package CommandLineInterface;
 
 import Department.Department;
+import Department.DepartmentManager;
+import Grading.Grade;
 import Grading.Module;
 import Grading.Programme;
-import Grading.ProgrammeLevel;
-import Person.*;
-import Grading.Grade;
+import Person.Student;
+import Person.Teacher;
 import University.University;
-import Department.DepartmentManager;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class teacherMenu {
@@ -56,7 +54,7 @@ public class teacherMenu {
                     addStudentGrade();
                     break;
                 case "V":
-                    currentUser.viewDepartmentBoard();
+                    //currentUser.viewDepartmentBoard();
                     break;
                 case "C":
                     System.out.println("Enter Student ID:");
@@ -83,9 +81,9 @@ public class teacherMenu {
                     currentDepartment = uni.getDepartment(departmentName);
                     DepartmentMenu();
 
-                    System.out.println("Add Department:");
-                    String newDepartment = scannerTeacherMenu.nextLine();
-                    departmentManager.addDepartment(newDepartment);
+                   // System.out.println("Add Department:");
+                   // String newDepartment = scannerTeacherMenu.nextLine();
+                   // departmentManager.addDepartment(newDepartment);
                     break;
                 case "M":
                     //Print out all modules here
@@ -137,10 +135,11 @@ public class teacherMenu {
     }
 
     public void DepartmentMenu() {
-        while (true) {
+        boolean running = true;
+        while (running) {
             //TODO: REmove reduant options
             //TODO: Maybe make a seperate programme menu?
-            //TODO: CurrentDepartment? Log into a department?
+            System.out.println("Current Department : " + currentDepartment.getName() + "\n");
             System.out.println("""
                     Please enter an option
                     A - Add a department
@@ -226,13 +225,19 @@ public class teacherMenu {
                     int year = scannerTeacherMenu.nextInt();
 
                     Module newModule = new Module(moduleName, cutoff, year, semester);
+                    System.out.println("Adding module " + newModule.getName() + " to " + programme.getName());
                     programme.addModule(newModule);
-
-
                     break;
                 case "E":
                     System.out.println("Exiting Department Menu");
-                    return;
+                    running = false;
+                    break;
+                case "debug":
+                    for(Programme programm2e : currentDepartment.getProgrammes()){
+                        for(Module module : programm2e.getModules()){
+                            System.out.println(module.getName());
+                        }
+                    }
                 default:
                     System.out.println("Invalid Choice");
             }

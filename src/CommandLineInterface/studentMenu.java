@@ -43,7 +43,7 @@ public class studentMenu {
                     System.out.println("Input module to check QCA:");
                     String module = input.nextLine();
                     System.out.println("QCA:" + currentUser.QCA(module));
-
+                    break;
                 case "G":
                     ArrayList<Grade> studentGrades = currentUser.getGrades();
                     for (Grade grade : studentGrades) {

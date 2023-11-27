@@ -12,12 +12,12 @@ import java.io.PrintWriter;
 
 public class csvWriter {
 
-    private PrintWriter writeStudents;
-    private PrintWriter writeTeachers;
-    private PrintWriter writeDepartments;
-    private PrintWriter writeProgrammes;
+    private final PrintWriter writeStudents;
+    private final PrintWriter writeTeachers;
+    private final PrintWriter writeDepartments;
+    private final PrintWriter writeProgrammes;
 
-    private University university;
+    private final University university;
 
 
     public csvWriter(University university) throws FileNotFoundException {
