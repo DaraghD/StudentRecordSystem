@@ -10,16 +10,33 @@ import Grading.Programme;
 import Person.Student;
 import University.University;
 
+/**
+ * Provides a menu displaying all potential student actions.
+ *
+ * Variables "currentUser"(current logged-in user) and "uni" of type "Student" and "University" respectively are initialised.
+ */
+
 public class studentMenu {
     static Scanner input = new Scanner(System.in);
     private Student currentUser;
     private University uni;
 
+    /**
+     * Creates an instance of studentMenu.
+     *
+     * @param student refers to the student logged into the system.
+     * @param uni the university which the student belongs to.
+     */
     studentMenu(Student student, University uni) {
         this.currentUser = student;
         this.uni = uni;
     }
 
+    /**
+     * Runs the student menu.
+     *
+     * Prompts the user to view QCA, grades, modules etc.
+     */
     public void run() {
         boolean exit = false;
 
