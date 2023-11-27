@@ -217,7 +217,6 @@ public class CommandLineInterface {
         }
         Student newStudent = new Student(name, id, password);
         UL.addStudent(newStudent);
-        System.out.println("Select a programme");
         int count = 0;
         for (Department department : UL.getDepartments()) {
             for (Programme prog : department.getProgrammes()) {
@@ -225,21 +224,24 @@ public class CommandLineInterface {
                 count++;
             }
         }
-        if(count == 0){
-            System.out.println("No programmes to join, a member of faculty must add one");
-            System.out.println("You can join a program through the student main menu later");
+        if (count != 0) {
+            System.out.println("Select a programme");
+            String programme = input.nextLine();
+            while (UL.getProgramme(programme) == null) {
+                System.out.println("Programme does not exist");
+                System.out.println("Please enter a valid programme");
+                programme = input.nextLine();
+            }
+            newStudent.setProgramme(UL.getProgramme(programme));
         }
-        String programme = input.nextLine();
-        while(UL.getProgramme(programme) == null){
-            System.out.println("Programme does not exist");
-            System.out.println("Please enter a valid programme");
-            programme = input.nextLine();
-        }
-        newStudent.setProgramme(UL.getProgramme(programme));
+        System.out.println("No programmes to join, a member of faculty must add one");
+        System.out.println("You can join a program through the student main menu later");
+
         System.out.println("You have successfully registered as a student");
-        saveData();
-        currentUser = UL.getStudent(id);
+
+        currentUser = newStudent;
         studentMenu studentMenu = new studentMenu((Student) currentUser, UL);
+        saveData();
         studentMenu.run();
     }
 
@@ -261,9 +263,9 @@ public class CommandLineInterface {
         while (!(passwordT.equals(passwordT2))) {
             System.out.println("Your passwords do not match");
             System.out.println("Please enter your password");
-            String password = input.nextLine();
+            passwordT = input.nextLine();
             System.out.println("Please confirm your password ");
-            String password2 = input.nextLine();
+            passwordT2 = input.nextLine();
         }
         System.out.println("Please enter your department");
         for (Department dep : UL.getDepartments()) {
