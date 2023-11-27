@@ -19,7 +19,6 @@ public class CommandLineInterface {
 
     private static Scanner input = new Scanner(System.in);
     private Person currentUser; // when login set this to the reference of the logged in object
-
     private University UL;
 
 

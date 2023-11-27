@@ -4,7 +4,6 @@ public class Module {
 
     private String name;
     private int cutoff;
-    private String programmeName;
     private int year;
     private int semester;
 
@@ -13,10 +12,9 @@ public class Module {
         this.cutoff = cutoff;
     }
 
-    public Module(String name, int cutoff, String programmeName, int year, int semester) {
+    public Module(String name, int cutoff, int year, int semester) {
         this.name = name;
         this.cutoff = cutoff;
-        this.programmeName = programmeName;
         this.year = year;
         this.semester = semester;
     }
@@ -29,9 +27,6 @@ public class Module {
         return cutoff;
     }
 
-    public String getProgrammeName() {
-        return programmeName;
-    }
 
     public int getYear() {
         return year;
@@ -43,7 +38,7 @@ public class Module {
 
 
     public String csvFormat() {
-        return "," + this.name + "," + this.cutoff + "," + this.programmeName + "," + this.year + "," + this.semester;
+        return "," + this.name + "," + this.cutoff + "," + this.year + "," + this.semester;
 
     }
 }

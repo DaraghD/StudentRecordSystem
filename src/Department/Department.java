@@ -45,6 +45,17 @@ public class Department {
         return null;
     }
 
+    public void removeProgramme(String programmeName) {
+        for (Programme programme : programmes) {
+            if (programme.getName().equals(programmeName)) {
+                programmes.remove(programme);
+                System.out.println("Programme removed");
+                return;
+            }
+        }
+        System.out.println("Programme not found");
+    }
+
     public String csvFormat(){
         String s = this.getName();
         for (Programme programme : programmes) {
