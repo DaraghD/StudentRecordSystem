@@ -5,14 +5,14 @@ public class Module {
     private String name;
     private int cutoff;
     private int year;
-    private int semester;
+    private Semester semester;
 
     public Module(String name, int cutoff) {
         this.name = name;
         this.cutoff = cutoff;
     }
 
-    public Module(String name, int cutoff, int year, int semester) {
+    public Module(String name, int cutoff, int year, Semester semester) {
         this.name = name;
         this.cutoff = cutoff;
         this.year = year;
@@ -32,7 +32,7 @@ public class Module {
         return year;
     }
 
-    public int getSemester() {
+    public Semester getSemester() {
         return semester;
     }
 

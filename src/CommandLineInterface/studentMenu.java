@@ -24,7 +24,16 @@ public class studentMenu {
         boolean exit = false;
 
         while (!exit) {
+            System.out.println();
+            System.out.println();
+            System.out.println();
             //TODO: need transcript option, maybe should replace qca or grades
+            System.out.println("Logged in as " + currentUser.getName() + " (Student)");
+            if (currentUser.getCurrentProgramme() == null) {
+                System.out.println("Not enrolled in a programme");
+            } else if (currentUser.getCurrentProgramme() != null) {
+                System.out.println("Enrolled in " + currentUser.getCurrentProgramme().getName());
+            }
             System.out.println("(Q)CA, (G)rades, (M)odules, (L)ogout, (T)ranscript, (P)rogramme");
             //TODO MAKE THIS LIKE THE OTHERS ^^
             String choice = input.nextLine().toUpperCase();
@@ -68,38 +77,36 @@ public class studentMenu {
                     break;
                 case "P":
                     //2 menus one for if programme the other if not
-                    if(currentUser.getCurrentProgramme() != null){
+                    if (currentUser.getCurrentProgramme() != null) {
                         System.out.println("Current Programme: " + currentUser.getCurrentProgramme().getName());
                         System.out.println("Would you like to leave this programme? (Y/n)");
                         String choice2 = input.nextLine().toUpperCase();
-                        if(choice2.equals("Y")){
+                        if (choice2.equals("Y")) {
                             currentUser.setProgramme(null);
-                        }
-                        else{
+                        } else {
                             System.out.println("Programme not removed");
                         }
                         break;
-                    }
-                    else{
+                    } else {
                         int count = 0;
-                    for (Department department : uni.getDepartments()) {
-                        for (Programme prog : department.getProgrammes()) {
-                            System.out.println(prog.getName());
-                            count++;
+                        for (Department department : uni.getDepartments()) {
+                            for (Programme prog : department.getProgrammes()) {
+                                System.out.println(prog.getName());
+                                count++;
+                            }
                         }
-                    }
-                    if (count == 0) {
-                        System.out.println("No programmes to join, a member of faculty must add one");
-                        break;
-                    }
-                    System.out.println("Enter programme name");
-                    String programmeName = input.nextLine();
-                    while(uni.getProgramme(programmeName) == null){
-                        System.out.println("Programme does not exist, try again");
-                        programmeName = input.nextLine();
-                    }
-                    Programme programme = uni.getProgramme(programmeName);
-                    currentUser.setProgramme(programme);
+                        if (count == 0) {
+                            System.out.println("No programmes to join, a member of faculty must add one");
+                            break;
+                        }
+                        System.out.println("Enter programme name");
+                        String programmeName = input.nextLine();
+                        while (uni.getProgramme(programmeName) == null) {
+                            System.out.println("Programme does not exist, try again");
+                            programmeName = input.nextLine();
+                        }
+                        Programme programme = uni.getProgramme(programmeName);
+                        currentUser.setProgramme(programme);
 
                     }
                     break;

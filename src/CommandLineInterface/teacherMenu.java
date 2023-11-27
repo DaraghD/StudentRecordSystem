@@ -2,9 +2,8 @@ package CommandLineInterface;
 
 import Department.Department;
 import Department.DepartmentManager;
-import Grading.Grade;
+import Grading.*;
 import Grading.Module;
-import Grading.Programme;
 import Person.Student;
 import Person.Teacher;
 import University.University;
@@ -55,6 +54,12 @@ public class teacherMenu {
                     break;
                 case "V":
                     //currentUser.viewDepartmentBoard();
+                    break;
+                case "A":
+                    System.out.println("Enter department name");
+                    String name = scannerTeacherMenu.nextLine();
+                    Department newDepartment = new Department(name, uni);
+                    uni.addDepartment(newDepartment);
                     break;
                 case "C":
                     System.out.println("Enter Student ID:");
@@ -177,20 +182,34 @@ public class teacherMenu {
                     System.out.println("Enter programme duration");
                     int duration = scannerTeacherMenu.nextInt();
 
-                    System.out.println("Enter programme level, UNDERGRADUATE or POSTGRADUATE");
+                    System.out.println("Enter programme level, " +
+                            "U)NDERGRADUATE" +
+                            "P)OSTGRADUATE" +
+                            "R)ESEARCH" +
+                            "T)AUGHT");
                     String level = scannerTeacherMenu.nextLine();
-
-                    System.out.println("Is programme a research programme? (Y/N)");
-                    String research = scannerTeacherMenu.nextLine().toUpperCase();
-                    boolean researchBool;
-
-                    if (research.equals("Y")) {
-                        researchBool = true;
-                    } else {
-                        researchBool = false;
+                    ProgrammeType type = null;
+                    while(level == null) {
+                        switch (level) {
+                            case "U":
+                                type = ProgrammeType.UNDERGRADUATE;
+                                break;
+                            case "P":
+                                type = ProgrammeType.POSTGRADUATE;
+                                break;
+                            case "R":
+                                type = ProgrammeType.RESEARCH;
+                                break;
+                            case "T":
+                                type = ProgrammeType.TAUGHT;
+                                break;
+                            default:
+                                System.out.println("Invalid choice");
+                                break;
+                        }
                     }
 
-                    Programme newProgramme = new Programme(programmeName, researchBool, uni, duration, level);
+                    Programme newProgramme = new Programme(programmeName, uni, duration, type);
                     System.out.println("Adding programme " + newProgramme.getName() + " to " + currentDepartment.getName());
                     currentDepartment.addProgramme(newProgramme);
 
@@ -218,13 +237,22 @@ public class teacherMenu {
                     System.out.println("Enter cutoff for module e.g 50 for 50%");
                     int cutoff = scannerTeacherMenu.nextInt();
 
-                    System.out.println("Enter semester for module");
-                    int semester = scannerTeacherMenu.nextInt();
+                    System.out.println("Enter semester for module." +
+                            "A)utumn" +
+                            "S)pring ");
+                    String semester = scannerTeacherMenu.nextLine();
+                    Semester sem;
+                    if(semester.toUpperCase().equals("A")){
+                        sem = Semester.AUTUMN;
+                    }
+                    else{
+                        sem = Semester.SPRING;
+                    }
 
                     System.out.println("Enter year for module");
                     int year = scannerTeacherMenu.nextInt();
 
-                    Module newModule = new Module(moduleName, cutoff, year, semester);
+                    Module newModule = new Module(moduleName, cutoff, year, sem);
                     System.out.println("Adding module " + newModule.getName() + " to " + programme.getName());
                     programme.addModule(newModule);
                     break;

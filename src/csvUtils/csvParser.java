@@ -1,5 +1,6 @@
 package csvUtils;
 
+import Grading.Semester;
 import University.University;
 import Person.Student;
 import Person.Teacher;
@@ -47,10 +48,10 @@ public class csvParser {
             while (st.hasMoreTokens()) { // parsing grades
                 String nameM = st.nextToken();
                 String grade = st.nextToken();
-                int semester = Integer.parseInt(st.nextToken());
+                Semester sem = st.nextToken().equals("AUTUMN") ? Semester.AUTUMN : Semester.SPRING;
                 String module = st.nextToken();
                 int year = Integer.parseInt(st.nextToken());
-                Grading.Module newModule = new Grading.Module(nameM,1,year,semester);
+                Grading.Module newModule = new Grading.Module(nameM,1,year,sem);
                 student.addGrade(new Grade(grade, newModule));
             }
         }

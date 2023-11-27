@@ -9,12 +9,11 @@ public class Programme {
     //Programme is like a course
     //Maybe add arraylist of students taking this programme?
 
-    private ArrayList<Module> modules = new ArrayList<Module>();
-    private String name;
-    private boolean research;
-    private University university;
-    private int durationYears;
-    private String level;
+    private final ArrayList<Module> modules = new ArrayList<Module>();
+    private final String name;
+    private final University university;
+    private final int durationYears;
+    private final ProgrammeType level;
 
 
     public void addModule(Module module){
@@ -29,9 +28,8 @@ public class Programme {
         return s;
     }
 
-    public Programme(String name, boolean research, University university, int duration, String level) {
+    public Programme(String name,  University university, int duration, ProgrammeType level) {
         this.name = name;
-        this.research = research;
         this.university = university;
         this.durationYears = duration;
         this.level = level;
