@@ -7,11 +7,16 @@ import Grading.ProgrammeLevel;
 import Person.*;
 import Grading.Grade;
 import University.University;
+import Department.DepartmentManager;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class teacherMenu {
 
+    private Department department;
+    private DepartmentManager departmentManager;
     private final Scanner scannerTeacherMenu = new Scanner(System.in);
     private Department currentDepartment;
     private Teacher currentUser;
@@ -51,7 +56,7 @@ public class teacherMenu {
                     addStudentGrade();
                     break;
                 case "V":
-                    //viewDepartmentBoard();
+                    currentUser.viewDepartmentBoard();
                     break;
                 case "C":
                     System.out.println("Enter Student ID:");
@@ -61,6 +66,7 @@ public class teacherMenu {
                     //Grade.QCA(getId(), getSemester(), getModule(), getYear());
                     break;
                 case "D":
+
                     System.out.println("Select a department");
                     if (uni.getDepartments().isEmpty()) {
                         System.out.println("No departments to select, add one through the main menu");
@@ -76,6 +82,10 @@ public class teacherMenu {
                     }
                     currentDepartment = uni.getDepartment(departmentName);
                     DepartmentMenu();
+
+                    System.out.println("Add Department:");
+                    String newDepartment = scannerTeacherMenu.nextLine();
+                    departmentManager.addDepartment(newDepartment);
                     break;
                 case "M":
                     //Print out all modules here
@@ -88,7 +98,6 @@ public class teacherMenu {
                     String moduleCode = scannerTeacherMenu.nextLine();
                     currentDepartment.displayFailedStudentsForModule(moduleCode);
                     break;
-
                 case "L":
                     System.out.println("Logging Out...");
                     logout = true;
