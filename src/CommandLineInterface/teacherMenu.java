@@ -4,7 +4,10 @@ import Department.Department;
 import Person.*;
 import Grading.Grade;
 import University.University;
+import Department.DepartmentManager;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class teacherMenu {
@@ -48,7 +51,7 @@ public class teacherMenu {
                     addStudentGrade();
                     break;
                 case "V":
-                    //viewDepartmentBoard();
+                    currentUser.viewDepartmentBoard();
                     break;
                 case "C":
                     System.out.println("Enter Student ID:");
@@ -58,7 +61,7 @@ public class teacherMenu {
                     //Grade.QCA(getId(), getSemester(), getModule(), getYear());
                     break;
                 case "D":
-                    //addDepartment();
+                    currentUser.addDepartment();
                     break;
                 case "M":
                     //Print out all modules here
@@ -71,7 +74,6 @@ public class teacherMenu {
                     String moduleCode = scannerTeacherMenu.nextLine();
                     department.displayFailedStudentsForModule(moduleCode);
                     break;
-
                 case "L":
                     System.out.println("Logging Out...");
                     logout = true;
