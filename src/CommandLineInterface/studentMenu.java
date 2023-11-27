@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Grading.Grade;
+import Grading.Module;
 import Person.Student;
 import University.University;
 
@@ -26,14 +27,14 @@ public class studentMenu {
             String choice = input.nextLine().toUpperCase();
             switch (choice) {
                 case "Q":
-                    ArrayList<String> temp = new ArrayList<String>();
+                    //Getting unique modules, but not fully working caue of string references?
+                    ArrayList<Module> temp2 = new ArrayList<>();
                     for (Grade grade : currentUser.getGrades()) {
-                        if (!temp.contains(grade.getModule())) {
-                            //TODO: FIX APPEARING TWICE
-                            temp.add(grade.getModule());
+                        if (!temp2.contains(grade.getModule())) {
+                            temp2.add(grade.getModule());
                         }
-                        for (String m : temp) {
-                            System.out.println(m);
+                        for (Module m : temp2) {
+                            System.out.println(m.getName());
                         }
                     }
                     System.out.println("Input module to check QCA:");
@@ -49,13 +50,13 @@ public class studentMenu {
                     break;
 
                 case "M":
-                    temp = new ArrayList<String>();
+                    temp2 = new ArrayList<>();
                     for (Grade grade : currentUser.getGrades()) {
-                        if (!temp.contains(grade.getModule())) {
-                            temp.add(grade.getModule());
+                        if (!temp2.contains(grade.getModule())) {
+                            temp2.add(grade.getModule());
                         }
-                        for (String m : temp) {
-                            System.out.println(m);
+                        for (Module m : temp2) {
+                            System.out.println(m.getName());
                         }
                     }
                     break;

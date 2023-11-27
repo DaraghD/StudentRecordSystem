@@ -1,14 +1,14 @@
 package Person;
 
 import Grading.Grade;
-import University.University;
+import Grading.Programme;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Student extends Person {
     //need grades arraylist or something here
     private ArrayList<Grade> grades = new ArrayList<>();
+    private Programme currentProgramme;
 
     public Student(String name, int id, String password) {
         super(name, id, password);
@@ -22,24 +22,9 @@ public class Student extends Person {
 
     }
 
-    public void addGrade() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter student id of student to add grade to:");
-        String id = input.nextLine();
-        System.out.println("Enter the course");
-        String course = input.nextLine();
-        System.out.println("Enter the grade e.g A1,A2 etc:");
-        String grade = input.nextLine();
-        System.out.println("Enter the semester, 1 or 2:");
-        int semester = Integer.parseInt(input.nextLine());
-        System.out.println("Enter the module:");
-        String module = input.nextLine();
-        System.out.println("Enter the year:");
-        int year = Integer.parseInt(input.nextLine());
 
-        Grade newGrade = new Grade(course, grade, semester, module, year);
-        grades.add(newGrade);
-
+    public Programme getCurrentProgramme() {
+        return currentProgramme;
     }
 
     public ArrayList<Grade> getGrades() {

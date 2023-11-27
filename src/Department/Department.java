@@ -19,6 +19,9 @@ public class Department {
     public String getName() {
         return name;
     }
+    public ArrayList<Programme> getProgrammes(){
+        return programmes;
+    }
 
     public Department(University uni) { //TODO: change all constructors to be use name arg
         this.university = uni;
@@ -31,6 +34,34 @@ public class Department {
 
     public void addProgramme(Programme programme) {
         this.programmes.add(programme);
+    }
+
+    public Programme getProgramme(String programmeName) {
+        for (Programme programme : programmes) {
+            if (programme.getName().equals(programmeName)) {
+                return programme;
+            }
+        }
+        return null;
+    }
+
+    public void removeProgramme(String programmeName) {
+        for (Programme programme : programmes) {
+            if (programme.getName().equals(programmeName)) {
+                programmes.remove(programme);
+                System.out.println("Programme removed");
+                return;
+            }
+        }
+        System.out.println("Programme not found");
+    }
+
+    public String csvFormat(){
+        String s = this.getName();
+        for (Programme programme : programmes) {
+            s += "," + programme.getName();
+        }
+        return s;
     }
 
     public void calculateAndDisplayAverageQCAForModule(String moduleCode) {

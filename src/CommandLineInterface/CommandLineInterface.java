@@ -19,7 +19,6 @@ public class CommandLineInterface {
 
     private static Scanner input = new Scanner(System.in);
     private Person currentUser; // when login set this to the reference of the logged in object
-
     private University UL;
 
 
@@ -32,18 +31,21 @@ public class CommandLineInterface {
         System.out.println("D for default");
         String optionPath = input.nextLine().toUpperCase();
         if (!(optionPath.equals("D"))) {
+            //TODO: Simplify this logic using optionPath = src/data/ if D
             UL.setStudentsPath(optionPath + "students.csv");
             UL.setTeachersPath(optionPath + "teachers.csv");
+            UL.setDepartmentsPath(optionPath + "departments.csv");
+            UL.setProgrammesPath(optionPath + "programmes.csv");
         } else {
             UL.setStudentsPath("src/data/students.csv");
             UL.setTeachersPath("src/data/teachers.csv");
+            UL.setDepartmentsPath("src/data/departments.csv");
+            UL.setProgrammesPath("src/data/programmes.csv");
         }
-
         csvParser data = new csvParser(UL);
         //if there is already data , this will load it into University
         data.parseTeachers();
         data.parseStudents();
-
     }
 
 

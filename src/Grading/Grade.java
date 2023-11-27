@@ -2,35 +2,24 @@ package Grading;
 
 //TODO: add module class ? so modules can have individual cutoff points for departments? programme?
 //TODO: Implement a  general grading interface so if it changes its easier to adapat the c ode - project spec hinted at this
+//TODO: move datafields into module class ?
 public class Grade {
     private String grade;
-    private String courseName;
-    private int semester;
-    private String module;
-    private int year;
+    private Module module;
 
-    public Grade(String coursename, String grade, int semester, String module, int year) {
-        this.courseName = coursename;
+    public Grade(String grade,Module module) {
         this.grade = grade;
-        this.semester = semester;
         this.module = module;
-        this.year = year;
     }
 
-    public String getCourseName() {
-        return courseName;
-    }
+    //TODO: grade constructor for percentage?
 
     public String getGrade() {
         return grade;
     }
 
     public String csvFormat() {
-        return courseName + "," + grade + "," + semester + "," + module + "," + year;
-    }
-
-    public String toString() {
-        return "Course: " + courseName + " Grade: " + grade + " Semester: " + semester + " module: " + module + " Year: " + year;
+        return grade + this.module.csvFormat();
     }
 
 
@@ -51,7 +40,7 @@ public class Grade {
     }
 
 
-    public String getModule() {
+    public Module getModule() {
         return this.module;
     }
 
