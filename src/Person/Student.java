@@ -10,6 +10,9 @@ public class Student extends Person {
     private ArrayList<Grade> grades = new ArrayList<>();
     private Programme currentProgramme;
 
+    public void setProgramme(Programme programme){
+        this.currentProgramme = programme;
+    }
     public Student(String name, int id, String password) {
         super(name, id, password);
     }

@@ -1,6 +1,7 @@
 package University;
 
 import Grading.Grade;
+import Grading.Programme;
 import Person.Teacher;
 import Person.Student;
 import Department.Department;
@@ -71,6 +72,17 @@ public class University {
         return programmesPath;
     }
 
+    public Programme getProgramme(String programmeName){
+        for(Department department : departments){
+            for(Programme programme : department.getProgrammes()){
+                if(programme.getName().equals(programmeName)){
+                    return programme;
+                }
+            }
+        }
+        return null;
+    }
+
     public Student getStudent(int id) {
         for (Student student : students) {
             if (student.getId() == id) {
@@ -120,14 +132,4 @@ public class University {
         return true;
     }
 
-        public void addGrade(int StudentID, String courseName, String grade, int semester, String module, int year) {
-        Grade newGrade = new Grade(courseName, grade, semester, module, year);
-        try {
-            getStudent(StudentID).addGrade(newGrade);
-        } catch (NullPointerException e) {
-            System.out.println("Student does not exist");
-            return;
-        }
-        System.out.println("Grade added successfully");
-    }
 }

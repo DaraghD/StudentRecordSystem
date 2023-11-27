@@ -3,8 +3,10 @@ package CommandLineInterface;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Department.Department;
 import Grading.Grade;
 import Grading.Module;
+import Grading.Programme;
 import Person.Student;
 import University.University;
 
@@ -23,7 +25,8 @@ public class studentMenu {
 
         while (!exit) {
             //TODO: need transcript option, maybe should replace qca or grades
-            System.out.println("(Q)CA, (G)rades, (M)odules, (L)ogout");
+            System.out.println("(Q)CA, (G)rades, (M)odules, (L)ogout, (T)ranscript, (P)rogramme");
+            //TODO MAKE THIS LIKE THE OTHERS ^^
             String choice = input.nextLine().toUpperCase();
             switch (choice) {
                 case "Q":
@@ -63,7 +66,43 @@ public class studentMenu {
                 case "L":
                     exit = true;
                     break;
+                case "P":
+                    //2 menus one for if programme the other if not
+                    if(currentUser.getCurrentProgramme() != null){
+                        System.out.println("Current Programme: " + currentUser.getCurrentProgramme().getName());
+                        System.out.println("Would you like to leave this programme? (Y/n)");
+                        String choice2 = input.nextLine().toUpperCase();
+                        if(choice2.equals("Y")){
+                            currentUser.setProgramme(null);
+                        }
+                        else{
+                            System.out.println("Programme not removed");
+                        }
+                        break;
+                    }
+                    else{
+                        int count = 0;
+                    for (Department department : uni.getDepartments()) {
+                        for (Programme prog : department.getProgrammes()) {
+                            System.out.println(prog.getName());
+                            count++;
+                        }
+                    }
+                    if (count == 0) {
+                        System.out.println("No programmes to join, a member of faculty must add one");
+                        break;
+                    }
+                    System.out.println("Enter programme name");
+                    String programmeName = input.nextLine();
+                    while(uni.getProgramme(programmeName) == null){
+                        System.out.println("Programme does not exist, try again");
+                        programmeName = input.nextLine();
+                    }
+                    Programme programme = uni.getProgramme(programmeName);
+                    currentUser.setProgramme(programme);
 
+                    }
+                    break;
                 default:
                     System.out.print("Invalid Input");
                     break;

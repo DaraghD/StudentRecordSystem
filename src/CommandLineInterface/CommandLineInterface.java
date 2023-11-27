@@ -1,5 +1,6 @@
 package CommandLineInterface;
 
+import Grading.Programme;
 import Person.Person;
 import csvUtils.csvWriter;
 import csvUtils.csvParser;
@@ -26,6 +27,17 @@ public class CommandLineInterface {
         this.UL = new University();
     }
 
+    private static void checkPassword(int id, String actualPassword) {
+        System.out.println("Please enter your password");
+        String password = CommandLineInterface.input.nextLine();
+        while (!(password.equals(actualPassword))) {
+            System.out.println("Incorrect password");
+            System.out.println("Please enter your password");
+            password = CommandLineInterface.input.nextLine();
+        }
+        System.out.println("Logged in ID : " + id);
+    }
+
     public void init() throws IOException {
         System.out.println("Enter path for data to be saved to");
         System.out.println("D for default");
@@ -47,7 +59,6 @@ public class CommandLineInterface {
         data.parseTeachers();
         data.parseStudents();
     }
-
 
     public void run() throws FileNotFoundException {
         //testing
@@ -118,7 +129,6 @@ public class CommandLineInterface {
         csvWriter.writeStudents();
     }
 
-
     private void Register() throws FileNotFoundException {
         System.out.println(
                 """
@@ -165,17 +175,6 @@ public class CommandLineInterface {
 
     }
 
-    private static void checkPassword(int id, String actualPassword) {
-        System.out.println("Please enter your password");
-        String password = CommandLineInterface.input.nextLine();
-        while (!(password.equals(actualPassword))) {
-            System.out.println("Incorrect password");
-            System.out.println("Please enter your password");
-            password = CommandLineInterface.input.nextLine();
-        }
-        System.out.println("Logged in ID : " + id);
-    }
-
     private void teacherLogin() {
         System.out.println("Please enter your id");
         int id = Integer.parseInt(CommandLineInterface.input.nextLine());
@@ -216,13 +215,30 @@ public class CommandLineInterface {
             System.out.println("Please confirm your password ");
             password2 = input.nextLine();
         }
-        UL.addStudent(new Student(name, id, password));
+        Student newStudent = new Student(name, id, password);
+        UL.addStudent(newStudent);
+        System.out.println("Select a programme");
+        int count = 0;
+        for (Department department : UL.getDepartments()) {
+            for (Programme prog : department.getProgrammes()) {
+                System.out.println(prog.getName());
+                count++;
+            }
+        }
+        if(count == 0){
+            System.out.println("No programmes to join, a member of faculty must add one");
+            System.out.println("You can join a program through the student main menu later");
+        }
+        String programme = input.nextLine();
+        while(UL.getProgramme(programme) == null){
+            System.out.println("Programme does not exist");
+            System.out.println("Please enter a valid programme");
+            programme = input.nextLine();
+        }
+        newStudent.setProgramme(UL.getProgramme(programme));
         System.out.println("You have successfully registered as a student");
         saveData();
-
         currentUser = UL.getStudent(id);
-
-
         studentMenu studentMenu = new studentMenu((Student) currentUser, UL);
         studentMenu.run();
     }
@@ -250,12 +266,12 @@ public class CommandLineInterface {
             String password2 = input.nextLine();
         }
         System.out.println("Please enter your department");
-        for(Department dep : UL.getDepartments()){
+        for (Department dep : UL.getDepartments()) {
             System.out.println(dep.getName());
         }
 
         String department = input.nextLine();
-        if(UL.getDepartment(department) == null){
+        if (UL.getDepartment(department) == null) {
             UL.addDepartment(new Department(department, UL));
             System.out.println("Department doesnt exist adding it now");
         }
