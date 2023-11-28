@@ -36,7 +36,7 @@ public class studentMenu {
     /**
      * Runs the student menu.
      *
-     * Prompts the user to view QCA, grades, modules etc.
+     * Prompts the user to view QCA, grades, modules, programme, messages, transcript or alternatively, logout.
      */
     public void run() {
         boolean exit = false;
