@@ -9,34 +9,73 @@ import Person.Student;
 import University.University;
 import csvUtils.CSVFormat;
 
+/**
+ * Class for a department in a university.
+ */
 public class Department implements CSVFormat {
 
+    /** The university of which the department belongs to. */
     private final University university;
 
+    /** The list of programmes offered by the department. */
     private ArrayList<Programme> programmes = new ArrayList<Programme>();
 
+    /** The name of the department. */
     private String name;
 
+    /**
+     * Gets the name of the department.
+     *
+     * @return The name of the department.
+     */
     public String getName() {
         return name;
     }
+
+    /**
+     * Gets the list of programmes from the department.
+     *
+     * @return The list of programmes offered by the department.
+     */
     public ArrayList<Programme> getProgrammes(){
         return programmes;
     }
 
+    /**
+     * Constructs a new department with the specified university.
+     *
+     * @param uni The university to which the department belongs.
+     */
     public Department(University uni) { //TODO: change all constructors to be use name arg
         this.university = uni;
     }
 
+    /**
+     * Constructs a new department with the specified name and university.
+     *
+     * @param name The name of the department.
+     * @param uni  The university to which the department belongs.
+     */
     public Department(String name, University uni) {
         this.name = name;
         this.university = uni;
     }
 
+    /**
+     * Adds a programme to the list of programmes in the department.
+     *
+     * @param programme The programme to be added.
+     */
     public void addProgramme(Programme programme) {
         this.programmes.add(programme);
     }
 
+    /**
+     * Gets the programme with the specified name.
+     *
+     * @param programmeName The name of the programme to return.
+     * @return The programme with the specified name, or null if not found.
+     */
     public Programme getProgramme(String programmeName) {
         for (Programme programme : programmes) {
             if (programme.getName().equals(programmeName)) {
@@ -46,6 +85,11 @@ public class Department implements CSVFormat {
         return null;
     }
 
+    /**
+     * Removes the programme with the specified name from the list of programmes.
+     *
+     * @param programmeName The name of the programme to remove.
+     */
     public void removeProgramme(String programmeName) {
         for (Programme programme : programmes) {
             if (programme.getName().equals(programmeName)) {
@@ -66,6 +110,11 @@ public class Department implements CSVFormat {
         return "Name";
     }
 
+    /**
+     * Calculates and displays the average QCA for a specified module.
+     *
+     * @param moduleCode The code of the module for which to calculate the average QCA.
+     */
     public void calculateAndDisplayAverageQCAForModule(String moduleCode) {
         System.out.println("Class average QCA for module " + moduleCode + ":");
 
@@ -94,7 +143,11 @@ public class Department implements CSVFormat {
         }
     }
 
-
+    /**
+     * Displays the students who failed a specified module based on their QCA.
+     *
+     * @param moduleCode The code of the module for which to display failed students.
+     */
     public void displayFailedStudentsForModule(String moduleCode) {
         System.out.println("Students who failed module " + moduleCode + ":");
 
