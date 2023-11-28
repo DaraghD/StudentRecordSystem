@@ -1,10 +1,12 @@
 package Grading;
 
 import University.University;
+import Grading.ProgrammeType;
+import csvUtils.CSVFormat;
 
 import java.util.ArrayList;
 
-public class Programme {
+public class Programme implements CSVFormat {
     //Modules are a part of the programme
     //Programme is like a course
     //Maybe add arraylist of students taking this programme?
@@ -21,12 +23,18 @@ public class Programme {
     }
 
     public String csvFormat(){ //TODO: CSV formatting , do it when all the design is done
-        String s = this.getName() + ",";
-        for (Module module : modules) {
-            s += module.csvFormat();
+        String s = this.getName() + "," + this.getDurationYears() + "," + this.getLevel();
+        if(modules.isEmpty()){
+            return s;
+        }
+        else{
+            for(Module module : modules){
+                s += "," + module.csvFormat();
+            }
         }
         return s;
     }
+
 
     public Programme(String name,  University university, int duration, ProgrammeType level) {
         this.name = name;
@@ -51,5 +59,13 @@ public class Programme {
 
     public String getName() {
         return name;
+    }
+
+    public int getDurationYears() {
+        return durationYears;
+    }
+
+    public ProgrammeType getLevel() {
+        return level;
     }
 }

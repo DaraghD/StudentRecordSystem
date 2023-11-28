@@ -1,16 +1,14 @@
 package Grading;
 
-public class Module {
+import csvUtils.CSVFormat;
+
+public class Module implements CSVFormat {
 
     private String name;
     private int cutoff;
     private int year;
     private Semester semester;
 
-    public Module(String name, int cutoff) {
-        this.name = name;
-        this.cutoff = cutoff;
-    }
 
     public Module(String name, int cutoff, int year, Semester semester) {
         this.name = name;
@@ -38,7 +36,6 @@ public class Module {
 
 
     public String csvFormat() {
-        return "," + this.name + "," + this.cutoff + "," + this.year + "," + this.semester;
-
+        return this.name + "," + this.cutoff + "," + this.year + "," + this.semester;
     }
 }

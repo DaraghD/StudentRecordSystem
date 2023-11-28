@@ -7,8 +7,9 @@ import Grading.Module;
 import Grading.Programme;
 import Person.Student;
 import University.University;
+import csvUtils.CSVFormat;
 
-public class Department {
+public class Department implements CSVFormat {
 
     private final University university;
 

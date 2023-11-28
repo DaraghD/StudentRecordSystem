@@ -1,9 +1,11 @@
 package Grading;
 
+import csvUtils.CSVFormat;
+
 //TODO: add module class ? so modules can have individual cutoff points for departments? programme?
 //TODO: Implement a  general grading interface so if it changes its easier to adapat the c ode - project spec hinted at this
 //TODO: move datafields into module class ?
-public class Grade {
+public class Grade implements Grading, CSVFormat {
     private final String grade;
     private final Module module;
 
@@ -19,7 +21,7 @@ public class Grade {
     }
 
     public String csvFormat() {
-        return grade + this.module.csvFormat();
+        return this.grade + "," + this.module.getName();
     }
 
     public String toString(){
@@ -27,6 +29,7 @@ public class Grade {
     }
 
 
+    @Override
     public double convertGradeToNumber() {
         return switch (this.grade) {
             case "A1" -> 4.0;
@@ -46,6 +49,11 @@ public class Grade {
 
     public Module getModule() {
         return this.module;
+    }
+
+    @Override
+    public String convertNumberToGrade() {
+        return null;
     }
 
 }

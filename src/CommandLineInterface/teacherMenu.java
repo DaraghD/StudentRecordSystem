@@ -8,13 +8,14 @@ import Person.Student;
 import Person.Teacher;
 import University.University;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class teacherMenu {
 
+    private final Scanner scannerTeacherMenu = new Scanner(System.in);
     private Department department;
     private DepartmentManager departmentManager;
-    private final Scanner scannerTeacherMenu = new Scanner(System.in);
     private Department currentDepartment;
     private Teacher currentUser;
     private University uni;
@@ -44,6 +45,7 @@ public class teacherMenu {
                     D - Department Menu
                     M - Average QCA for a module
                     F - Display Failed Students
+                    S - Send student message
                     L - Logout
                     """);
             choice = scannerTeacherMenu.nextLine().toUpperCase();
@@ -68,6 +70,18 @@ public class teacherMenu {
                     System.out.println("QCA: " + student.totalQCA());
                     //Grade.QCA(getId(), getSemester(), getModule(), getYear());
                     break;
+                case "S": // to request student to repeat etc.
+                    System.out.println("Enter Student ID:");
+                    int id2 = scannerTeacherMenu.nextInt();
+                    while (uni.getStudent(id2) == null) {
+                        System.out.println("Student does not exist, try again");
+                        id2 = scannerTeacherMenu.nextInt();
+                    }
+                    Student student2 = uni.getStudent(id2);
+                    System.out.println("Enter message:");
+                    String message = scannerTeacherMenu.nextLine();
+                    student2.addMessage(message);
+                    break;
                 case "D":
 
                     System.out.println("Select a department");
@@ -86,9 +100,9 @@ public class teacherMenu {
                     currentDepartment = uni.getDepartment(departmentName);
                     DepartmentMenu();
 
-                   // System.out.println("Add Department:");
-                   // String newDepartment = scannerTeacherMenu.nextLine();
-                   // departmentManager.addDepartment(newDepartment);
+                    // System.out.println("Add Department:");
+                    // String newDepartment = scannerTeacherMenu.nextLine();
+                    // departmentManager.addDepartment(newDepartment);
                     break;
                 case "M":
                     //Print out all modules here
@@ -182,30 +196,23 @@ public class teacherMenu {
                     System.out.println("Enter programme duration");
                     int duration = scannerTeacherMenu.nextInt();
 
-                    System.out.println("Enter programme level, " +
-                            "U)NDERGRADUATE" +
-                            "P)OSTGRADUATE" +
-                            "R)ESEARCH" +
-                            "T)AUGHT");
-                    String level = scannerTeacherMenu.nextLine();
+
                     ProgrammeType type = null;
-                    while(level == null) {
+                    while (type == null) {
+                        System.out.println("""
+                                Enter programme level
+                                U - Undergraduate
+                                P - Postgraduate
+                                R - Research
+                                T - Taught
+                                """);
+                        String level = scannerTeacherMenu.nextLine();
                         switch (level) {
-                            case "U":
-                                type = ProgrammeType.UNDERGRADUATE;
-                                break;
-                            case "P":
-                                type = ProgrammeType.POSTGRADUATE;
-                                break;
-                            case "R":
-                                type = ProgrammeType.RESEARCH;
-                                break;
-                            case "T":
-                                type = ProgrammeType.TAUGHT;
-                                break;
-                            default:
-                                System.out.println("Invalid choice");
-                                break;
+                            case "U" -> type = ProgrammeType.UNDERGRADUATE;
+                            case "P" -> type = ProgrammeType.POSTGRADUATE;
+                            case "R" -> type = ProgrammeType.RESEARCH;
+                            case "T" -> type = ProgrammeType.TAUGHT;
+                            default -> System.out.println("Invalid choice");
                         }
                     }
 
@@ -215,7 +222,6 @@ public class teacherMenu {
 
                     break;
                 case "M":
-                    System.out.println("Enter name of programme to add module to");
                     for (Programme programme : currentDepartment.getProgrammes()) {
                         System.out.println(programme.getName());
                     }
@@ -223,6 +229,7 @@ public class teacherMenu {
                         System.out.println("No programmes to add module to, add one through the department menu");
                         break;
                     }
+                    System.out.println("Enter name of programme to add module to");
                     String programmeName2;
                     programmeName2 = scannerTeacherMenu.nextLine();
                     if (currentDepartment.getProgramme(programmeName2) == null) {
@@ -237,17 +244,21 @@ public class teacherMenu {
                     System.out.println("Enter cutoff for module e.g 50 for 50%");
                     int cutoff = scannerTeacherMenu.nextInt();
 
-                    System.out.println("Enter semester for module." +
-                            "A)utumn" +
-                            "S)pring ");
-                    String semester = scannerTeacherMenu.nextLine();
-                    Semester sem;
-                    if(semester.toUpperCase().equals("A")){
-                        sem = Semester.AUTUMN;
+                    Semester sem = null;
+                    while (sem == null) {
+                        System.out.println("""
+                                Enter semester for module
+                                A - Autumn
+                                S - Spring
+                                """);
+                        String input = scannerTeacherMenu.nextLine();
+                        switch (input) {
+                            case "A" -> sem = Semester.AUTUMN;
+                            case "S" -> sem = Semester.SPRING;
+                            default -> System.out.println("Invalid choice");
+                        }
                     }
-                    else{
-                        sem = Semester.SPRING;
-                    }
+
 
                     System.out.println("Enter year for module");
                     int year = scannerTeacherMenu.nextInt();
@@ -260,9 +271,9 @@ public class teacherMenu {
                     System.out.println("Exiting Department Menu");
                     running = false;
                     break;
-                case "debug":
-                    for(Programme programm2e : currentDepartment.getProgrammes()){
-                        for(Module module : programm2e.getModules()){
+                case "D":
+                    for (Programme programm2e : currentDepartment.getProgrammes()) {
+                        for (Module module : programm2e.getModules()) {
                             System.out.println(module.getName());
                         }
                     }

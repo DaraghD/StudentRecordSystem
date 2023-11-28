@@ -30,47 +30,36 @@ public class csvWriter {
 
     public void writeStudents() throws FileNotFoundException {
         for (Student student : university.getStudents()) {
-            //basic info
             System.out.println("Saving data : Student " + student.getName());
-            String studentString = student.getName() + "," + student.getId() + "," + student.getPassword();
-            //appending grades
-            if (!student.getGrades().isEmpty()) {
-                for (Grade grade : student.getGrades()) {
-                    System.out.println("Saving grade :" + grade.toString());
-                    studentString += ","; //separating grades with commas
-                    studentString += grade.csvFormat();
-                }
-            }
-
-            writeStudents.println(studentString);
+            String s = student.csvFormat();
+            writeStudents.println(s);
         }
         writeStudents.close();
     }
 
     public void writeTeachers() throws FileNotFoundException {
         for (Teacher teacher : university.getTeachers()) {
-            System.out.println("Saving data : Student " + teacher.getName());
-
-            writeTeachers.println(teacher.getName() + "," + teacher.getId() + "," + teacher.getPassword() + "," + teacher.getDepartment());
+            System.out.println("Saving data : Teacher " + teacher.getName());
+            writeTeachers.println(teacher.csvFormat());
         }
         writeTeachers.close();
     }
 
     public void writeDepartments() throws FileNotFoundException {
         for (Department department : university.getDepartments()) {
-            System.out.println("Saving data : Department " + department);
-            writeDepartments.println(department.getName());
+            System.out.println("Saving data : Department " + department.getName());
+            writeDepartments.println(department.csvFormat());
         }
         writeDepartments.close();
-    } //TODO: maybe split this up into more csv files for programme and module,
+    }
 
     public void writeProgrammes() throws FileNotFoundException {
         for (Department department : university.getDepartments()) {
             for (Programme programme : department.getProgrammes()) {
-                System.out.println("Saving data : Programme " + programme);
-                writeDepartments.println(programme.csvFormat());
+                System.out.println("Saving data : Programme " + programme.getName());
+                writeProgrammes.println(programme.csvFormat());
             }
         }
-        writeDepartments.close();
+        writeProgrammes.close();
     }
 }

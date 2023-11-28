@@ -56,6 +56,9 @@ public class CommandLineInterface {
         }
         csvParser data = new csvParser(UL);
         //if there is already data , this will load it into University
+        //order of these methods matter
+        data.parseProgrammes();
+        data.parseDepartments();
         data.parseTeachers();
         data.parseStudents();
     }
@@ -113,16 +116,15 @@ public class CommandLineInterface {
     }
 
     public void shutdown() throws FileNotFoundException {
-        csvWriter csvWriter = new csvWriter(UL);
-        //saves data to csv
-        csvWriter.writeTeachers();
-        csvWriter.writeStudents();
+        saveData();
         exit(0);
     }
 
     private void saveData() throws FileNotFoundException {
         csvWriter csvWriter = new csvWriter(UL);
         //saves data to csv
+        csvWriter.writeDepartments();
+        csvWriter.writeProgrammes();
         csvWriter.writeTeachers();
         csvWriter.writeStudents();
     }

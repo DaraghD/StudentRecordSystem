@@ -16,6 +16,8 @@ public class University {
     private ArrayList<Student> students = new ArrayList<Student>();
     private ArrayList<Department> departments = new ArrayList<Department>();
 
+    private ArrayList<Programme> programmes = new ArrayList<Programme>();
+
 
     public void setStudentsPath(String studentsPath) {
         this.studentsPath = studentsPath;
@@ -128,4 +130,7 @@ public class University {
         return this.getTeacher(id) == null && this.getStudent(id) == null;
     }
 
+    public void addProgramme(Programme programme) {
+        this.programmes.add(programme);
+    }
 }
