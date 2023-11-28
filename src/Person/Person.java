@@ -50,9 +50,9 @@ public class Person {
     }
 
     /**
-     * Returns the password of a person.
+     * Returns the password of the person.
      *
-     * @return The password of a person.
+     * @return The password of the person.
      */
     public String getPassword() {
         return password;
