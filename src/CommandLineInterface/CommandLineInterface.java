@@ -81,6 +81,8 @@ public class CommandLineInterface {
             File teachers = new File(dataPath + "teachers.csv");
             File departments = new File(dataPath + "departments.csv");
             File programmes = new File(dataPath + "programmes.csv");
+            File modules = new File(dataPath + "modules.csv");
+            File grades = new File(dataPath + "grades.csv");
             if (!students.exists()) {
                 students.createNewFile();
             }
@@ -101,6 +103,8 @@ public class CommandLineInterface {
         UL.setTeachersPath(dataPath + "teachers.csv");
         UL.setDepartmentsPath(dataPath + "departments.csv");
         UL.setProgrammesPath(dataPath + "programmes.csv");
+        UL.setModulesPath(dataPath + "modules.csv");
+        UL.setGradesPath(dataPath + "grades.csv");
         csvParser data = new csvParser(UL);
 
         //if there is already data , this will load it into University
@@ -109,6 +113,8 @@ public class CommandLineInterface {
         data.parseDepartments();
         data.parseTeachers();
         data.parseStudents();
+        data.parseModules();
+        data.parseGrades();
     }
 
     /**
@@ -117,15 +123,6 @@ public class CommandLineInterface {
      * @throws FileNotFoundException If a file is not found.
      */
     public void run() throws FileNotFoundException {
-        //testing
-        System.out.println("TESTING");
-        for (Student s : UL.getStudents()) {
-            System.out.println("Student: " + s.getName() + " " + s.getId() + " " + s.getPassword() + " " + s.getGrades());
-            System.out.println();
-        }
-
-
-        //testing
         boolean LoggedIn = false;
         System.out.println("Welcome to the Student Record System!" + "\n");
         while (true) {
@@ -190,6 +187,8 @@ public class CommandLineInterface {
         csvWriter.writeProgrammes();
         csvWriter.writeTeachers();
         csvWriter.writeStudents();
+        csvWriter.writeGrades();
+        csvWriter.writeModules();
     }
 
     /**

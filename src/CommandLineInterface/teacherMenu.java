@@ -8,7 +8,6 @@ import Person.Student;
 import Person.Teacher;
 import University.University;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -160,7 +159,8 @@ public class teacherMenu {
         String moduleName = input.nextLine();
 
         Module mod = studentProgramme.getModule(moduleName);
-        Grade grade = new Grade(studentGrade, mod);
+        int id = student.getId();
+        Grade grade = new Grade(studentGrade, mod, id);
         student.addGrade(grade);
         System.out.println("Grade: +" + grade.toString() + ", added to " + student.getName());
 
@@ -274,12 +274,10 @@ public class teacherMenu {
                             default -> System.out.println("Invalid choice");
                         }
                     }
-
-
                     System.out.println("Enter year for module");
                     int year = scannerTeacherMenu.nextInt();
 
-                    Module newModule = new Module(moduleName, cutoff, year, sem);
+                    Module newModule = new Module(moduleName, cutoff, year, sem, programme);
                     System.out.println("Adding module " + newModule.getName() + " to " + programme.getName());
                     programme.addModule(newModule);
                     break;

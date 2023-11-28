@@ -1,5 +1,6 @@
 package Person;
 
+import Grading.Module;
 import University.University;
 
 public class Person {
@@ -10,7 +11,6 @@ public class Person {
     private int semester;
     private String module;
     private int year;
-
     private University university;
 
 
@@ -34,10 +34,6 @@ public class Person {
 
     public int getSemester() {
         return semester;
-    }
-
-    public String getModule() {
-        return module;
     }
 
     public int getYear() {

@@ -8,13 +8,15 @@ public class Module implements CSVFormat {
     private int cutoff;
     private int year;
     private Semester semester;
+    private Programme programme;
 
 
-    public Module(String name, int cutoff, int year, Semester semester) {
+    public Module(String name, int cutoff, int year, Semester semester, Programme programme) {
         this.name = name;
         this.cutoff = cutoff;
         this.year = year;
         this.semester = semester;
+        this.programme = programme;
     }
 
     public String getName() {
@@ -34,8 +36,13 @@ public class Module implements CSVFormat {
         return semester;
     }
 
-
+    @Override
     public String csvFormat() {
-        return this.name + "," + this.cutoff + "," + this.year + "," + this.semester;
+        return this.name + "," + this.cutoff + "," + this.year + "," + this.semester + "," + this.programme.getName();
+    }
+
+    @Override
+    public String csvHeader() {
+        return "Name,Cutoff,Year,Semester,Programme";
     }
 }

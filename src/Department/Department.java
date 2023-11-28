@@ -57,12 +57,13 @@ public class Department implements CSVFormat {
         System.out.println("Programme not found");
     }
 
-    public String csvFormat(){
-        String s = this.getName();
-        for (Programme programme : programmes) {
-            s += "," + programme.getName();
-        }
-        return s;
+    @Override
+    public String csvFormat(){;
+        return this.name;
+    }
+    @Override
+    public String csvHeader(){
+        return "Name";
     }
 
     public void calculateAndDisplayAverageQCAForModule(String moduleCode) {

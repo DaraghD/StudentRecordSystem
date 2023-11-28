@@ -22,17 +22,13 @@ public class Programme implements CSVFormat {
         modules.add(module);
     }
 
+    @Override
     public String csvFormat(){ //TODO: CSV formatting , do it when all the design is done
-        String s = this.getName() + "," + this.getDurationYears() + "," + this.getLevel();
-        if(modules.isEmpty()){
-            return s;
-        }
-        else{
-            for(Module module : modules){
-                s += "," + module.csvFormat();
-            }
-        }
-        return s;
+        return this.getName() + "," + this.getDurationYears() + "," + this.getLevel();
+    }
+    @Override
+    public String csvHeader(){
+        return "Name,Duration,Level";
     }
 
 

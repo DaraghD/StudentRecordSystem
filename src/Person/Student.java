@@ -1,12 +1,14 @@
 package Person;
 
 import Grading.Grade;
+import Grading.Module;
 import Grading.Programme;
 import Grading.Semester;
+import csvUtils.CSVFormat;
 
 import java.util.ArrayList;
 
-public class Student extends Person implements csvUtils.CSVFormat {
+public class Student extends Person implements CSVFormat {
     //need grades arraylist or something here
     private ArrayList<Grade> grades = new ArrayList<>();
     private Programme currentProgramme;
@@ -17,6 +19,11 @@ public class Student extends Person implements csvUtils.CSVFormat {
     }
     public Student(String name, int id, String password) {
         super(name, id, password);
+    }
+
+    public Student(String name, int id, String password, Programme programme) {
+        super(name, id, password);
+        this.currentProgramme = programme;
     }
 
     public void addGrade(Grade grade) {
@@ -99,14 +106,20 @@ public class Student extends Person implements csvUtils.CSVFormat {
             progName = this.currentProgramme.getName();
         }
         String s = this.getName() + "," + this.getId() + "," + this.getPassword() + "," + progName;
-        if(grades.isEmpty()){
-            return s;
-        }
-        else{
-            for(Grade grade : grades){
-                s += "," + grade.csvFormat();
+
+        return s;
+    }
+    @Override
+    public String csvHeader() {
+        return "Name,ID,Password,Programme";
+    }
+
+    public Module getModuleG(String moduleName){
+        for(Module module : currentProgramme.getModules()){
+            if(module.getName().equals(moduleName)){
+                return module;
             }
         }
-        return s;
+        return null;
     }
 }

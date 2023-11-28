@@ -20,18 +20,20 @@ public class csvParser {
     private final BufferedReader teacherReader;
     private final BufferedReader departmentReader;
     private final BufferedReader programmeReader;
+    private final BufferedReader moduleReader;
+    private final BufferedReader gradeReader;
 
     private final University uni;
 
     public csvParser(University university) throws FileNotFoundException {
         this.uni = university;
-        String studentsPath = university.getStudentsPath();
-        String teachersPath = university.getTeacherPath();
 
-        this.studentReader = new BufferedReader(new FileReader(studentsPath));
-        this.teacherReader = new BufferedReader(new FileReader(teachersPath));
+        this.studentReader = new BufferedReader(new FileReader(university.getStudentsPath()));
+        this.teacherReader = new BufferedReader(new FileReader(university.getTeacherPath()));
         this.departmentReader = new BufferedReader(new FileReader(university.getDepartmentsPath()));
         this.programmeReader = new BufferedReader(new FileReader(university.getProgrammesPath()));
+        this.moduleReader = new BufferedReader(new FileReader(university.getModulesPath()));
+        this.gradeReader = new BufferedReader(new FileReader(university.getGradesPath()));
     }
 
     public void parseStudents() throws IOException {
@@ -44,20 +46,17 @@ public class csvParser {
             int id = Integer.parseInt(st.nextToken());
             String password = st.nextToken();
             String programmeName = st.nextToken();
+            if (!Objects.equals(programmeName, "null")) {
+                Student newStudent = new Student(name, id, password, uni.getProgrammeE(programmeName));
+                uni.addStudent(newStudent);
+            }
+            else {
 
-            Student student = new Student(name, id, password);
-            uni.addStudent(student);
-            if(!Objects.equals(programmeName, "null")){
-                student.setProgramme(uni.getProgramme(programmeName));
+                Student student = new Student(name, id, password);
+                uni.addStudent(student);
             }
-            while (st.hasMoreTokens() && !Objects.equals(programmeName, "null")) { // parsing grades
-                String grade = st.nextToken();
-                String moduleName = st.nextToken();
-                Module newModule = uni.getProgramme(programmeName).getModule(moduleName);
-                //Getting module from programme name, modules must be in the students programme.
-                Grade newGrade = new Grade(grade, newModule);
-                student.addGrade(newGrade);
-            }
+
+
         }
         studentReader.close();
     }
@@ -72,7 +71,7 @@ public class csvParser {
                 int id = Integer.parseInt(st.nextToken());
                 String password = st.nextToken();
                 String departmentName = st.nextToken();
-                Teacher teacher = new Teacher(name, id,uni.getDepartment(departmentName), password);
+                Teacher teacher = new Teacher(name, id, uni.getDepartment(departmentName), password);
                 uni.addTeacher(teacher);
             }
         }
@@ -87,10 +86,6 @@ public class csvParser {
             String name = st.nextToken();
             Department department = new Department(name, uni);
             uni.addDepartment(department);
-            while (st.hasMoreTokens()) {
-                String programmeName = st.nextToken();
-                department.addProgramme(uni.getProgramme(programmeName));
-            }
         }
         departmentReader.close();
     }
@@ -101,7 +96,6 @@ public class csvParser {
         while ((programmeLine = programmeReader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(programmeLine, ",");
 
-
             String name = st.nextToken();
             int duration = Integer.parseInt(st.nextToken());
             String level = st.nextToken();
@@ -110,19 +104,41 @@ public class csvParser {
             Programme programme = new Programme(name, uni, duration, programmeType);
             uni.addProgramme(programme);
 
-
-            while (st.hasMoreTokens()) {
-
-                String moduleName = st.nextToken();
-                String cutoff = st.nextToken();
-                String year = st.nextToken();
-                Semester semester = Semester.valueOf(st.nextToken());
-
-                Module module = new Module(moduleName, Integer.parseInt(cutoff), Integer.parseInt(year), semester);
-
-                programme.addModule(module);
-            }
         }
         programmeReader.close();
+    }
+
+    public void parseGrades() throws IOException {
+        String gradeLine;
+        gradeReader.readLine(); // skipping header
+        while ((gradeLine = gradeReader.readLine()) != null) {
+            StringTokenizer st = new StringTokenizer(gradeLine, ",");
+            String name = st.nextToken();
+            String moduleName = st.nextToken();
+            int id = Integer.parseInt(st.nextToken());
+            Student student = uni.getStudent(id);
+            System.out.println(student.getModuleG(moduleName).getName());
+            Grade grade = new Grade(name, student.getModuleG(moduleName), id);
+            student.addGrade(grade);
+        }
+        gradeReader.close();
+    }
+
+    public void parseModules() throws IOException {
+        moduleReader.readLine(); // skipping header
+        String moduleLine;
+        while ((moduleLine = moduleReader.readLine()) != null) {
+            StringTokenizer st = new StringTokenizer(moduleLine, ",");
+
+            String name = st.nextToken();
+            int cutoff = Integer.parseInt(st.nextToken());
+            int year = Integer.parseInt(st.nextToken());
+            String semester = st.nextToken();
+            String programmeName = st.nextToken();
+
+            Module module = new Module(name, cutoff, year, Semester.valueOf(semester), uni.getProgramme(programmeName));
+            uni.getProgrammeE(programmeName).addModule(module);
+        }
+        moduleReader.close();
     }
 }

@@ -8,10 +8,12 @@ import csvUtils.CSVFormat;
 public class Grade implements Grading, CSVFormat {
     private final String grade;
     private final Module module;
+    private final int ID;
 
-    public Grade(String grade,Module module) {
+    public Grade(String grade, Module module, int id) {
         this.grade = grade;
         this.module = module;
+        ID = id;
     }
 
     //TODO: grade constructor for percentage?
@@ -20,11 +22,17 @@ public class Grade implements Grading, CSVFormat {
         return grade;
     }
 
+    @Override
     public String csvFormat() {
-        return this.grade + "," + this.module.getName();
+        return this.grade + "," + this.module.getName() + "," + this.ID;
     }
 
-    public String toString(){
+    @Override
+    public String csvHeader() {
+        return "Grade,Module,ID";
+    }
+
+    public String toString() {
         return "Grade : " + this.grade + " Module : " + this.module.getName() + " Year : " + this.module.getYear() + " Semester : " + this.module.getSemester() + "\n";
     }
 
