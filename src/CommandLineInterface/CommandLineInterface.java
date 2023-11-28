@@ -16,17 +16,29 @@ import Person.*;
 import static java.lang.System.exit;
 
 //TODO: SAVE AFTER REGISTERING
+
+/**
+ * The command-line interface for the Student Record System.
+ */
 public class CommandLineInterface {
 
     private static final Scanner input = new Scanner(System.in);
     private Person currentUser; // when login set this to the reference of the logged in object
     private final University UL;
 
-
+    /**
+     * Constructor for CommandLineInterface. Initializes the University class.
+     */
     public CommandLineInterface() {
         this.UL = new University();
     }
 
+    /**
+     * Checks if the entered password matches the actual password for a given ID.
+     *
+     * @param id             The ID of the user.
+     * @param actualPassword The actual password associated with the ID.
+     */
     private static void checkPassword(int id, String actualPassword) {
         System.out.println("Please enter your password");
         String password = CommandLineInterface.input.nextLine();
@@ -38,6 +50,11 @@ public class CommandLineInterface {
         System.out.println("Logged in ID : " + id);
     }
 
+    /**
+     * Initializes the system by prompting the user to enter a path for data to be saved to.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     public void init() throws IOException {
         System.out.println("Enter path for data to be saved to");
         System.out.println("D for default");
@@ -63,6 +80,11 @@ public class CommandLineInterface {
         data.parseStudents();
     }
 
+    /**
+     * Runs the command-line interface.
+     *
+     * @throws FileNotFoundException If a file is not found.
+     */
     public void run() throws FileNotFoundException {
         //testing
         System.out.println("TESTING");
@@ -115,11 +137,21 @@ public class CommandLineInterface {
 
     }
 
+    /**
+     * Saves data to CSV files and exits the program.
+     *
+     * @throws FileNotFoundException If a file is not found.
+     */
     public void shutdown() throws FileNotFoundException {
         saveData();
         exit(0);
     }
 
+    /**
+     * Saves data to CSV files.
+     *
+     * @throws FileNotFoundException If a file is not found.
+     */
     private void saveData() throws FileNotFoundException {
         csvWriter csvWriter = new csvWriter(UL);
         //saves data to csv
@@ -129,6 +161,11 @@ public class CommandLineInterface {
         csvWriter.writeStudents();
     }
 
+    /**
+     * Registers the students and teachers.
+     *
+     * @throws FileNotFoundException If a file is not found.
+     */
     private void Register() throws FileNotFoundException {
         System.out.println(
                 """
@@ -151,6 +188,9 @@ public class CommandLineInterface {
 
     }
 
+    /**
+     * Login process for students and teachers.
+     */
     private void Login() {
         System.out.println(
                 """
@@ -175,6 +215,9 @@ public class CommandLineInterface {
 
     }
 
+    /**
+     * Login process for teachers.
+     */
     private void teacherLogin() {
         System.out.println("Please enter your id");
         int id = Integer.parseInt(CommandLineInterface.input.nextLine());
@@ -184,6 +227,9 @@ public class CommandLineInterface {
         currentUser = UL.getTeacher(id);
     }
 
+    /**
+     * Login process for students.
+     */
     private void studentLogin() {
         System.out.println("Please enter your id");
         int id = Integer.parseInt(CommandLineInterface.input.nextLine());
@@ -193,6 +239,11 @@ public class CommandLineInterface {
         currentUser = UL.getStudent(id);
     }
 
+    /**
+     * Registering process for students.
+     *
+     * @throws FileNotFoundException If a file is not found.
+     */
     private void studentRegister() throws FileNotFoundException {
         System.out.println("You are now registering as a student\n");
         System.out.println("Please enter your name");
@@ -245,6 +296,11 @@ public class CommandLineInterface {
         studentMenu.run();
     }
 
+    /**
+     * Registering process for teachers.
+     *
+     * @throws FileNotFoundException If a file is not found.
+     */
     private void teacherRegister() throws FileNotFoundException {
         System.out.println("You are now registering as a teacher\n");
         System.out.println("Please enter your name");
