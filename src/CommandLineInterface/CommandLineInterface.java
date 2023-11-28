@@ -7,6 +7,7 @@ import csvUtils.csvParser;
 import University.University;
 import Department.Department;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
@@ -23,8 +24,8 @@ import static java.lang.System.exit;
 public class CommandLineInterface {
 
     private static final Scanner input = new Scanner(System.in);
-    private Person currentUser; // when login set this to the reference of the logged in object
     private final University UL;
+    private Person currentUser; // when login set this to the reference of the logged in object
 
     /**
      * Constructor for CommandLineInterface. Initializes the University class.
@@ -56,22 +57,52 @@ public class CommandLineInterface {
      * @throws IOException If an I/O error occurs.
      */
     public void init() throws IOException {
-        System.out.println("Enter path for data to be saved to");
-        System.out.println("D for default");
-        String optionPath = input.nextLine().toUpperCase();
-        if (!(optionPath.equals("D"))) {
-            //TODO: Simplify this logic using optionPath = src/data/ if D
-            UL.setStudentsPath(optionPath + "students.csv");
-            UL.setTeachersPath(optionPath + "teachers.csv");
-            UL.setDepartmentsPath(optionPath + "departments.csv");
-            UL.setProgrammesPath(optionPath + "programmes.csv");
-        } else {
-            UL.setStudentsPath("src/data/students.csv");
-            UL.setTeachersPath("src/data/teachers.csv");
-            UL.setDepartmentsPath("src/data/departments.csv");
-            UL.setProgrammesPath("src/data/programmes.csv");
+        boolean defaultPath = true;
+        System.out.println("Enter absolute path for data to be saved to. \n");
+        System.out.println("D for default - this will be src/data/...");
+        String dataPath = input.nextLine().toUpperCase();
+        if (!(dataPath.equals("D"))) {
+            defaultPath = false;
+            if (!dataPath.endsWith("\\")) {
+                dataPath += "\\";
+            }
+            StringBuilder pathString = new StringBuilder();
+            for (int i = 0; i < dataPath.length(); i++) {
+                char currentChar = dataPath.charAt(i);
+                if (currentChar == '\\') {
+                    pathString.append("\\\\");
+                } else {
+
+                    pathString.append(currentChar);
+                }
+            }
+            dataPath = pathString.toString();
+            File students = new File(dataPath + "students.csv");
+            File teachers = new File(dataPath + "teachers.csv");
+            File departments = new File(dataPath + "departments.csv");
+            File programmes = new File(dataPath + "programmes.csv");
+            if (!students.exists()) {
+                students.createNewFile();
+            }
+            if (!teachers.exists()) {
+                teachers.createNewFile();
+            }
+            if (!departments.exists()) {
+                departments.createNewFile();
+            }
+            if (!programmes.exists()) {
+                programmes.createNewFile();
+            }
         }
+        if(defaultPath){
+            dataPath = "src/data/";
+        }
+        UL.setStudentsPath(dataPath + "students.csv");
+        UL.setTeachersPath(dataPath + "teachers.csv");
+        UL.setDepartmentsPath(dataPath + "departments.csv");
+        UL.setProgrammesPath(dataPath + "programmes.csv");
         csvParser data = new csvParser(UL);
+
         //if there is already data , this will load it into University
         //order of these methods matter
         data.parseProgrammes();
