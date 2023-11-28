@@ -35,8 +35,8 @@ public class csvParser {
     }
 
     public void parseStudents() throws IOException {
-        //TODO REDO ALL OF THIS
         String studentLine;
+        studentReader.readLine(); // skipping header
         while ((studentLine = studentReader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(studentLine, ",");
 
@@ -63,6 +63,7 @@ public class csvParser {
     }
 
     public void parseTeachers() throws IOException {
+        teacherReader.readLine(); // skipping header
         String teacherLine;
         while ((teacherLine = teacherReader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(teacherLine, ",");
@@ -79,6 +80,7 @@ public class csvParser {
     }
 
     public void parseDepartments() throws IOException { //relies on programe , programmes firt then this the nteacher the nstudent,
+        departmentReader.readLine(); // skipping header
         String departmentLine;
         while ((departmentLine = departmentReader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(departmentLine, ",");
@@ -94,6 +96,7 @@ public class csvParser {
     }
 
     public void parseProgrammes() throws IOException {
+        programmeReader.readLine(); // skipping header
         String programmeLine;
         while ((programmeLine = programmeReader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(programmeLine, ",");

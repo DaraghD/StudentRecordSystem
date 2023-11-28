@@ -34,12 +34,6 @@ public class teacherMenu {
         this.uni = uni;
     }
 
-    /**
-     * Displays the options for the teacher menu.
-     */
-    public void display() {
-        System.out.println("Teacher Menu" + "\n");
-    }
 
     /**
      * Runs the teacher menu.
@@ -48,9 +42,11 @@ public class teacherMenu {
         boolean logout = false;
         while (!logout) {
             String choice;
-
-            display();
+            System.out.println();
+            System.out.println();
+            System.out.println();
             //TODO: Request student s to repeat, link-in to modules,repeat year , semesster etc
+            System.out.println("Logged in as " + currentUser.getName() + " (Teacher)");
             System.out.println("""
                     Please enter an option
                     G - Add Student Grade

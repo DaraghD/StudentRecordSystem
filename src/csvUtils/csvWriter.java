@@ -1,6 +1,5 @@
 package csvUtils;
 
-import Grading.Grade;
 import Grading.Programme;
 import Person.Student;
 import Person.Teacher;
@@ -29,6 +28,7 @@ public class csvWriter {
     }
 
     public void writeStudents() throws FileNotFoundException {
+        writeStudents.println("Name,ID,Password,Programme,Grade,ModuleName");
         for (Student student : university.getStudents()) {
             System.out.println("Saving data : Student " + student.getName());
             String s = student.csvFormat();
@@ -38,6 +38,7 @@ public class csvWriter {
     }
 
     public void writeTeachers() throws FileNotFoundException {
+        writeTeachers.println("Name,ID,Password,Department");
         for (Teacher teacher : university.getTeachers()) {
             System.out.println("Saving data : Teacher " + teacher.getName());
             writeTeachers.println(teacher.csvFormat());
@@ -46,6 +47,7 @@ public class csvWriter {
     }
 
     public void writeDepartments() throws FileNotFoundException {
+        writeDepartments.println("Name,ProgrammeNames");
         for (Department department : university.getDepartments()) {
             System.out.println("Saving data : Department " + department.getName());
             writeDepartments.println(department.csvFormat());
@@ -54,6 +56,7 @@ public class csvWriter {
     }
 
     public void writeProgrammes() throws FileNotFoundException {
+        writeProgrammes.println("Name,Duration,Level,ModuleName,Cutoff,Year,Semester");
         for (Department department : university.getDepartments()) {
             for (Programme programme : department.getProgrammes()) {
                 System.out.println("Saving data : Programme " + programme.getName());
