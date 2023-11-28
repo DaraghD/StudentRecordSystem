@@ -25,8 +25,8 @@ public class studentMenu {
     /**
      * Creates an instance of studentMenu.
      *
-     * @param student refers to the student logged into the system.
-     * @param uni the university which the student belongs to.
+     * @param student Refers to the student logged into the system.
+     * @param uni The university which the student belongs to.
      */
     studentMenu(Student student, University uni) {
         this.currentUser = student;
