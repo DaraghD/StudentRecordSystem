@@ -12,7 +12,7 @@ import Person.Student;
 import University.University;
 
 /**
- * Provides a menu displaying all potential student actions.
+ * Provides a menu displaying all potential student actions which the student user can interact with.
  *
  * Variables "currentUser"(current logged-in user) and "uni" of type "Student" and "University" respectively are initialised.
  */
