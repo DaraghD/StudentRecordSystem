@@ -9,7 +9,7 @@ import csvUtils.CSVFormat;
 import java.util.ArrayList;
 
 /**
- * Represents a student profile on the system.
+ * Represents a student in the system.
  *
  * Student is a subclass of Person.
  */
