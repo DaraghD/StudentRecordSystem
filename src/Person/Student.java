@@ -64,9 +64,6 @@ public class Student extends Person implements CSVFormat {
         grades.add(grade);
     }
 
-    public void ViewTranscript() {
-
-    }
 
     /**
      * Adds a message to the student's messages array list.
@@ -111,7 +108,6 @@ public class Student extends Person implements CSVFormat {
      * @return The calculated QCA.
      */
     public double QCA(String module) {
-        //calculates QCA for given semester module and year
         double total = 0;
         int counter = 0;
         for (Grade grade : this.grades) {
@@ -215,6 +211,9 @@ public class Student extends Person implements CSVFormat {
         }
         return null;
     }
+    /**
+     * Prints the student's transcript.
+     */
 
     public void transcript() {
         System.out.println("--------------------");

@@ -15,10 +15,10 @@ import java.util.Scanner;
 public class teacherMenu {
 
     private final Scanner scannerTeacherMenu = new Scanner(System.in);
-    private Department department;
-    private Department currentDepartment;
     private final Teacher currentUser;
     private final University uni;
+    private Department department;
+    private Department currentDepartment;
 
     /**
      * Constructs a teacherMenu instance with the specified current user and university.
@@ -66,7 +66,7 @@ public class teacherMenu {
                     break;
                 case "T":
                     System.out.println("Enter Student ID:");
-                    int id =Integer.parseInt(scannerTeacherMenu.nextLine());
+                    int id = Integer.parseInt(scannerTeacherMenu.nextLine());
                     uni.getStudent(id).transcript();
                     break;
                 case "A":
@@ -146,8 +146,6 @@ public class teacherMenu {
         int studentId = Integer.parseInt(input.nextLine());
         Student student = uni.getStudent(studentId);
 
-        System.out.println("Please enter the student's grade");
-        String studentGrade = input.nextLine();
 
         System.out.println("Please select the student's module");
         Programme studentProgramme = student.getCurrentProgramme();
@@ -160,12 +158,33 @@ public class teacherMenu {
             return;
         }
         String moduleName = input.nextLine();
-
         Module mod = studentProgramme.getModule(moduleName);
         int id = student.getId();
-        Grade grade = new Grade(studentGrade, mod, id);
-        student.addGrade(grade);
-        System.out.println("Grade: +" + grade + ", added to " + student.getName());
+
+        System.out.println("P - Percentage value" +
+                "G - Grade value e.g A1,B2,C3");
+        switch (input.nextLine()) {
+            case "P" -> {
+                System.out.println("Enter percentage value");
+                String grade = input.nextLine();
+                if(grade.charAt(grade.length()-1) == '%'){
+                    grade = grade.substring(0,grade.length()-1);
+                }
+                Grade newGrade = new Grade(Grade.convertPercentageToGrade(Integer.parseInt(grade)), mod, id);
+                student.addGrade(newGrade);
+                System.out.println("Grade: +" + grade + ", added to " + student.getName());
+                break;
+            }
+            case "G" -> {
+                System.out.println("Enter grade value");
+                GradeType grade = GradeType.valueOf(input.nextLine());
+                Grade newGrade = new Grade(grade, mod, id);
+                student.addGrade(newGrade);
+                System.out.println("Grade: +" + grade + ", added to " + student.getName());
+                break;
+            }
+        }
+
 
     }
 
@@ -219,7 +238,6 @@ public class teacherMenu {
                     double cutoff = Double.parseDouble(scannerTeacherMenu.nextLine());
 
 
-
                     ProgrammeType type = null;
                     while (type == null) {
                         System.out.println("""
@@ -240,7 +258,7 @@ public class teacherMenu {
                     }
 
 
-                    Programme newProgramme = new Programme(programmeName, uni, duration, type,cutoff, currentDepartment);
+                    Programme newProgramme = new Programme(programmeName, uni, duration, type, cutoff, currentDepartment);
                     System.out.println("Adding programme " + newProgramme.getName() + " to " + currentDepartment.getName());
                     currentDepartment.addProgramme(newProgramme);
 

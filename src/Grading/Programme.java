@@ -11,17 +11,13 @@ import java.util.ArrayList;
  * Represents a programme(course) in the system.
  */
 public class Programme implements CSVFormat {
-    //Modules are a part of the programme
-    //Programme is like a course
-    //Maybe add arraylist of students taking this programme?
-
     private final ArrayList<Module> modules = new ArrayList<Module>();
     private final String name;
     private final University university;
     private final int durationYears;
     private final ProgrammeType level;
-    private Department department;
-    private double cutoffQCA;
+    private final Department department;
+    private final double cutoffQCA;
 
     /**
      * Adds a specified module to the programme.
@@ -96,13 +92,6 @@ public class Programme implements CSVFormat {
         return null;
     }
 
-    public void setDepartment(Department department){
-        this.department = department;
-    }
-
-    public Department getDepartment(){
-        return this.department;
-    }
 
     /**
      * Returns the name of the programme.
