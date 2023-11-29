@@ -1,5 +1,6 @@
 package Grading;
 
+import Department.Department;
 import University.University;
 import Grading.ProgrammeType;
 import csvUtils.CSVFormat;
@@ -19,7 +20,7 @@ public class Programme implements CSVFormat {
     private final University university;
     private final int durationYears;
     private final ProgrammeType level;
-
+    private Department department;
     private double cutoffQCA;
 
     /**
@@ -37,7 +38,7 @@ public class Programme implements CSVFormat {
      */
     @Override
     public String csvFormat(){ //TODO: CSV formatting , do it when all the design is done
-        return this.getName() + "," + this.getDurationYears() + "," + this.getLevel() + "," + this.cutoffQCA;
+        return this.getName() + "," + this.getDurationYears() + "," + this.getLevel() + "," + this.cutoffQCA + "," + this.department.getName();
     }
 
     /**
@@ -50,7 +51,7 @@ public class Programme implements CSVFormat {
 
     @Override
     public String csvHeader(){
-        return "Name,Duration,Level,Cutoff";
+        return "Name,Duration,Level,Cutoff,Department";
     }
 
     /**
@@ -63,12 +64,13 @@ public class Programme implements CSVFormat {
      * @param cutoffQCA The minimum QCA needed to pass the programme.
      */
 
-    public Programme(String name,  University university, int duration, ProgrammeType level, double cutoffQCA) {
+    public Programme(String name,  University university, int duration, ProgrammeType level, double cutoffQCA, Department department) {
         this.name = name;
         this.university = university;
         this.durationYears = duration;
         this.level = level;
         this.cutoffQCA = cutoffQCA;
+        this.department = department;
     }
 
     /**
@@ -92,6 +94,14 @@ public class Programme implements CSVFormat {
             }
         }
         return null;
+    }
+
+    public void setDepartment(Department department){
+        this.department = department;
+    }
+
+    public Department getDepartment(){
+        return this.department;
     }
 
     /**

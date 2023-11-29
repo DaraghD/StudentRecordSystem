@@ -240,7 +240,7 @@ public class teacherMenu {
                     }
 
 
-                    Programme newProgramme = new Programme(programmeName, uni, duration, type,cutoff);
+                    Programme newProgramme = new Programme(programmeName, uni, duration, type,cutoff, currentDepartment);
                     System.out.println("Adding programme " + newProgramme.getName() + " to " + currentDepartment.getName());
                     currentDepartment.addProgramme(newProgramme);
 

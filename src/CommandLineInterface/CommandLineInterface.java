@@ -108,8 +108,8 @@ public class CommandLineInterface {
 
         //if there is already data , this will load it into University
         //order of these methods matter
-        data.parseProgrammes();
         data.parseDepartments();
+        data.parseProgrammes();
         data.parseTeachers();
         data.parseStudents();
         data.parseModules();
