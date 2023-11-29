@@ -105,7 +105,21 @@ public class Grade implements Grading, CSVFormat {
 
     @Override
     public String convertNumberToGrade() {
-        return null;
+        //assumes  grade is a number in a string
+        return switch(this.grade){
+            case "4.0" -> "A1";
+            case "3.6" -> "A2";
+            case "3.2" -> "B1";
+            case "3.0" -> "B2";
+            case "2.8" -> "B3";
+            case "2.6" -> "C1";
+            case "2.4" -> "C2";
+            case "2.0" -> "C3";
+            case "1.6" -> "D1";
+            case "1.2" -> "D2";
+            default -> "F";
+        };
+
     }
 
 }

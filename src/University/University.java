@@ -50,6 +50,8 @@ public class University {
     private ArrayList<Department> departments = new ArrayList<Department>();
     /**
      * The list of programmes in the university.
+     * Only used temporarily when loading data from programmes.csv, not updated during program run time.
+     * For updated storage refer {@link #getProgramme(String)}, which pulls from the departments.
      */
     private ArrayList<Programme> programmes = new ArrayList<Programme>();
 
@@ -263,8 +265,8 @@ public class University {
     }
 
     /**
-     * Gets a programme by name from the university's list of programmes.
-     *
+     * Purely used for getting a programme from the programmes arraylist during loading.
+     * Don't use for updated data, refer to {@link #getProgramme(String)} instead.
      * @param name The name of the programme to retrieve.
      * @return The programme with the specified name, or null if not found.
      */
@@ -294,7 +296,7 @@ public class University {
 
     /**
      * Gets a password by students or teachers ids from the university's list of students and teachers passwords.
-     *
+     * IDs are unique so there is no need to check if the password belongs to a student or a teacher.
      * @param id The name of the student or teacher to retrieve.
      * @return The password with the specified student or teacher id, or null if not found.
      */
@@ -326,6 +328,8 @@ public class University {
 
     /**
      * Adds a programme to the list of programmes in the university.
+     * Only used temporarily when loading data from programmes.csv.
+     * For runtime programmes should be added through their department, see {@link Department#addProgramme(Programme)}
      *
      * @param programme The programme to be added.
      */

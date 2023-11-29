@@ -16,7 +16,6 @@ import Person.*;
 
 import static java.lang.System.exit;
 
-//TODO: SAVE AFTER REGISTERING
 
 /**
  * The command-line interface for the Student Record System.
@@ -59,7 +58,7 @@ public class CommandLineInterface {
     public void init() throws IOException {
         boolean defaultPath = true;
         System.out.println("Enter absolute path for data to be saved to. \n");
-        System.out.println("D for default - this will be src/data/...");
+        System.out.println("D - default - this will be src/data/...");
         String dataPath = input.nextLine().toUpperCase();
         if (!(dataPath.equals("D"))) {
             defaultPath = false;
@@ -129,9 +128,9 @@ public class CommandLineInterface {
             System.out.println(
                     """
                             Please choose an option:
-                            L)ogin
-                            R)egister
-                            S)ave & Quit
+                            L - Login
+                            R - Register
+                            S - Save & Quit
                             """
             );
             switch (input.nextLine().toUpperCase()) {
@@ -200,8 +199,8 @@ public class CommandLineInterface {
         System.out.println(
                 """
                         Please choose to register as student or teacher
-                        S)tudent
-                        T)eacher
+                        S - Student
+                        T - Teacher
                         """
         );
         switch (input.nextLine().toUpperCase()) {
@@ -225,8 +224,8 @@ public class CommandLineInterface {
         System.out.println(
                 """
                         Please choose to login as student or teacher
-                        S)tudent
-                        T)eacher
+                        S - Student
+                        T - Teacher
                         """
         );
         Scanner in = new Scanner(System.in);

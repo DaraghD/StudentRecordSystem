@@ -1,7 +1,6 @@
 package CommandLineInterface;
 
 import Department.Department;
-import Department.DepartmentManager;
 import Grading.*;
 import Grading.Module;
 import Person.Student;
@@ -17,10 +16,9 @@ public class teacherMenu {
 
     private final Scanner scannerTeacherMenu = new Scanner(System.in);
     private Department department;
-    private DepartmentManager departmentManager;
     private Department currentDepartment;
-    private Teacher currentUser;
-    private University uni;
+    private final Teacher currentUser;
+    private final University uni;
 
     /**
      * Constructs a teacherMenu instance with the specified current user and university.
@@ -49,7 +47,7 @@ public class teacherMenu {
             System.out.println("""
                     Please enter an option
                     G - Add Student Grade
-                    C - Calculate Student QCA
+                    T - Student transcript
                     A - Add department
                     D - Department Menu
                     M - Average QCA for a module
@@ -66,6 +64,11 @@ public class teacherMenu {
                 case "V":
                     //currentUser.viewDepartmentBoard();
                     break;
+                case "T":
+                    System.out.println("Enter Student ID:");
+                    int id = scannerTeacherMenu.nextInt();
+                    uni.getStudent(id).transcript();
+                    break;
                 case "A":
                     System.out.println("Enter department name");
                     String name = scannerTeacherMenu.nextLine();
@@ -74,10 +77,10 @@ public class teacherMenu {
                     break;
                 case "C":
                     System.out.println("Enter Student ID:");
-                    int id = scannerTeacherMenu.nextInt();
-                    Student student = uni.getStudent(id);
+                    int id1 = scannerTeacherMenu.nextInt();
+                    Student student = uni.getStudent(id1);
                     System.out.println("QCA: " + student.totalQCA());
-                    //Grade.QCA(getId(), getSemester(), getModule(), getYear());
+                    //
                     break;
                 case "S": // to request student to repeat etc.
                     System.out.println("Enter Student ID:");
@@ -162,7 +165,7 @@ public class teacherMenu {
         int id = student.getId();
         Grade grade = new Grade(studentGrade, mod, id);
         student.addGrade(grade);
-        System.out.println("Grade: +" + grade.toString() + ", added to " + student.getName());
+        System.out.println("Grade: +" + grade + ", added to " + student.getName());
 
     }
 
