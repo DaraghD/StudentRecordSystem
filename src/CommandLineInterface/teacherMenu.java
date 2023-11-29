@@ -66,7 +66,7 @@ public class teacherMenu {
                     break;
                 case "T":
                     System.out.println("Enter Student ID:");
-                    int id = scannerTeacherMenu.nextInt();
+                    int id =Integer.parseInt(scannerTeacherMenu.nextLine());
                     uni.getStudent(id).transcript();
                     break;
                 case "A":
@@ -77,17 +77,17 @@ public class teacherMenu {
                     break;
                 case "C":
                     System.out.println("Enter Student ID:");
-                    int id1 = scannerTeacherMenu.nextInt();
+                    int id1 = Integer.parseInt(scannerTeacherMenu.nextLine());
                     Student student = uni.getStudent(id1);
                     System.out.println("QCA: " + student.totalQCA());
                     //
                     break;
                 case "S": // to request student to repeat etc.
                     System.out.println("Enter Student ID:");
-                    int id2 = scannerTeacherMenu.nextInt();
+                    int id2 = Integer.parseInt(scannerTeacherMenu.nextLine());
                     while (uni.getStudent(id2) == null) {
                         System.out.println("Student does not exist, try again");
-                        id2 = scannerTeacherMenu.nextInt();
+                        id2 = Integer.parseInt(scannerTeacherMenu.nextLine());
                     }
                     Student student2 = uni.getStudent(id2);
                     System.out.println("Enter message:");
@@ -213,10 +213,10 @@ public class teacherMenu {
                     String programmeName = scannerTeacherMenu.nextLine();
 
                     System.out.println("Enter programme duration");
-                    int duration = scannerTeacherMenu.nextInt();
+                    int duration = Integer.parseInt(scannerTeacherMenu.nextLine());
 
                     System.out.println("Enter programme cutoff e.g 2.0, 1.5 (QCA)");
-                    double cutoff = scannerTeacherMenu.nextDouble();
+                    double cutoff = Double.parseDouble(scannerTeacherMenu.nextLine());
 
 
 
@@ -281,7 +281,7 @@ public class teacherMenu {
                         }
                     }
                     System.out.println("Enter year for module");
-                    int year = scannerTeacherMenu.nextInt();
+                    int year = Integer.parseInt(scannerTeacherMenu.nextLine());
 
                     Module newModule = new Module(moduleName, year, sem, programme);
                     System.out.println("Adding module " + newModule.getName() + " to " + programme.getName());
