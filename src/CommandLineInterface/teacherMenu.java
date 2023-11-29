@@ -215,6 +215,10 @@ public class teacherMenu {
                     System.out.println("Enter programme duration");
                     int duration = scannerTeacherMenu.nextInt();
 
+                    System.out.println("Enter programme cutoff e.g 2.0, 1.5 (QCA)");
+                    double cutoff = scannerTeacherMenu.nextDouble();
+
+
 
                     ProgrammeType type = null;
                     while (type == null) {
@@ -235,7 +239,8 @@ public class teacherMenu {
                         }
                     }
 
-                    Programme newProgramme = new Programme(programmeName, uni, duration, type);
+
+                    Programme newProgramme = new Programme(programmeName, uni, duration, type,cutoff);
                     System.out.println("Adding programme " + newProgramme.getName() + " to " + currentDepartment.getName());
                     currentDepartment.addProgramme(newProgramme);
 
@@ -260,8 +265,6 @@ public class teacherMenu {
                     System.out.println("Enter module name");
                     String moduleName = scannerTeacherMenu.nextLine();
 
-                    System.out.println("Enter cutoff for module e.g 50 for 50%");
-                    int cutoff = scannerTeacherMenu.nextInt();
 
                     Semester sem = null;
                     while (sem == null) {
@@ -280,7 +283,7 @@ public class teacherMenu {
                     System.out.println("Enter year for module");
                     int year = scannerTeacherMenu.nextInt();
 
-                    Module newModule = new Module(moduleName, cutoff, year, sem, programme);
+                    Module newModule = new Module(moduleName, year, sem, programme);
                     System.out.println("Adding module " + newModule.getName() + " to " + programme.getName());
                     programme.addModule(newModule);
                     break;

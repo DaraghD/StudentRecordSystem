@@ -20,6 +20,8 @@ public class Programme implements CSVFormat {
     private final int durationYears;
     private final ProgrammeType level;
 
+    private double cutoffQCA;
+
     /**
      * Adds a specified module to the programme.
      *
@@ -35,7 +37,7 @@ public class Programme implements CSVFormat {
      */
     @Override
     public String csvFormat(){ //TODO: CSV formatting , do it when all the design is done
-        return this.getName() + "," + this.getDurationYears() + "," + this.getLevel();
+        return this.getName() + "," + this.getDurationYears() + "," + this.getLevel() + "," + this.cutoffQCA;
     }
 
     /**
@@ -48,7 +50,7 @@ public class Programme implements CSVFormat {
 
     @Override
     public String csvHeader(){
-        return "Name,Duration,Level";
+        return "Name,Duration,Level,Cutoff";
     }
 
     /**
@@ -58,13 +60,15 @@ public class Programme implements CSVFormat {
      * @param university The university name.
      * @param duration The duration of the programme.
      * @param level The level of the programme.
+     * @param cutoffQCA The minimum QCA needed to pass the programme.
      */
-    public Programme(String name,  University university, int duration, ProgrammeType level) {
+
+    public Programme(String name,  University university, int duration, ProgrammeType level, double cutoffQCA) {
         this.name = name;
         this.university = university;
         this.durationYears = duration;
         this.level = level;
-
+        this.cutoffQCA = cutoffQCA;
     }
 
     /**

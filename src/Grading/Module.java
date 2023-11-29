@@ -8,7 +8,7 @@ import csvUtils.CSVFormat;
 public class Module implements CSVFormat {
 
     private String name;
-    private int cutoff;
+
     private int year;
     private Semester semester;
     private Programme programme;
@@ -17,14 +17,12 @@ public class Module implements CSVFormat {
      * Creates an instance of Module.
      *
      * @param name The module name.
-     * @param cutoff The cutoff grade.
      * @param year The year of the module.
      * @param semester The semester of the module.
      * @param programme The programme that the module belongs to.
      */
-    public Module(String name, int cutoff, int year, Semester semester, Programme programme) {
+    public Module(String name,  int year, Semester semester, Programme programme) {
         this.name = name;
-        this.cutoff = cutoff;
         this.year = year;
         this.semester = semester;
         this.programme = programme;
@@ -39,14 +37,7 @@ public class Module implements CSVFormat {
         return name;
     }
 
-    /**
-     * Returns the cutoff grade of the module.
-     *
-     * @return The cutoff grade of the module.
-     */
-    public int getCutoff() {
-        return cutoff;
-    }
+
 
     /**
      * Returns the academic year associated with the module.
@@ -74,7 +65,7 @@ public class Module implements CSVFormat {
 
     @Override
     public String csvFormat() {
-        return this.name + "," + this.cutoff + "," + this.year + "," + this.semester + "," + this.programme.getName();
+        return this.name + "," + this.year + "," + this.semester + "," + this.programme.getName();
     }
 
     /**
@@ -87,6 +78,6 @@ public class Module implements CSVFormat {
 
     @Override
     public String csvHeader() {
-        return "Name,Cutoff,Year,Semester,Programme";
+        return "Name,Year,Semester,Programme";
     }
 }

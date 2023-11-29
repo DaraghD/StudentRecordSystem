@@ -100,8 +100,9 @@ public class csvParser {
             int duration = Integer.parseInt(st.nextToken());
             String level = st.nextToken();
             ProgrammeType programmeType = ProgrammeType.valueOf(level);
+            double cutoff = Double.parseDouble(st.nextToken());
 
-            Programme programme = new Programme(name, uni, duration, programmeType);
+            Programme programme = new Programme(name, uni, duration, programmeType,cutoff);
             uni.addProgramme(programme);
 
         }
@@ -131,12 +132,11 @@ public class csvParser {
             StringTokenizer st = new StringTokenizer(moduleLine, ",");
 
             String name = st.nextToken();
-            int cutoff = Integer.parseInt(st.nextToken());
             int year = Integer.parseInt(st.nextToken());
             String semester = st.nextToken();
             String programmeName = st.nextToken();
 
-            Module module = new Module(name, cutoff, year, Semester.valueOf(semester), uni.getProgramme(programmeName));
+            Module module = new Module(name, year, Semester.valueOf(semester), uni.getProgramme(programmeName));
             uni.getProgrammeE(programmeName).addModule(module);
         }
         moduleReader.close();
