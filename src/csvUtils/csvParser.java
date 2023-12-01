@@ -100,10 +100,12 @@ public class csvParser {
             int duration = Integer.parseInt(st.nextToken());
             String level = st.nextToken();
             ProgrammeType programmeType = ProgrammeType.valueOf(level);
+            double cutoff = Double.parseDouble(st.nextToken());
+            Department department = uni.getDepartment(st.nextToken());
 
-            Programme programme = new Programme(name, uni, duration, programmeType);
+            Programme programme = new Programme(name, uni, duration, programmeType,cutoff,department);
             uni.addProgramme(programme);
-
+            uni.getDepartment(department.getName()).addProgramme(programme);
         }
         programmeReader.close();
     }
@@ -118,7 +120,7 @@ public class csvParser {
             int id = Integer.parseInt(st.nextToken());
             Student student = uni.getStudent(id);
             System.out.println(student.getModuleG(moduleName).getName());
-            Grade grade = new Grade(name, student.getModuleG(moduleName), id);
+            Grade grade = new Grade(GradeType.valueOf(name), student.getModuleG(moduleName), id);
             student.addGrade(grade);
         }
         gradeReader.close();
@@ -131,12 +133,12 @@ public class csvParser {
             StringTokenizer st = new StringTokenizer(moduleLine, ",");
 
             String name = st.nextToken();
-            int cutoff = Integer.parseInt(st.nextToken());
+            System.out.println("PARSING MODULE " + name);
             int year = Integer.parseInt(st.nextToken());
             String semester = st.nextToken();
             String programmeName = st.nextToken();
 
-            Module module = new Module(name, cutoff, year, Semester.valueOf(semester), uni.getProgramme(programmeName));
+            Module module = new Module(name, year, Semester.valueOf(semester), uni.getProgramme(programmeName));
             uni.getProgrammeE(programmeName).addModule(module);
         }
         moduleReader.close();

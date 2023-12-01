@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * Represents a student in the system.
- *
+ * <p>
  * Student is a subclass of Person.
  */
 
@@ -21,35 +21,36 @@ public class Student extends Person implements CSVFormat {
     private ArrayList<String> messages = new ArrayList<>();
 
     /**
-     * Sets a programme(course) for a particular student.
-     *
-     * @param programme The programme that the student belongs to.
-     */
-    public void setProgramme(Programme programme){
-        this.currentProgramme = programme;
-    }
-
-    /**
      * Creates an instance of Student.
      *
-     * @param name The name associated with the student.
-     * @param id The identification number associated with the student.
+     * @param name     The name associated with the student.
+     * @param id       The identification number associated with the student.
      * @param password The password associated with the student.
      */
 
     public Student(String name, int id, String password) {
         super(name, id, password);
     }
+
     /**
      * Creates an instance of Student with a programme.
      *
-     * @param name The name associated with the student.
-     * @param id The identification number associated with the student.
-     * @param password The password associated with the student.
+     * @param name      The name associated with the student.
+     * @param id        The identification number associated with the student.
+     * @param password  The password associated with the student.
      * @param programme The programme which the student belongs to.
      */
     public Student(String name, int id, String password, Programme programme) {
         super(name, id, password);
+        this.currentProgramme = programme;
+    }
+
+    /**
+     * Sets a programme(course) for a particular student.
+     *
+     * @param programme The programme that the student belongs to.
+     */
+    public void setProgramme(Programme programme) {
         this.currentProgramme = programme;
     }
 
@@ -63,16 +64,13 @@ public class Student extends Person implements CSVFormat {
         grades.add(grade);
     }
 
-    public void ViewTranscript() {
-
-    }
 
     /**
      * Adds a message to the student's messages array list.
      *
      * @param message The specified message to be added.
      */
-    public void addMessage(String message){
+    public void addMessage(String message) {
         messages.add(message);
     }
 
@@ -81,7 +79,7 @@ public class Student extends Person implements CSVFormat {
      *
      * @return The messages array list for a student.
      */
-    public ArrayList<String> getMessages(){
+    public ArrayList<String> getMessages() {
         return messages;
     }
 
@@ -110,7 +108,6 @@ public class Student extends Person implements CSVFormat {
      * @return The calculated QCA.
      */
     public double QCA(String module) {
-        //calculates QCA for given semester module and year
         double total = 0;
         int counter = 0;
         for (Grade grade : this.grades) {
@@ -140,15 +137,15 @@ public class Student extends Person implements CSVFormat {
     /**
      * Calculates the QCA for a specific semester and year.
      *
-     * @param year The year for which the QCA is to be calculated.
+     * @param year     The year for which the QCA is to be calculated.
      * @param semester The semester for which the QCA is to be calculated.
      * @return The calculated QCA.
      */
-    public double qcaPerSemeseter(int year, Semester semester){
+    public double qcaPerSemeseter(int year, Semester semester) {
         double total = 0.0;
         int counter = 0;
         for (Grade grade : this.grades) {
-            if(grade.getModule().getYear() == year && grade.getModule().getSemester() == semester){
+            if (grade.getModule().getYear() == year && grade.getModule().getSemester() == semester) {
                 total += grade.convertGradeToNumber();
                 counter++;
             }
@@ -162,11 +159,11 @@ public class Student extends Person implements CSVFormat {
      * @param year The year for which the QCA is to be calculated.
      * @return The calculated QCA.
      */
-    public double qcaPerYear(int year){
+    public double qcaPerYear(int year) {
         double total = 0.0;
         int counter = 0;
         for (Grade grade : this.grades) {
-            if(grade.getModule().getYear() == year){
+            if (grade.getModule().getYear() == year) {
                 total += grade.convertGradeToNumber();
                 counter++;
             }
@@ -182,7 +179,7 @@ public class Student extends Person implements CSVFormat {
     @Override
     public String csvFormat() {
         String progName = "null";
-        if(this.currentProgramme != null){
+        if (this.currentProgramme != null) {
             progName = this.currentProgramme.getName();
         }
         String s = this.getName() + "," + this.getId() + "," + this.getPassword() + "," + progName;
@@ -192,7 +189,7 @@ public class Student extends Person implements CSVFormat {
 
     /**
      * Returns a header for the student's information.
-     *
+     * <p>
      * This header includes: Name, ID, Password and programme.
      *
      * @return The header as a string.
@@ -203,17 +200,47 @@ public class Student extends Person implements CSVFormat {
     }
 
     /**
-     *
-     *
      * @param moduleName
      * @return The module of the student.
      */
-    public Module getModuleG(String moduleName){
-        for(Module module : currentProgramme.getModules()){
-            if(module.getName().equals(moduleName)){
+    public Module getModuleG(String moduleName) {
+        for (Module module : currentProgramme.getModules()) {
+            if (module.getName().equals(moduleName)) {
                 return module;
             }
         }
         return null;
+    }
+    /**
+     * Prints the student's transcript.
+     */
+
+    public void transcript() {
+        System.out.println("--------------------");
+        System.out.println("STUDENT TRANSCRIPT");
+        System.out.println("NAME : " + this.getName() + "\n ID : " + this.getId() + " \n PROGRAMME : " + this.getCurrentProgramme().getName());
+        System.out.println("--------------------");
+        System.out.println("OVERALL QCA :" + this.totalQCA());
+        System.out.println("--------------------");
+        System.out.println("QCA PER YEAR");
+        System.out.println("YEAR 1 : " + this.qcaPerYear(1));
+        System.out.println("YEAR 2 : " + this.qcaPerYear(2));
+        System.out.println("YEAR 3 : " + this.qcaPerYear(3));
+        System.out.println("YEAR 4 : " + this.qcaPerYear(4));
+        System.out.println("--------------------");
+        System.out.println("QCA PER SEMESTER");
+        System.out.println("YEAR 1 AUTUMN : " + this.qcaPerSemeseter(1, Semester.AUTUMN));
+        System.out.println("YEAR 1 SPRING : " + this.qcaPerSemeseter(1, Semester.SPRING));
+        System.out.println("--------------------");
+        System.out.println("YEAR 2 AUTUMN : " + this.qcaPerSemeseter(2, Semester.AUTUMN));
+        System.out.println("YEAR 2 SPRING : " + this.qcaPerSemeseter(2, Semester.SPRING));
+        System.out.println("--------------------");
+        System.out.println("YEAR 3 AUTUMN : " + this.qcaPerSemeseter(3, Semester.AUTUMN));
+        System.out.println("YEAR 3 SPRING : " + this.qcaPerSemeseter(3, Semester.SPRING));
+        System.out.println("--------------------");
+        System.out.println("YEAR 4 AUTUMN : " + this.qcaPerSemeseter(4, Semester.AUTUMN));
+        System.out.println("YEAR 4 SPRING : " + this.qcaPerSemeseter(4, Semester.SPRING));
+        System.out.println("--------------------");
+
     }
 }

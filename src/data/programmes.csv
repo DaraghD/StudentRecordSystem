@@ -1,3 +1,3 @@
-Name,Duration,Level
-Mathematics,4,UNDERGRADUATE
-Mathematics Research,2,RESEARCH
+Name,Duration,Level,Cutoff,Department
+Mathematics,4,UNDERGRADUATE,2.0,Maths
+Mathematics Research,2,RESEARCH,3.0,Maths

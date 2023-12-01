@@ -115,27 +115,7 @@ public class studentMenu {
                         System.out.println("Not enrolled in a programme");
                         break;
                     }
-                    System.out.println("--------------------");
-                    System.out.println("STUDENT TRANSCRIPT");
-                    System.out.println("NAME : "+ currentUser.getName() +"\n ID : " + currentUser.getId() +" \n PROGRAMME : " + currentUser.getCurrentProgramme().getName());
-                    System.out.println("--------------------");
-                    System.out.println("OVERALL QCA :" + currentUser.totalQCA());
-                    System.out.println("--------------------");
-                    System.out.println("QCA PER YEAR");
-                    System.out.println("YEAR 1 : " + currentUser.qcaPerYear(1));
-                    System.out.println("YEAR 2 : " + currentUser.qcaPerYear(2));
-                    System.out.println("YEAR 3 : " + currentUser.qcaPerYear(3));
-                    System.out.println("YEAR 4 : " + currentUser.qcaPerYear(4));
-                    System.out.println("--------------------");
-                    System.out.println("QCA PER SEMESTER");
-                    System.out.println("YEAR 1 AUTUMN : " + currentUser.qcaPerSemeseter(1,Semester.AUTUMN));
-                    System.out.println("YEAR 1 SPRING : " + currentUser.qcaPerSemeseter(1,Semester.SPRING));
-                    System.out.println("YEAR 2 AUTUMN : " + currentUser.qcaPerSemeseter(2,Semester.AUTUMN));
-                    System.out.println("YEAR 2 SPRING : " + currentUser.qcaPerSemeseter(2,Semester.SPRING));
-                    System.out.println("YEAR 3 AUTUMN : " + currentUser.qcaPerSemeseter(3,Semester.AUTUMN));
-                    System.out.println("YEAR 3 SPRING : " + currentUser.qcaPerSemeseter(3,Semester.SPRING));
-                    System.out.println("YEAR 4 AUTUMN : " + currentUser.qcaPerSemeseter(4,Semester.AUTUMN));
-                    System.out.println("YEAR 4 SPRING : " + currentUser.qcaPerSemeseter(4,Semester.SPRING));
+                    currentUser.transcript();
                     break;
                 case "P":
                     //2 menus one for if programme the other if not

@@ -1,5 +1,6 @@
 package Grading;
 
+import Department.Department;
 import University.University;
 import Grading.ProgrammeType;
 import csvUtils.CSVFormat;
@@ -10,15 +11,13 @@ import java.util.ArrayList;
  * Represents a programme(course) in the system.
  */
 public class Programme implements CSVFormat {
-    //Modules are a part of the programme
-    //Programme is like a course
-    //Maybe add arraylist of students taking this programme?
-
     private final ArrayList<Module> modules = new ArrayList<Module>();
     private final String name;
     private final University university;
     private final int durationYears;
     private final ProgrammeType level;
+    private final Department department;
+    private final double cutoffQCA;
 
     /**
      * Adds a specified module to the programme.
@@ -35,7 +34,7 @@ public class Programme implements CSVFormat {
      */
     @Override
     public String csvFormat(){ //TODO: CSV formatting , do it when all the design is done
-        return this.getName() + "," + this.getDurationYears() + "," + this.getLevel();
+        return this.getName() + "," + this.getDurationYears() + "," + this.getLevel() + "," + this.cutoffQCA + "," + this.department.getName();
     }
 
     /**
@@ -48,7 +47,7 @@ public class Programme implements CSVFormat {
 
     @Override
     public String csvHeader(){
-        return "Name,Duration,Level";
+        return "Name,Duration,Level,Cutoff,Department";
     }
 
     /**
@@ -58,13 +57,16 @@ public class Programme implements CSVFormat {
      * @param university The university name.
      * @param duration The duration of the programme.
      * @param level The level of the programme.
+     * @param cutoffQCA The minimum QCA needed to pass the programme.
      */
-    public Programme(String name,  University university, int duration, ProgrammeType level) {
+
+    public Programme(String name,  University university, int duration, ProgrammeType level, double cutoffQCA, Department department) {
         this.name = name;
         this.university = university;
         this.durationYears = duration;
         this.level = level;
-
+        this.cutoffQCA = cutoffQCA;
+        this.department = department;
     }
 
     /**
@@ -89,6 +91,7 @@ public class Programme implements CSVFormat {
         }
         return null;
     }
+
 
     /**
      * Returns the name of the programme.

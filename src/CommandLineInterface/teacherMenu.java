@@ -1,7 +1,6 @@
 package CommandLineInterface;
 
 import Department.Department;
-import Department.DepartmentManager;
 import Grading.*;
 import Grading.Module;
 import Person.Student;
@@ -16,11 +15,10 @@ import java.util.Scanner;
 public class teacherMenu {
 
     private final Scanner scannerTeacherMenu = new Scanner(System.in);
+    private final Teacher currentUser;
+    private final University uni;
     private Department department;
-    private DepartmentManager departmentManager;
     private Department currentDepartment;
-    private Teacher currentUser;
-    private University uni;
 
     /**
      * Constructs a teacherMenu instance with the specified current user and university.
@@ -49,7 +47,7 @@ public class teacherMenu {
             System.out.println("""
                     Please enter an option
                     G - Add Student Grade
-                    C - Calculate Student QCA
+                    T - Student transcript
                     A - Add department
                     D - Department Menu
                     M - Average QCA for a module
@@ -66,6 +64,11 @@ public class teacherMenu {
                 case "V":
                     //currentUser.viewDepartmentBoard();
                     break;
+                case "T":
+                    System.out.println("Enter Student ID:");
+                    int id = Integer.parseInt(scannerTeacherMenu.nextLine());
+                    uni.getStudent(id).transcript();
+                    break;
                 case "A":
                     System.out.println("Enter department name");
                     String name = scannerTeacherMenu.nextLine();
@@ -74,17 +77,17 @@ public class teacherMenu {
                     break;
                 case "C":
                     System.out.println("Enter Student ID:");
-                    int id = scannerTeacherMenu.nextInt();
-                    Student student = uni.getStudent(id);
+                    int id1 = Integer.parseInt(scannerTeacherMenu.nextLine());
+                    Student student = uni.getStudent(id1);
                     System.out.println("QCA: " + student.totalQCA());
-                    //Grade.QCA(getId(), getSemester(), getModule(), getYear());
+                    //
                     break;
                 case "S": // to request student to repeat etc.
                     System.out.println("Enter Student ID:");
-                    int id2 = scannerTeacherMenu.nextInt();
+                    int id2 = Integer.parseInt(scannerTeacherMenu.nextLine());
                     while (uni.getStudent(id2) == null) {
                         System.out.println("Student does not exist, try again");
-                        id2 = scannerTeacherMenu.nextInt();
+                        id2 = Integer.parseInt(scannerTeacherMenu.nextLine());
                     }
                     Student student2 = uni.getStudent(id2);
                     System.out.println("Enter message:");
@@ -143,8 +146,6 @@ public class teacherMenu {
         int studentId = Integer.parseInt(input.nextLine());
         Student student = uni.getStudent(studentId);
 
-        System.out.println("Please enter the student's grade");
-        String studentGrade = input.nextLine();
 
         System.out.println("Please select the student's module");
         Programme studentProgramme = student.getCurrentProgramme();
@@ -157,12 +158,33 @@ public class teacherMenu {
             return;
         }
         String moduleName = input.nextLine();
-
         Module mod = studentProgramme.getModule(moduleName);
         int id = student.getId();
-        Grade grade = new Grade(studentGrade, mod, id);
-        student.addGrade(grade);
-        System.out.println("Grade: +" + grade.toString() + ", added to " + student.getName());
+
+        System.out.println("P - Percentage value" +
+                "G - Grade value e.g A1,B2,C3");
+        switch (input.nextLine()) {
+            case "P" -> {
+                System.out.println("Enter percentage value");
+                String grade = input.nextLine();
+                if(grade.charAt(grade.length()-1) == '%'){
+                    grade = grade.substring(0,grade.length()-1);
+                }
+                Grade newGrade = new Grade(Grade.convertPercentageToGrade(Integer.parseInt(grade)), mod, id);
+                student.addGrade(newGrade);
+                System.out.println("Grade: +" + grade + ", added to " + student.getName());
+                break;
+            }
+            case "G" -> {
+                System.out.println("Enter grade value");
+                GradeType grade = GradeType.valueOf(input.nextLine());
+                Grade newGrade = new Grade(grade, mod, id);
+                student.addGrade(newGrade);
+                System.out.println("Grade: +" + grade + ", added to " + student.getName());
+                break;
+            }
+        }
+
 
     }
 
@@ -210,7 +232,10 @@ public class teacherMenu {
                     String programmeName = scannerTeacherMenu.nextLine();
 
                     System.out.println("Enter programme duration");
-                    int duration = scannerTeacherMenu.nextInt();
+                    int duration = Integer.parseInt(scannerTeacherMenu.nextLine());
+
+                    System.out.println("Enter programme cutoff e.g 2.0, 1.5 (QCA)");
+                    double cutoff = Double.parseDouble(scannerTeacherMenu.nextLine());
 
 
                     ProgrammeType type = null;
@@ -232,7 +257,8 @@ public class teacherMenu {
                         }
                     }
 
-                    Programme newProgramme = new Programme(programmeName, uni, duration, type);
+
+                    Programme newProgramme = new Programme(programmeName, uni, duration, type, cutoff, currentDepartment);
                     System.out.println("Adding programme " + newProgramme.getName() + " to " + currentDepartment.getName());
                     currentDepartment.addProgramme(newProgramme);
 
@@ -257,8 +283,6 @@ public class teacherMenu {
                     System.out.println("Enter module name");
                     String moduleName = scannerTeacherMenu.nextLine();
 
-                    System.out.println("Enter cutoff for module e.g 50 for 50%");
-                    int cutoff = scannerTeacherMenu.nextInt();
 
                     Semester sem = null;
                     while (sem == null) {
@@ -275,9 +299,9 @@ public class teacherMenu {
                         }
                     }
                     System.out.println("Enter year for module");
-                    int year = scannerTeacherMenu.nextInt();
+                    int year = Integer.parseInt(scannerTeacherMenu.nextLine());
 
-                    Module newModule = new Module(moduleName, cutoff, year, sem, programme);
+                    Module newModule = new Module(moduleName, year, sem, programme);
                     System.out.println("Adding module " + newModule.getName() + " to " + programme.getName());
                     programme.addModule(newModule);
                     break;

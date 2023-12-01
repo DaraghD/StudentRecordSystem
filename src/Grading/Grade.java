@@ -10,32 +10,66 @@ import csvUtils.CSVFormat;
  * Represents a grade given to a student for a module.
  */
 public class Grade implements Grading, CSVFormat {
-    private final String grade;
+    private final GradeType grade;
     private final Module module;
     private final int ID;
 
     /**
      * Creates an instance of Grade.
      *
-     * @param grade The grade given to the student.
+     * @param grade  The grade given to the student.
      * @param module The module that this grade was given for.
-     * @param id The ID of the student who received this grade.
+     * @param id     The ID of the student who received this grade.
      */
 
-    public Grade(String grade, Module module, int id) {
+    public Grade(GradeType grade, Module module, int id) {
         this.grade = grade;
         this.module = module;
         ID = id;
     }
 
-    //TODO: grade constructor for percentage?
+    /**
+     * Converts a given percentage into its grade equivalent.
+     * <p>
+     * <a href="https://www.ul.ie/media/19388/download?inline="> Reference used </a>
+     * </p>
+     *
+     * @return {@link GradeType}
+     */
+    public static GradeType convertPercentageToGrade(int grade) {
+        if (grade >= 75 && grade <= 100) {
+            return GradeType.A1;
+        } else if (grade >= 70 && grade <= 74) {
+            return GradeType.A2;
+        } else if (grade >= 65 && grade <= 69) {
+            return GradeType.B1;
+        } else if (grade >= 60 && grade <= 64) {
+            return GradeType.B2;
+        } else if (grade >= 55 && grade <= 59) {
+            return GradeType.B3;
+        } else if (grade >= 50 && grade <= 54) {
+            return GradeType.C1;
+        } else if (grade >= 45 && grade <= 49) {
+            return GradeType.C2;
+        } else if (grade >= 40 && grade <= 44) {
+            return GradeType.C3;
+        } else if (grade >= 35 && grade <= 39) {
+            return GradeType.D1;
+        } else if (grade >= 30 && grade <= 34) {
+            return GradeType.D2;
+        } else {
+            return GradeType.F;
+        }
+
+
+    }
 
     /**
      * Returns the grade of the Grade object.
      *
-     * @return
+     * @return gradeType object
      */
-    public String getGrade() {
+    public GradeType getGrade() {
         return grade;
     }
 
@@ -51,7 +85,7 @@ public class Grade implements Grading, CSVFormat {
 
     /**
      * Returns a header for the grade information.
-     *
+     * <p>
      * This header includes: Grade, Module and ID.
      *
      * @return The header as a string.
@@ -72,7 +106,7 @@ public class Grade implements Grading, CSVFormat {
 
     /**
      * Converts the grade to a number.
-     *
+     * <p>
      * This number is used when calculating QCA.
      *
      * @return The number converted from the grade.
@@ -80,32 +114,27 @@ public class Grade implements Grading, CSVFormat {
     @Override
     public double convertGradeToNumber() {
         return switch (this.grade) {
-            case "A1" -> 4.0;
-            case "A2" -> 3.6;
-            case "B1" -> 3.2;
-            case "B2" -> 3.0;
-            case "B3" -> 2.8;
-            case "C1" -> 2.6;
-            case "C2" -> 2.4;
-            case "C3" -> 2.0;
-            case "D1" -> 1.6;
-            case "D2" -> 1.2;
-            default -> 0;
+            case GradeType.A1 -> 4.0;
+            case GradeType.A2 -> 3.6;
+            case GradeType.B1 -> 3.2;
+            case GradeType.B2 -> 3.0;
+            case GradeType.B3 -> 2.8;
+            case GradeType.C1 -> 2.6;
+            case GradeType.C2 -> 2.4;
+            case GradeType.C3 -> 2.0;
+            case GradeType.D1 -> 1.6;
+            case GradeType.D2 -> 1.2;
+            case GradeType.F -> 0.0;
         };
     }
 
     /**
      * Returns the module that the grade was given for.
      *
-     * @return The module that the grade was given for.
+     * @return {@link Module
      */
     public Module getModule() {
         return this.module;
-    }
-
-    @Override
-    public String convertNumberToGrade() {
-        return null;
     }
 
 }
