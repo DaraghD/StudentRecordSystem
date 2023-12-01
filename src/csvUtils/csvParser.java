@@ -120,7 +120,7 @@ public class csvParser {
             int id = Integer.parseInt(st.nextToken());
             Student student = uni.getStudent(id);
             System.out.println(student.getModuleG(moduleName).getName());
-            Grade grade = new Grade(name, student.getModuleG(moduleName), id);
+            Grade grade = new Grade(GradeType.valueOf(name), student.getModuleG(moduleName), id);
             student.addGrade(grade);
         }
         gradeReader.close();
