@@ -94,6 +94,12 @@ public class CommandLineInterface {
             if (!programmes.exists()) {
                 programmes.createNewFile();
             }
+            if (!modules.exists()) {
+                modules.createNewFile();
+            }
+            if (!grades.exists()) {
+                grades.createNewFile();
+            }
         }
         if(defaultPath){
             dataPath = "src/data/";

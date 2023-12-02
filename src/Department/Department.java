@@ -1,13 +1,12 @@
 package Department;
 
-import java.util.ArrayList;
-
 import Grading.Grade;
-import Grading.Module;
 import Grading.Programme;
 import Person.Student;
 import University.University;
 import csvUtils.CSVFormat;
+
+import java.util.ArrayList;
 
 /**
  * Class for a department in a university.
@@ -18,10 +17,10 @@ public class Department implements CSVFormat {
     private final University university;
 
     /** The list of programmes offered by the department. */
-    private ArrayList<Programme> programmes = new ArrayList<Programme>();
+    private final ArrayList<Programme> programmes = new ArrayList<Programme>();
 
     /** The name of the department. */
-    private String name;
+    private final String name;
 
     /**
      * Gets the name of the department.
@@ -39,15 +38,6 @@ public class Department implements CSVFormat {
      */
     public ArrayList<Programme> getProgrammes(){
         return programmes;
-    }
-
-    /**
-     * Constructs a new department with the specified university.
-     *
-     * @param uni The university to which the department belongs.
-     */
-    public Department(University uni) { //TODO: change all constructors to be use name arg
-        this.university = uni;
     }
 
     /**
@@ -126,7 +116,7 @@ public class Department implements CSVFormat {
             // Iterate over grades of each student
             for (Grade grade : student.getGrades()) {
                 // Check if the module matches the specified moduleCode
-                if (grade.getModule().equals(moduleCode)) {
+                if (grade.getModule().getName().equals(moduleCode)) {
                     // Check the grade using if loops and convertGradeToNumber method
                     totalSum += grade.convertGradeToNumber();
                     totalGradesCount++;
@@ -159,7 +149,7 @@ public class Department implements CSVFormat {
             // Iterate over grades of each student
             for (Grade grade : student.getGrades()) {
                 // Check if the module matches the specified moduleCode
-                if (grade.getModule().equals(moduleCode)) {
+                if (grade.getModule().getName().equals(moduleCode)) {
                     // Check the grade using if loops and convertGradeToNumber method
                     totalSum += grade.convertGradeToNumber();
                     totalGradesCount++;

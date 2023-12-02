@@ -2,7 +2,6 @@ package Grading;
 
 import Department.Department;
 import University.University;
-import Grading.ProgrammeType;
 import csvUtils.CSVFormat;
 
 import java.util.ArrayList;
@@ -33,13 +32,12 @@ public class Programme implements CSVFormat {
      * @return The programme information as a string.
      */
     @Override
-    public String csvFormat(){ //TODO: CSV formatting , do it when all the design is done
+    public String csvFormat(){
         return this.getName() + "," + this.getDurationYears() + "," + this.getLevel() + "," + this.cutoffQCA + "," + this.department.getName();
     }
 
     /**
      * Returns a header for the programme information.
-     *
      * This header includes: Name, Duration and Level.
      *
      * @return The header as a string.

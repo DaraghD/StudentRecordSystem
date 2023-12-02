@@ -4,23 +4,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Department.Department;
-import Grading.Grade;
 import Grading.Module;
-import Grading.Programme;
-import Grading.Semester;
+import Grading.*;
 import Person.Student;
 import University.University;
 
 /**
  * Provides a menu displaying all potential student actions which the student user can interact with.
- *
+ * <p>
  * Variables "currentUser"(current logged-in user) and "uni" of type "Student" and "University" respectively are initialised.
  */
 
 public class studentMenu {
     static Scanner input = new Scanner(System.in);
-    private Student currentUser;
-    private University uni;
+    private final Student currentUser;
+    private final University uni;
 
     /**
      * Creates an instance of studentMenu.
@@ -34,8 +32,7 @@ public class studentMenu {
     }
 
     /**
-     * Runs the student menu.
-     *
+     * Runs the student menu.*
      * Prompts the user to view QCA, grades, modules, programme, messages, transcript or alternatively, logout.
      */
     public void run() {

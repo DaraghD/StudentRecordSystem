@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Class for a University and provides methods for managing teachers, students, departments, and programmes.
+ * Holds most of the data for the system and is the main interface for accessing it.
  */
 public class University {
     /**

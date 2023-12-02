@@ -15,10 +15,9 @@ import java.util.ArrayList;
  */
 
 public class Student extends Person implements CSVFormat {
-    //need grades arraylist or something here
-    private ArrayList<Grade> grades = new ArrayList<>();
+    private final ArrayList<Grade> grades = new ArrayList<>();
     private Programme currentProgramme;
-    private ArrayList<String> messages = new ArrayList<>();
+    private final ArrayList<String> messages = new ArrayList<>();
 
     /**
      * Creates an instance of Student.
@@ -199,7 +198,7 @@ public class Student extends Person implements CSVFormat {
     }
 
     /**
-     * @param moduleName
+     * @param moduleName name of the module
      * @return The module of the student.
      */
     public Module getModuleG(String moduleName) {

@@ -111,10 +111,6 @@ public class teacherMenu {
                     }
                     currentDepartment = uni.getDepartment(departmentName);
                     DepartmentMenu();
-
-                    // System.out.println("Add Department:");
-                    // String newDepartment = scannerTeacherMenu.nextLine();
-                    // departmentManager.addDepartment(newDepartment);
                     break;
                 case "M":
                     //Print out all modules here
@@ -161,8 +157,10 @@ public class teacherMenu {
         Module mod = studentProgramme.getModule(moduleName);
         int id = student.getId();
 
-        System.out.println("P - Percentage value" +
-                "G - Grade value e.g A1,B2,C3");
+        System.out.println("""
+                P - Percentage value"
+                G - Grade value e.g A1,B2,C3 etc
+                """);
         switch (input.nextLine()) {
             case "P" -> {
                 System.out.println("Enter percentage value");
@@ -173,7 +171,6 @@ public class teacherMenu {
                 Grade newGrade = new Grade(Grade.convertPercentageToGrade(Integer.parseInt(grade)), mod, id);
                 student.addGrade(newGrade);
                 System.out.println("Grade: +" + grade + ", added to " + student.getName());
-                break;
             }
             case "G" -> {
                 System.out.println("Enter grade value");
@@ -181,7 +178,6 @@ public class teacherMenu {
                 Grade newGrade = new Grade(grade, mod, id);
                 student.addGrade(newGrade);
                 System.out.println("Grade: +" + grade + ", added to " + student.getName());
-                break;
             }
         }
 

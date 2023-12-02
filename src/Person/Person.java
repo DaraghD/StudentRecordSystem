@@ -1,6 +1,5 @@
 package Person;
 
-import Grading.Module;
 import University.University;
 
 /**
@@ -13,9 +12,7 @@ public class Person {
     private String name;
     private int id;
     private String password;
-    private int semester;
-    private String module;
-    private int year;
+
     private University university;
 
     /**
@@ -58,21 +55,5 @@ public class Person {
         return password;
     }
 
-    /**
-     * Returns the semester associated with the person.
-     *
-     * @return The semester associated with the person.
-     */
-    public int getSemester() {
-        return semester;
-    }
 
-    /**
-     * Returns the year associated with the person.
-     *
-     * @return The year associated with the person.
-     */
-    public int getYear() {
-        return year;
-    }
 }

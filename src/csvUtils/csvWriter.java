@@ -105,7 +105,7 @@ public class csvWriter {
     public void writeGrades() {
         boolean header = false;
         for (Student student : university.getStudents()) {
-            for(Grade grade : student.getGrades()) {
+            for (Grade grade : student.getGrades()) {
                 if (!header) {
                     writeGrades.println(grade.csvHeader());
                     header = true;

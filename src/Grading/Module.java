@@ -7,11 +7,11 @@ import csvUtils.CSVFormat;
  */
 public class Module implements CSVFormat {
 
-    private String name;
+    private final String name;
 
-    private int year;
-    private Semester semester;
-    private Programme programme;
+    private final int year;
+    private final Semester semester;
+    private final Programme programme;
 
     /**
      * Creates an instance of Module.
@@ -69,8 +69,7 @@ public class Module implements CSVFormat {
     }
 
     /**
-     * Returns a header for the module information.
-     *
+     * Returns a header for the module information.*
      * This header includes: Name, Cutoff, Year, Semester, Programme.
      *
      * @return The header as a string.
