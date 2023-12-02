@@ -201,9 +201,11 @@ public class teacherMenu {
                     Please enter an option
                     A - Add a department
                     V - View Departments
+                    H - Hold exam board
                     P - Add programme to current department
                     RP - Remove programme from current department
                     M - Add module to a programme
+                    RM - Remove module from programme
                     E - Exit menu
                     """);
             String choice = scannerTeacherMenu.nextLine().toUpperCase();
@@ -219,6 +221,8 @@ public class teacherMenu {
                         System.out.println(department.getName());
                     }
                     break;
+                case "H":
+                    //TODO hold exam board here, add method to Department class
                 case "RP":
                     System.out.println("Enter programme name");
                     for (Programme programme : currentDepartment.getProgrammes()) {
@@ -304,6 +308,38 @@ public class teacherMenu {
                     Module newModule = new Module(moduleName, year, sem, programme);
                     System.out.println("Adding module " + newModule.getName() + " to " + programme.getName());
                     programme.addModule(newModule);
+                    break;
+                case "RM":
+                    for (Programme prog : currentDepartment.getProgrammes()) {
+                        System.out.println(prog.getName());
+                    }
+                    if (currentDepartment.getProgrammes().isEmpty()) {
+                        System.out.println("No programmes to remove module from, add one through the department menu");
+                        break;
+                    }
+                    System.out.println("Enter name of programme to remove module from");
+                    String programmeName3 = scannerTeacherMenu.nextLine();
+                    if (currentDepartment.getProgramme(programmeName3) == null) {
+                        System.out.println("Programme does not exist");
+                        break;
+                    }
+                    Programme programme2 = currentDepartment.getProgramme(programmeName3);
+                    for(Module mod : programme2.getModules()){
+                        System.out.println(mod.getName());
+                    }
+                    if(programme2.getModules().isEmpty()){
+                        System.out.println("No modules to remove");
+                        break;
+                    }
+
+                    System.out.println("Enter module name");
+                    String moduleName2 = scannerTeacherMenu.nextLine();
+                    if (programme2.getModule(moduleName2) == null) {
+                        System.out.println("Module does not exist");
+                        break;
+                    }
+                    programme2.getModules().remove(programme2.getModule(moduleName2));
+                    System.out.println(moduleName2 + " removed from" + programme2.getName());
                     break;
                 case "E":
                     System.out.println("Exiting Department Menu");
