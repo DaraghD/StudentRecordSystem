@@ -8,6 +8,7 @@ import Grading.Module;
 import Grading.*;
 import Person.Student;
 import University.University;
+import University.*;
 
 /**
  * Provides a menu displaying all potential student actions which the student user can interact with.

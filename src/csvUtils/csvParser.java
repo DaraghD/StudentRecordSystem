@@ -6,6 +6,7 @@ import Grading.Module;
 import University.University;
 import Person.Student;
 import Person.Teacher;
+import University.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
