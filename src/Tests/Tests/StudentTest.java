@@ -4,7 +4,7 @@ import Department.Department;
 import Grading.*;
 import Grading.Module;
 import Person.Student;
-import University.University;
+import University.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
