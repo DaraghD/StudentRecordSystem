@@ -9,7 +9,7 @@ import csvUtils.CSVFormat;
 /**
  * Represents a grade given to a student for a module.
  */
-public class Grade implements Grading, CSVFormat {
+public class Grade implements CSVFormat {
     private final GradeType grade;
     private final Module module;
     private final int ID;
@@ -117,7 +117,7 @@ public class Grade implements Grading, CSVFormat {
      *
      * @return The number converted from the grade.
      */
-    @Override
+
     public double convertGradeToNumber() {
         return switch (this.grade) {
             case A1 -> 4.0;
