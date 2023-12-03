@@ -5,8 +5,10 @@ import Grading.Programme;
 import Person.Student;
 import University.University;
 import csvUtils.CSVFormat;
+import Department.ExamBoard;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class for a department in a university.
@@ -39,6 +41,12 @@ public class Department implements CSVFormat {
     public ArrayList<Programme> getProgrammes(){
         return programmes;
     }
+
+    /**
+     * The list of exam boards in the department.
+     */
+
+    private final List<ExamBoard> examBoards = new ArrayList<>();
 
     /**
      * Constructs a new department with the specified name and university.
@@ -164,6 +172,48 @@ public class Department implements CSVFormat {
                 System.out.println("Student ID: " + student.getId() + ", Name: " + student.getName());
             }
         }
+
+
+    }
+
+    /**
+     * Adds an exam board to the list of exam boards in the department.
+     *
+     * @param examBoard The exam board to be added.
+     */
+    public void addExamBoard(ExamBoard examBoard) {
+        this.examBoards.add(examBoard);
+    }
+
+    /**
+     * Gets the exam board with the specified name.
+     *
+     * @param examBoardName The name of the exam board to return.
+     * @return The exam board with the specified name, or null if not found.
+     */
+    public ExamBoard getExamBoard(String examBoardName) {
+        for (ExamBoard examBoard : examBoards) {
+            if (examBoard.getName().equals(examBoardName)) {
+                return examBoard;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Removes the exam board with the specified name from the list of exam boards.
+     *
+     * @param examBoardName The name of the exam board to remove.
+     */
+    public void removeExamBoard(String examBoardName) {
+        for (ExamBoard examBoard : examBoards) {
+            if (examBoard.getName().equals(examBoardName)) {
+                examBoards.remove(examBoard);
+                System.out.println("Exam board removed");
+                return;
+            }
+        }
+        System.out.println("Exam board not found");
     }
 
 }

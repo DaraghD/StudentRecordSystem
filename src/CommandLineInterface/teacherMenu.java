@@ -6,6 +6,7 @@ import Grading.Module;
 import Person.Student;
 import Person.Teacher;
 import University.University;
+import Department.ExamBoard;
 
 import java.util.Scanner;
 
@@ -165,8 +166,8 @@ public class teacherMenu {
             case "P" -> {
                 System.out.println("Enter percentage value");
                 String grade = input.nextLine();
-                if(grade.charAt(grade.length()-1) == '%'){
-                    grade = grade.substring(0,grade.length()-1);
+                if (grade.charAt(grade.length() - 1) == '%') {
+                    grade = grade.substring(0, grade.length() - 1);
                 }
                 Grade newGrade = new Grade(Grade.convertPercentageToGrade(Integer.parseInt(grade)), mod, id);
                 student.addGrade(newGrade);
@@ -218,7 +219,16 @@ public class teacherMenu {
                     }
                     break;
                 case "H":
-                    //TODO hold exam board here, add method to Department class
+                    System.out.println("Enter exam board name:");
+                    String examBoardName = scannerTeacherMenu.nextLine();
+                    if (currentDepartment.getExamBoard(examBoardName) != null) {
+                        System.out.println("Exam board with the same name already exists. Please choose a different name.");
+                        break;
+                    }
+                    ExamBoard examBoard = new ExamBoard(examBoardName);
+                    currentDepartment.addExamBoard(examBoard);
+                    System.out.println("Exam board '" + examBoardName + "' added to " + currentDepartment.getName());
+                    break;
                 case "RP":
                     System.out.println("Enter programme name");
                     for (Programme programme : currentDepartment.getProgrammes()) {
@@ -320,10 +330,10 @@ public class teacherMenu {
                         break;
                     }
                     Programme programme2 = currentDepartment.getProgramme(programmeName3);
-                    for(Module mod : programme2.getModules()){
+                    for (Module mod : programme2.getModules()) {
                         System.out.println(mod.getName());
                     }
-                    if(programme2.getModules().isEmpty()){
+                    if (programme2.getModules().isEmpty()) {
                         System.out.println("No modules to remove");
                         break;
                     }
