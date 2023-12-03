@@ -1,4 +1,4 @@
-package Grading;
+package University;
 
 public enum Semester {
     AUTUMN,

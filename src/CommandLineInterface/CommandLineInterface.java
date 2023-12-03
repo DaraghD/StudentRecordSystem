@@ -1,6 +1,6 @@
 package CommandLineInterface;
 
-import Grading.Programme;
+import University.Programme;
 import Person.Person;
 import csvUtils.csvWriter;
 import csvUtils.csvParser;

@@ -1,6 +1,9 @@
 package CommandLineInterface;
 
 import Department.Department;
+import University.Programme;
+import University.ProgrammeType;
+import University.Semester;
 import Grading.*;
 import Grading.Module;
 import Person.Student;
