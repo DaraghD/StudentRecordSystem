@@ -2,9 +2,9 @@ package Tests;
 
 import Department.Department;
 import Grading.Module;
-import Grading.Programme;
-import Grading.ProgrammeType;
-import Grading.Semester;
+import University.Programme;
+import University.ProgrammeType;
+import University.Semester;
 import Person.Student;
 import University.University;
 import org.junit.jupiter.api.BeforeEach;

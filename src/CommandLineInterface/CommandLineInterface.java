@@ -1,6 +1,6 @@
 package CommandLineInterface;
 
-import Grading.Programme;
+import University.Programme;
 import Person.Person;
 import csvUtils.csvWriter;
 import csvUtils.csvParser;
@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import Person.*;
-
 import static java.lang.System.exit;
 
 

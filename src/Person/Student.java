@@ -2,8 +2,8 @@ package Person;
 
 import Grading.Grade;
 import Grading.Module;
-import Grading.Programme;
-import Grading.Semester;
+import University.Programme;
+import University.Semester;
 import csvUtils.CSVFormat;
 
 import java.util.ArrayList;

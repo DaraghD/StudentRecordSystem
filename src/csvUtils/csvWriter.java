@@ -1,7 +1,7 @@
 package csvUtils;
 
 import Grading.Grade;
-import Grading.Programme;
+import University.Programme;
 import Person.Student;
 import Person.Teacher;
 import University.University;
