@@ -1,10 +1,16 @@
 package Tests;
 
-import Grading.*;
-import org.junit.Before;
-import org.junit.Test;
+import Department.Department;
+import Grading.Module;
+import Grading.Programme;
+import Grading.ProgrammeType;
+import Grading.Semester;
+import Person.Student;
+import University.University;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ProgrammeTest {
 
@@ -14,13 +20,14 @@ public class ProgrammeTest {
     private University university;
     private Department department;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        university = new University("Test University");
+        university = new University();
         department = new Department("Test Department", university);
         programme = new Programme("Test Programme", university, 3, ProgrammeType.UNDERGRADUATE, 60.0, department);
-        module = new Module("Test Module", "TM001", 20, department);
-        student = new Student("John Doe", "JD001", department);
+        module = new Module("Test Module", 1, Semester.AUTUMN, programme);
+        student = new Student("John Doe", 22359621, "password");
+        student.setProgramme(programme);
     }
 
     @Test
