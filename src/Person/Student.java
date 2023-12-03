@@ -42,6 +42,7 @@ public class Student extends Person implements CSVFormat {
     public Student(String name, int id, String password, Programme programme) {
         super(name, id, password);
         this.currentProgramme = programme;
+        programme.addStudent(this);
     }
 
     /**
@@ -51,6 +52,7 @@ public class Student extends Person implements CSVFormat {
      */
     public void setProgramme(Programme programme) {
         this.currentProgramme = programme;
+        programme.addStudent(this);
     }
 
     /**

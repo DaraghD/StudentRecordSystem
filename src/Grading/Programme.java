@@ -1,6 +1,7 @@
 package Grading;
 
 import Department.Department;
+import Person.Student;
 import University.University;
 import csvUtils.CSVFormat;
 
@@ -17,6 +18,7 @@ public class Programme implements CSVFormat {
     private final ProgrammeType level;
     private final Department department;
     private final double cutoffQCA;
+    private ArrayList<Student> students = new ArrayList<Student>();
 
     /**
      * Adds a specified module to the programme.
@@ -88,6 +90,14 @@ public class Programme implements CSVFormat {
             }
         }
         return null;
+    }
+
+    public ArrayList<Student> getStudents(){
+        return students;
+    }
+
+    public void addStudent(Student student){
+        students.add(student);
     }
 
 
