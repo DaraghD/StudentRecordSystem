@@ -3,14 +3,14 @@ package University;
 import Department.Department;
 import Grading.Module;
 import Person.Student;
-import csvUtils.CSVFormat;
+import csvUtils.csvFormat;
 
 import java.util.ArrayList;
 
 /**
  * Represents a programme(course) in the system.
  */
-public class Programme implements CSVFormat {
+public class Programme implements csvFormat {
     private final ArrayList<Module> modules = new ArrayList<Module>();
     private final String name;
     private final University university;

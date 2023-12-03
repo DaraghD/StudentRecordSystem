@@ -45,7 +45,6 @@ public class teacherMenu {
             System.out.println();
             System.out.println();
             System.out.println();
-            //TODO: Request student s to repeat, link-in to modules,repeat year , semesster etc
             System.out.println("Logged in as " + currentUser.getName() + " (Teacher)");
             System.out.println("""
                     Please enter an option
@@ -193,8 +192,6 @@ public class teacherMenu {
     public void DepartmentMenu() {
         boolean running = true;
         while (running) {
-            //TODO: REmove reduant options
-            //TODO: Maybe make a seperate programme menu?
             System.out.println("Current Department : " + currentDepartment.getName() + "\n");
             System.out.println("""
                     Please enter an option

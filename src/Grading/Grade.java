@@ -1,15 +1,11 @@
 package Grading;
 
-import csvUtils.CSVFormat;
-
-//TODO: add module class ? so modules can have individual cutoff points for departments? programme?
-//TODO: Implement a  general grading interface so if it changes its easier to adapat the c ode - project spec hinted at this
-//TODO: move datafields into module class ?
+import csvUtils.csvFormat;
 
 /**
  * Represents a grade given to a student for a module.
  */
-public class Grade implements CSVFormat {
+public class Grade implements csvFormat {
     private final GradeType grade;
     private final Module module;
     private final int ID;

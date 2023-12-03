@@ -2,12 +2,12 @@ package Grading;
 
 import University.Programme;
 import University.Semester;
-import csvUtils.CSVFormat;
+import csvUtils.csvFormat;
 
 /**
  * Represents a module in the system.
  */
-public class Module implements CSVFormat {
+public class Module implements csvFormat {
 
     private final String name;
 

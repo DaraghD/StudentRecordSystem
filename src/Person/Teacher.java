@@ -1,12 +1,12 @@
 package Person;
 
 import Department.Department;
-import csvUtils.CSVFormat;
+import csvUtils.csvFormat;
 
 /**
  * Represents a Teacher in the system, extending the Person class.
  */
-public class Teacher extends Person implements CSVFormat {
+public class Teacher extends Person implements csvFormat {
     private final Department Department;
 
     /**

@@ -4,14 +4,14 @@ import Grading.Grade;
 import University.Programme;
 import Person.Student;
 import University.University;
-import csvUtils.CSVFormat;
+import csvUtils.csvFormat;
 
 import java.util.ArrayList;
 
 /**
  * Class for a department in a university.
  */
-public class Department implements CSVFormat {
+public class Department implements csvFormat {
 
     /** The university of which the department belongs to. */
     private final University university;

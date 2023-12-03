@@ -1,6 +1,6 @@
 package csvUtils;
 
-public interface CSVFormat {
+public interface csvFormat {
     String csvFormat();
     String csvHeader();
 }

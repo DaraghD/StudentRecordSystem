@@ -4,7 +4,7 @@ import Grading.Grade;
 import Grading.Module;
 import University.Programme;
 import University.Semester;
-import csvUtils.CSVFormat;
+import csvUtils.csvFormat;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Student is a subclass of Person.
  */
 
-public class Student extends Person implements CSVFormat {
+public class Student extends Person implements csvFormat {
     private final ArrayList<Grade> grades = new ArrayList<>();
     private Programme currentProgramme;
     private final ArrayList<String> messages = new ArrayList<>();
