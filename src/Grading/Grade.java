@@ -28,6 +28,12 @@ public class Grade implements Grading, CSVFormat {
         ID = id;
     }
 
+    public Grade(int percentage, Module module, int id){
+        this.grade = convertPercentageToGrade(percentage);
+        this.module = module;
+        this.ID = id;
+    }
+
     /**
      * Converts a given percentage into its grade equivalent.
      * <p>
