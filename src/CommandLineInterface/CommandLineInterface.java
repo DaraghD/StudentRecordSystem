@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import Person.*;
-
 import static java.lang.System.exit;
 
 

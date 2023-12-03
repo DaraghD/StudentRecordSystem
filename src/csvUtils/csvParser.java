@@ -4,6 +4,9 @@ import Department.Department;
 import Grading.*;
 import Grading.Module;
 import University.University;
+import University.ProgrammeType;
+import University.Semester;
+import University.Programme;
 import Person.Student;
 import Person.Teacher;
 

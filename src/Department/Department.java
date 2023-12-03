@@ -7,7 +7,6 @@ import University.University;
 import csvUtils.CSVFormat;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class for a department in a university.
