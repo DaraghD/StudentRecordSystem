@@ -112,7 +112,8 @@ public class Student extends Person implements CSVFormat {
         double total = 0;
         int counter = 0;
         for (Grade grade : this.grades) {
-            if (grade.getModule().equals(currentProgramme.getModule(module))) {
+            if (grade.getModule().getName().equals(module)) {
+                //if (grade.getModule().equals(currentProgramme.getModule(module))) {
                 total += grade.convertGradeToNumber();
                 counter++;
             }
@@ -243,4 +244,5 @@ public class Student extends Person implements CSVFormat {
         System.out.println("--------------------");
 
     }
+
 }
