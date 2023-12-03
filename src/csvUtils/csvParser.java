@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
+/**
+ * Parses the data stored in the local csv for the student record system.
+ */
 public class csvParser {
 
     private final BufferedReader studentReader;
@@ -29,6 +32,12 @@ public class csvParser {
 
     private final University uni;
 
+    /**
+     * Creates an instance of csvParser.
+     * @param university The University object associated with the csvParser.
+     *                   Sets path of FileReader objects from university.
+     * @throws FileNotFoundException Throws if path is invalid.
+     */
     public csvParser(University university) throws FileNotFoundException {
         this.uni = university;
 
@@ -40,6 +49,10 @@ public class csvParser {
         this.gradeReader = new BufferedReader(new FileReader(university.getGradesPath()));
     }
 
+    /**
+     * Parses Student objects and adds them to the university.
+     * @throws IOException
+     */
     public void parseStudents() throws IOException {
         String studentLine;
         studentReader.readLine(); // skipping header
@@ -65,6 +78,10 @@ public class csvParser {
         studentReader.close();
     }
 
+    /**
+     * Parses Teacher objects and adds them to the university.
+     * @throws IOException
+     */
     public void parseTeachers() throws IOException {
         teacherReader.readLine(); // skipping header
         String teacherLine;
@@ -81,7 +98,10 @@ public class csvParser {
         }
         teacherReader.close();
     }
-
+    /**
+     * Parses Department objects and adds them to the university.
+     * @throws IOException
+     */
     public void parseDepartments() throws IOException { //relies on programe , programmes firt then this the nteacher the nstudent,
         departmentReader.readLine(); // skipping header
         String departmentLine;
@@ -93,6 +113,11 @@ public class csvParser {
         }
         departmentReader.close();
     }
+
+    /**
+     * Parses Programme objects and adds them to the university and department.
+     * @throws IOException
+     */
 
     public void parseProgrammes() throws IOException {
         programmeReader.readLine(); // skipping header
@@ -114,6 +139,11 @@ public class csvParser {
         programmeReader.close();
     }
 
+    /**
+     * Parses Grade objects and adds them to the corresponding student.
+     * @throws IOException
+     */
+
     public void parseGrades() throws IOException {
         String gradeLine;
         gradeReader.readLine(); // skipping header
@@ -129,6 +159,11 @@ public class csvParser {
         }
         gradeReader.close();
     }
+
+    /**
+     * Parses Module objects and adds them to the corresponding programme.
+     * @throws IOException
+     */
 
     public void parseModules() throws IOException {
         moduleReader.readLine(); // skipping header
