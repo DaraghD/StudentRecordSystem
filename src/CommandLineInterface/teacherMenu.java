@@ -9,7 +9,6 @@ import Grading.Module;
 import Person.Student;
 import Person.Teacher;
 import University.University;
-import Department.ExamBoard;
 
 import java.util.Scanner;
 
@@ -222,15 +221,7 @@ public class teacherMenu {
                     }
                     break;
                 case "H":
-                    System.out.println("Enter exam board name:");
-                    String examBoardName = scannerTeacherMenu.nextLine();
-                    if (currentDepartment.getExamBoard(examBoardName) != null) {
-                        System.out.println("Exam board with the same name already exists. Please choose a different name.");
-                        break;
-                    }
-                    ExamBoard examBoard = new ExamBoard(examBoardName);
-                    currentDepartment.addExamBoard(examBoard);
-                    System.out.println("Exam board '" + examBoardName + "' added to " + currentDepartment.getName());
+                    //currentDepartment.reviewProgression();
                     break;
                 case "RP":
                     System.out.println("Enter programme name");
