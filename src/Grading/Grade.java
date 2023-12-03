@@ -114,17 +114,17 @@ public class Grade implements Grading, CSVFormat {
     @Override
     public double convertGradeToNumber() {
         return switch (this.grade) {
-            case GradeType.A1 -> 4.0;
-            case GradeType.A2 -> 3.6;
-            case GradeType.B1 -> 3.2;
-            case GradeType.B2 -> 3.0;
-            case GradeType.B3 -> 2.8;
-            case GradeType.C1 -> 2.6;
-            case GradeType.C2 -> 2.4;
-            case GradeType.C3 -> 2.0;
-            case GradeType.D1 -> 1.6;
-            case GradeType.D2 -> 1.2;
-            case GradeType.F -> 0.0;
+            case A1 -> 4.0;
+            case A2 -> 3.6;
+            case B1 -> 3.2;
+            case B2 -> 3.0;
+            case B3 -> 2.8;
+            case C1 -> 2.6;
+            case C2 -> 2.4;
+            case C3 -> 2.0;
+            case D1 -> 1.6;
+            case D2 -> 1.2;
+            case F -> 0.0;
         };
     }
 
