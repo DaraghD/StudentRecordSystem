@@ -184,7 +184,12 @@ public class csvParser {
             int year = Integer.parseInt(st.nextToken());
             String semester = st.nextToken();
             String programmeName = st.nextToken();
+            if(name.equals("MT2341")){
+                System.out.println("test");
+                Module module = new Module(name, year, Semester.valueOf(semester), uni.getProgramme(programmeName));
+                uni.getProgrammeE(programmeName).addModule(module);
 
+            }
             Module module = new Module(name, year, Semester.valueOf(semester), uni.getProgramme(programmeName));
             uni.getProgrammeE(programmeName).addModule(module);
         }
