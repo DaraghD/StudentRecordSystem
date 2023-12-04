@@ -133,7 +133,7 @@ public class Grade implements csvFormat {
     /**
      * Returns the module that the grade was given for.
      *
-     * @return {@link Module
+     * @return {@link Module}
      */
     public Module getModule() {
         return this.module;
