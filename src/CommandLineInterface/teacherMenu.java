@@ -215,8 +215,22 @@ public class teacherMenu {
                     }
                     break;
                 case "H":
-                    System.out.println("Holding exam board for Department : " + currentDepartment.getName());
-                    currentDepartment.reviewProgression();
+                    System.out.println("""
+                            Please enter an option
+                            T - Total Progression
+                            Y - Yearly Progression
+                            """);
+                    String choice2 = scannerTeacherMenu.nextLine().toUpperCase();
+                    switch(choice2){
+                        case "T":
+                            currentDepartment.reviewTotalProgression();
+                            break;
+                        case "Y":
+                            currentDepartment.reviewYearProgression();
+                            break;
+                        default:
+                            System.out.println("Invalid choice");
+                    }
                     break;
                 case "RP":
                     System.out.println("Enter programme name");

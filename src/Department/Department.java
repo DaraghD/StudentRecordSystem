@@ -7,6 +7,7 @@ import University.University;
 import csvUtils.csvFormat;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Class for a department in a university.
@@ -176,7 +177,7 @@ public class Department implements csvFormat {
 
     }
 
-    public void reviewProgression() {
+    public void reviewTotalProgression() {
         System.out.println("Reviewing progression for Department : " + name);
         System.out.println("---------------------");
         for (Programme prog : programmes) {
@@ -188,7 +189,7 @@ public class Department implements csvFormat {
             double cutoff = prog.getCutoffQCA();
             double totalQCA = 0.0;
             for (Student student : prog.getStudents()) {
-                if(student.getGrades().isEmpty()){
+                if (student.getGrades().isEmpty()) {
                     continue;
                 }
                 double QCA = student.totalQCA();
@@ -203,11 +204,11 @@ public class Department implements csvFormat {
             double failPercentage = 0.0;
             double passPercentage = 0.0;
 
-            if(totalStudents > 0 && studentsFailing > 0){
-                failPercentage = (studentsFailing / totalStudents) * 100;
+            if (totalStudents > 0 && studentsFailing > 0) {
+                failPercentage = ((double) studentsFailing / totalStudents) * 100;
             }
-            if(totalStudents > 0 && studentsPassing > 0){
-                passPercentage = (studentsPassing / totalStudents) * 100;
+            if (totalStudents > 0 && studentsPassing > 0) {
+                passPercentage = ((double) studentsPassing / totalStudents) * 100;
             }
             System.out.println("---------------------");
             System.out.println("Programme : " + prog.getName());
@@ -218,6 +219,65 @@ public class Department implements csvFormat {
             System.out.println("Students failing : " + studentsFailing);
             System.out.println("Average QCA : " + totalQCA / totalStudents);
         }
+    }
+
+    public void reviewYearProgression() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter year to review : ");
+        int year = Integer.parseInt(scan.nextLine());
+        System.out.println("Reviewing progression for Department : " + name + "\n Year : " + year);
+        System.out.println("---------------------");
+        int totalStudents = 0;
+        for (Programme prog : programmes) {
+            // counting students for the year
+            ArrayList<Integer> studentIDs = new ArrayList<Integer>();
+            for (Student student : prog.getStudents()) {
+                for (Grade grade : student.getGrades()) {
+                    if (grade.getModule().getYear() == year && !studentIDs.contains(student.getId())) {
+                        studentIDs.add(student.getId());
+                        totalStudents++;
+                    }
+                }
+            }
+            int studentsPassing = 0;
+            int studentsFailing = 0;
+            double totalQCA = 0.0;
+            double cutoff = prog.getCutoffQCA();
+
+            for (Student student : prog.getStudents()) {
+                for (Grade grade : student.getGrades()) {
+                    if (grade.getModule().getYear() == year) {
+                        double QCA = grade.convertGradeToNumber();
+                        totalQCA += QCA;
+                        if (QCA >= cutoff) {
+                            studentsPassing++;
+                        } else {
+                            studentsFailing++;
+                        }
+                    }
+                }
+            }
+            double failPercentage = 0.0;
+            double passPercentage = 0.0;
+            if (totalStudents > 0 && studentsFailing > 0) {
+                failPercentage = ((double) studentsFailing / totalStudents) * 100;
+            }
+            if (totalStudents > 0 && studentsPassing > 0) {
+                passPercentage = ((double) studentsPassing / totalStudents) * 100;
+            }
+            System.out.println("---------------------");
+            System.out.println("Programme : " + prog.getName());
+            System.out.println("Year : " + year);
+            System.out.println("Total Students : " + totalStudents);
+            System.out.println("Students passing : " + studentsPassing);
+            System.out.println("Pass Percentage : " + passPercentage);
+            System.out.println("Fail Percentage : " + failPercentage);
+            System.out.println("Students failing : " + studentsFailing);
+            System.out.println("Average QCA : " + totalQCA / totalStudents);
+
+        }
+
+
     }
 }
 
