@@ -185,7 +185,16 @@ public class Student extends Person implements csvFormat {
             progName = this.currentProgramme.getName();
         }
 
-        return this.getName() + "," + this.getId() + "," + this.getPassword() + "," + progName;
+        return this.getName() + "," + this.getId() + "," + this.getPassword() + "," + progName + "," + formatMessages();
+    }
+
+    private String formatMessages(){
+        String messageString = "";
+        for(String message: messages){
+            messageString += message + "`";
+            // split the messages up with character ` , cant use comma because it may interfere with csv format
+        }
+        return messageString;
     }
 
     /**
@@ -197,7 +206,7 @@ public class Student extends Person implements csvFormat {
      */
     @Override
     public String csvHeader() {
-        return "Name,ID,Password,Programme";
+        return "Name,ID,Password,Programme,Messages";
     }
 
     /**
@@ -222,6 +231,7 @@ public class Student extends Person implements csvFormat {
         System.out.println("NAME : " + this.getName() + "\n ID : " + this.getId() + " \n PROGRAMME : " + this.getCurrentProgramme().getName());
         System.out.println("--------------------");
         System.out.println("OVERALL QCA :" + this.totalQCA());
+        //possibly should subtract 1st year?
         System.out.println("--------------------");
         System.out.println("QCA PER YEAR");
         System.out.println("YEAR 1 : " + this.qcaPerYear(1));
@@ -242,7 +252,7 @@ public class Student extends Person implements csvFormat {
         System.out.println("YEAR 4 AUTUMN : " + this.qcaPerSemeseter(4, Semester.AUTUMN));
         System.out.println("YEAR 4 SPRING : " + this.qcaPerSemeseter(4, Semester.SPRING));
         System.out.println("--------------------");
-
     }
+
 
 }

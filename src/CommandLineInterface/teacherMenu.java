@@ -63,9 +63,6 @@ public class teacherMenu {
                 case "G":
                     addStudentGrade();
                     break;
-                case "V":
-                    //currentUser.viewDepartmentBoard();
-                    break;
                 case "T":
                     System.out.println("Enter Student ID:");
                     int id = Integer.parseInt(scannerTeacherMenu.nextLine());
@@ -197,7 +194,7 @@ public class teacherMenu {
                     Please enter an option
                     A - Add a department
                     V - View Departments
-                    H - Hold exam board
+                    H - Hold exam board / Review progression for current Department
                     P - Add programme to current department
                     RP - Remove programme from current department
                     M - Add module to a programme
@@ -218,7 +215,8 @@ public class teacherMenu {
                     }
                     break;
                 case "H":
-                    //currentDepartment.reviewProgression();
+                    System.out.println("Holding exam board for Department : " + currentDepartment.getName());
+                    currentDepartment.reviewProgression();
                     break;
                 case "RP":
                     System.out.println("Enter programme name");

@@ -68,9 +68,13 @@ public class csvParser {
                 uni.addStudent(newStudent);
             }
             else {
-
                 Student student = new Student(name, id, password);
                 uni.addStudent(student);
+            }
+            String messages = st.nextToken();
+            String[] messageArray = messages.split("`");
+            for (String message : messageArray) {
+                uni.getStudent(id).addMessage(message);
             }
 
 
