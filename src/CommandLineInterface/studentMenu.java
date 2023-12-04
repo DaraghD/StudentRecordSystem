@@ -26,7 +26,7 @@ public class studentMenu {
      * Creates an instance of studentMenu.
      *
      * @param student Refers to the student logged into the system.
-     * @param uni The university which the student belongs to.
+     * @param uni     The university which the student belongs to.
      */
     studentMenu(Student student, University uni) {
         this.currentUser = student;
@@ -64,18 +64,8 @@ public class studentMenu {
             switch (choice) {
                 case "Q":
                     //Getting unique modules, but not fully working caue of string references?
-                    ArrayList<Module> temp2 = new ArrayList<>();
-                    for (Grade grade : currentUser.getGrades()) {
-                        if (!temp2.contains(grade.getModule())) {
-                            temp2.add(grade.getModule());
-                        }
-                        for (Module m : temp2) {
-                            System.out.println(m.getName());
-                        }
-                    }
-                    System.out.println("Input module to check QCA:");
-                    String module = input.nextLine();
-                    System.out.println("QCA:" + currentUser.QCA(module));
+
+                    System.out.println("QCA:" + currentUser.totalQCA());
                     break;
                 case "V":
                     if (currentUser.getMessages().isEmpty()) {
@@ -91,26 +81,28 @@ public class studentMenu {
                     for (Grade grade : studentGrades) {
                         System.out.print(grade + "\n");
                     }
+                    if (studentGrades.isEmpty()) {
+                        System.out.print("No grades available.\n A teacher must add a grade for you.");
+                    }
                     System.out.println("--------------------");
                     break;
 
                 case "M":
-                    temp2 = new ArrayList<>();
-                    for (Grade grade : currentUser.getGrades()) {
-                        if (!temp2.contains(grade.getModule())) {
-                            temp2.add(grade.getModule());
-                        }
-                        for (Module m : temp2) {
-                            System.out.println(m.getName());
-                        }
+                    ArrayList<Module> modules = currentUser.getCurrentProgramme().getModules();
+                    for (Module module : modules) {
+                        System.out.print(module.getName());
+                    }
+                    if (modules.isEmpty()) {
+                        System.out.print("No grades available.\n A teacher must add a grade for you.");
                     }
                     break;
+
                 case "L":
                     exit = true;
                     System.out.println("Logging Out...");
                     break;
                 case "T":
-                    if(currentUser.getCurrentProgramme() == null){
+                    if (currentUser.getCurrentProgramme() == null) {
                         System.out.println("Not enrolled in a programme");
                         break;
                     }
