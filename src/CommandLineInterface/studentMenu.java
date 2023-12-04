@@ -63,6 +63,9 @@ public class studentMenu {
                     System.out.println("You are not meeting the minimum academic requirements for progression");
                 }
             }
+            if(!currentUser.getMessages().isEmpty()){
+                System.out.println("You have " + currentUser.getMessages().size() + " messages");
+            }
             System.out.println("""
                     Please enter an option
                     Q - QCA
@@ -76,8 +79,6 @@ public class studentMenu {
             String choice = input.nextLine().toUpperCase();
             switch (choice) {
                 case "Q":
-                    //Getting unique modules, but not fully working caue of string references?
-
                     System.out.println("QCA:" + currentUser.totalQCA());
                     break;
                 case "V":
