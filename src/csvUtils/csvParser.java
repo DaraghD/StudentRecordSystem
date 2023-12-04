@@ -71,10 +71,14 @@ public class csvParser {
                 Student student = new Student(name, id, password);
                 uni.addStudent(student);
             }
-            String messages = st.nextToken();
-            String[] messageArray = messages.split("`");
-            for (String message : messageArray) {
-                uni.getStudent(id).addMessage(message);
+
+            String messages;
+            if(st.hasMoreTokens()){
+                messages = st.nextToken();
+                String[] messageArray = messages.split("`");
+                for (String message : messageArray) {
+                    uni.getStudent(id).addMessage(message);
+                }
             }
 
 

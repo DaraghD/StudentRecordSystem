@@ -180,13 +180,19 @@ public class Department implements csvFormat {
         System.out.println("Reviewing progression for Department : " + name);
         System.out.println("---------------------");
         for (Programme prog : programmes) {
-            double totalQCA = 0.0;
             int studentsPassing = 0;
             int studentsFailing = 0;
+
             int totalStudents = prog.getStudents().size();
+
             double cutoff = prog.getCutoffQCA();
+            double totalQCA = 0.0;
             for (Student student : prog.getStudents()) {
+                if(student.getGrades().isEmpty()){
+                    continue;
+                }
                 double QCA = student.totalQCA();
+                System.out.println("QCA 9999 : " + QCA);
                 totalQCA += QCA;
                 if (QCA >= cutoff) {
                     studentsPassing++;
@@ -194,21 +200,23 @@ public class Department implements csvFormat {
                     studentsFailing++;
                 }
             }
-            if(totalStudents == 0){
-                double passPercentage = 0.0;
+            double failPercentage = 0.0;
+            double passPercentage = 0.0;
+
+            if(totalStudents > 0 && studentsFailing > 0){
+                failPercentage = (studentsFailing / totalStudents) * 100;
             }
-            double passPercentage = (studentsPassing / totalStudents) * 100;
-            double failPercentage = (studentsFailing / totalStudents) * 100;
+            if(totalStudents > 0 && studentsPassing > 0){
+                passPercentage = (studentsPassing / totalStudents) * 100;
+            }
             System.out.println("---------------------");
             System.out.println("Programme : " + prog.getName());
-            System.out.println("Students passing : " + studentsPassing);
-            System.out.println("Passing percentage : " +  "%");
-            System.out.println("Students failing : " + studentsFailing);
-            System.out.println("Failing percentage : " + (studentsFailing / totalStudents) * 100 + "%");
             System.out.println("Total Students : " + totalStudents);
+            System.out.println("Students passing : " + studentsPassing);
+            System.out.println("Pass Percentage : " + passPercentage);
+            System.out.println("Fail Percentage : " + failPercentage);
+            System.out.println("Students failing : " + studentsFailing);
             System.out.println("Average QCA : " + totalQCA / totalStudents);
-
-
         }
     }
 }
