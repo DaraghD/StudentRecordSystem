@@ -142,40 +142,7 @@ public class Department implements csvFormat {
         }
     }
 
-    /**
-     * Displays the students who failed a specified module based on their QCA.
-     *
-     * @param moduleCode The code of the module for which to display failed students.
-     */
-    public void displayFailedStudentsForModule(String moduleCode) {
-        System.out.println("Students who failed module " + moduleCode + ":");
 
-        //Iterate over students
-        for (Student student : this.university.getStudents()) {
-            double totalSum = 0.0;
-            int totalGradesCount = 0;
-
-            // Iterate over grades of each student
-            for (Grade grade : student.getGrades()) {
-                // Check if the module matches the specified moduleCode
-                if (grade.getModule().getName().equals(moduleCode)) {
-                    // Check the grade using if loops and convertGradeToNumber method
-                    totalSum += grade.convertGradeToNumber();
-                    totalGradesCount++;
-                }
-            }
-
-            //Calculate the QCA for the module
-            double moduleQCA = (totalGradesCount > 0) ? (totalSum / totalGradesCount) : 0.0;
-
-            //Check if the moduleQCA is less than 2.0 (failure)
-            if (moduleQCA < 2.0) {
-                System.out.println("Student ID: " + student.getId() + ", Name: " + student.getName());
-            }
-        }
-
-
-    }
 
     public void reviewTotalProgression() {
         System.out.println("Reviewing progression for Department : " + name);
@@ -193,7 +160,6 @@ public class Department implements csvFormat {
                     continue;
                 }
                 double QCA = student.totalQCA();
-                System.out.println("QCA 9999 : " + QCA);
                 totalQCA += QCA;
                 if (QCA >= cutoff) {
                     studentsPassing++;

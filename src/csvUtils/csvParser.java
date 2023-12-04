@@ -161,7 +161,6 @@ public class csvParser {
             String moduleName = st.nextToken();
             int id = Integer.parseInt(st.nextToken());
             Student student = uni.getStudent(id);
-            System.out.println(student.getModuleG(moduleName).getName());
             Grade grade = new Grade(GradeType.valueOf(name), student.getModuleG(moduleName), id);
             student.addGrade(grade);
         }
@@ -178,18 +177,10 @@ public class csvParser {
         String moduleLine;
         while ((moduleLine = moduleReader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(moduleLine, ",");
-
             String name = st.nextToken();
-            System.out.println("PARSING MODULE " + name);
             int year = Integer.parseInt(st.nextToken());
             String semester = st.nextToken();
             String programmeName = st.nextToken();
-            if(name.equals("MT2341")){
-                System.out.println("test");
-                Module module = new Module(name, year, Semester.valueOf(semester), uni.getProgramme(programmeName));
-                uni.getProgrammeE(programmeName).addModule(module);
-
-            }
             Module module = new Module(name, year, Semester.valueOf(semester), uni.getProgramme(programmeName));
             uni.getProgrammeE(programmeName).addModule(module);
         }

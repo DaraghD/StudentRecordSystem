@@ -52,8 +52,6 @@ public class teacherMenu {
                     T - Student transcript
                     A - Add department
                     D - Department Menu
-                    M - Average QCA for a module
-                    F - Display Failed Students
                     S - Send student message
                     L - Logout
                     """);
@@ -117,11 +115,7 @@ public class teacherMenu {
                     String m = scannerTeacherMenu.nextLine();
                     currentDepartment.calculateAndDisplayAverageQCAForModule(m);
                     break;
-                case "F":
-                    System.out.println("Enter Module Code");
-                    String moduleCode = scannerTeacherMenu.nextLine();
-                    currentDepartment.displayFailedStudentsForModule(moduleCode);
-                    break;
+
                 case "L":
                     System.out.println("Logging Out...");
                     logout = true;

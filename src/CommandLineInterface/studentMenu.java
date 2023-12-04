@@ -104,10 +104,10 @@ public class studentMenu {
                 case "M":
                     ArrayList<Module> modules = currentUser.getCurrentProgramme().getModules();
                     for (Module module : modules) {
-                        System.out.print(module.getName());
+                        System.out.println(module.getName());
                     }
                     if (modules.isEmpty()) {
-                        System.out.print("No grades available.\n A teacher must add a grade for you.");
+                        System.out.println("No grades available.\n A teacher must add a grade for you.");
                     }
                     break;
 
