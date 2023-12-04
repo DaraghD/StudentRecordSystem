@@ -82,7 +82,7 @@ public class Department implements csvFormat {
      */
     public void removeProgramme(String programmeName) {
         for (Programme programme : programmes) {
-            if (programme.getName().equals(programmeName)) {
+            if (programme.getName().equalsIgnoreCase(programmeName)) {
                 programmes.remove(programme);
                 System.out.println("Programme removed");
                 return;
