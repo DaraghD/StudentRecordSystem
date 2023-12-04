@@ -50,6 +50,22 @@ public class studentMenu {
             } else if (currentUser.getCurrentProgramme() != null) {
                 System.out.println("Enrolled in " + currentUser.getCurrentProgramme().getName());
             }
+            double QCA = currentUser.totalQCA();
+            if(currentUser.getGrades().isEmpty()){
+                System.out.println("You have no grades");
+            }
+            else{
+                System.out.println("Your QCA is " + QCA);
+                if(QCA >= currentUser.getCurrentProgramme().getCutoffQCA()){
+                    System.out.println("You are meeting the minimum academic requirements for progression");
+                }
+                else{
+                    System.out.println("You are not meeting the minimum academic requirements for progression");
+                }
+            }
+            if(!currentUser.getMessages().isEmpty()){
+                System.out.println("You have " + currentUser.getMessages().size() + " messages");
+            }
             System.out.println("""
                     Please enter an option
                     Q - QCA
@@ -63,8 +79,6 @@ public class studentMenu {
             String choice = input.nextLine().toUpperCase();
             switch (choice) {
                 case "Q":
-                    //Getting unique modules, but not fully working caue of string references?
-
                     System.out.println("QCA:" + currentUser.totalQCA());
                     break;
                 case "V":
