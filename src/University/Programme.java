@@ -127,4 +127,8 @@ public class Programme implements csvFormat {
     public ProgrammeType getLevel() {
         return level;
     }
+
+    public double getCutoffQCA(){
+        return cutoffQCA;
+    }
 }

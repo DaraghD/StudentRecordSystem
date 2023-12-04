@@ -319,6 +319,7 @@ public class CommandLineInterface {
             }
             newStudent.setProgramme(UL.getProgramme(programme));
         }
+
         System.out.println("No programmes to join, a member of faculty must add one");
         System.out.println("You can join a program through the student main menu later");
 

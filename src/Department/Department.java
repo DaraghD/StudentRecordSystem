@@ -13,14 +13,31 @@ import java.util.ArrayList;
  */
 public class Department implements csvFormat {
 
-    /** The university of which the department belongs to. */
+    /**
+     * The university of which the department belongs to.
+     */
     private final University university;
 
-    /** The list of programmes offered by the department. */
+    /**
+     * The list of programmes offered by the department.
+     */
     private final ArrayList<Programme> programmes = new ArrayList<Programme>();
 
-    /** The name of the department. */
+    /**
+     * The name of the department.
+     */
     private final String name;
+
+    /**
+     * Constructs a new department with the specified name and university.
+     *
+     * @param name The name of the department.
+     * @param uni  The university to which the department belongs.
+     */
+    public Department(String name, University uni) {
+        this.name = name;
+        this.university = uni;
+    }
 
     /**
      * Gets the name of the department.
@@ -36,19 +53,8 @@ public class Department implements csvFormat {
      *
      * @return The list of programmes offered by the department.
      */
-    public ArrayList<Programme> getProgrammes(){
+    public ArrayList<Programme> getProgrammes() {
         return programmes;
-    }
-
-    /**
-     * Constructs a new department with the specified name and university.
-     *
-     * @param name The name of the department.
-     * @param uni  The university to which the department belongs.
-     */
-    public Department(String name, University uni) {
-        this.name = name;
-        this.university = uni;
     }
 
     /**
@@ -92,11 +98,13 @@ public class Department implements csvFormat {
     }
 
     @Override
-    public String csvFormat(){;
+    public String csvFormat() {
+        ;
         return this.name;
     }
+
     @Override
-    public String csvHeader(){
+    public String csvHeader() {
         return "Name";
     }
 
@@ -168,9 +176,41 @@ public class Department implements csvFormat {
 
     }
 
+    public void reviewProgression() {
+        System.out.println("Reviewing progression for Department : " + name);
+        System.out.println("---------------------");
+        for (Programme prog : programmes) {
+            double totalQCA = 0.0;
+            int studentsPassing = 0;
+            int studentsFailing = 0;
+            int totalStudents = prog.getStudents().size();
+            double cutoff = prog.getCutoffQCA();
+            for (Student student : prog.getStudents()) {
+                double QCA = student.totalQCA();
+                totalQCA += QCA;
+                if (QCA >= cutoff) {
+                    studentsPassing++;
+                } else {
+                    studentsFailing++;
+                }
+            }
+            if(totalStudents == 0){
+                double passPercentage = 0.0;
+            }
+            double passPercentage = (studentsPassing / totalStudents) * 100;
+            double failPercentage = (studentsFailing / totalStudents) * 100;
+            System.out.println("---------------------");
+            System.out.println("Programme : " + prog.getName());
+            System.out.println("Students passing : " + studentsPassing);
+            System.out.println("Passing percentage : " +  "%");
+            System.out.println("Students failing : " + studentsFailing);
+            System.out.println("Failing percentage : " + (studentsFailing / totalStudents) * 100 + "%");
+            System.out.println("Total Students : " + totalStudents);
+            System.out.println("Average QCA : " + totalQCA / totalStudents);
 
 
-
+        }
+    }
 }
 
 
