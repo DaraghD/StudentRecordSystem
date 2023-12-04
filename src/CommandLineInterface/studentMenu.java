@@ -50,6 +50,19 @@ public class studentMenu {
             } else if (currentUser.getCurrentProgramme() != null) {
                 System.out.println("Enrolled in " + currentUser.getCurrentProgramme().getName());
             }
+            double QCA = currentUser.totalQCA();
+            if(currentUser.getGrades().isEmpty()){
+                System.out.println("You have no grades");
+            }
+            else{
+                System.out.println("Your QCA is " + QCA);
+                if(QCA >= currentUser.getCurrentProgramme().getCutoffQCA()){
+                    System.out.println("You are meeting the minimum academic requirements for progression");
+                }
+                else{
+                    System.out.println("You are not meeting the minimum academic requirements for progression");
+                }
+            }
             System.out.println("""
                     Please enter an option
                     Q - QCA
